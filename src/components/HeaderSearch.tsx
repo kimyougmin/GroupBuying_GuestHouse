@@ -1,6 +1,7 @@
 import React from 'react';
 import LanguageIcon from '@mui/icons-material/Language';
 import { Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import './HeaderSearch.css'
 import i18n from "../utils/i18n";
 
@@ -24,6 +25,11 @@ export default function HeaderSearch() {
                 {isModal ? (
                     <div className={'languageSelector-modal'}>
                         <div>
+                            <div>
+                                <div/>
+                                <p>{i18n.t("select_language")}</p>
+                                <CloseIcon onClick={() => setIsModal(false)}/>
+                            </div>
                             <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('ko')}>한국어<br/>대한민국</Button>
                             <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('en')}>english<br/>U.S.A</Button>
                             <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('jp')}>日本語<br/>日本</Button>
