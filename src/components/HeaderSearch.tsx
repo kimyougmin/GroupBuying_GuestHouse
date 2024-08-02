@@ -10,7 +10,8 @@ import i18n from "../utils/i18n";
 
 export default function HeaderSearch() {
     const [isLanguageModal, setIsLanguageModal] = React.useState<boolean>(false);
-    const [isUserModal, setIsUserModal] = React.useState<boolean>(false)
+    const [isUserModal, setIsUserModal] = React.useState<boolean>(false);
+    const [isLoginModal, setIsLoginModal] = React.useState<boolean>(false);
     const onChangeLanguage = (lag: string) => {
         i18n.changeLanguage(lag);
         setIsLanguageModal(false);
@@ -56,7 +57,7 @@ export default function HeaderSearch() {
                 </div>
             </div>
             {isLanguageModal ? (
-                    <div className={'languageSelector-modal'}>
+                    <div className={'languageSelector-modal'} onClick={() => {setIsLanguageModal(false)}}>
                         <div>
                             <div>
                                 <div/>
@@ -76,6 +77,14 @@ export default function HeaderSearch() {
                     <div />
                     <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
                     <p>{i18n.t("help_center")}</p>
+                </div>
+            ) : null}
+            {isLoginModal ? (
+                <div>
+                    <div>
+                        <CloseIcon onClick={() => setIsLoginModal(false)}/>
+                        <p></p>
+                    </div>
                 </div>
             ) : null}
         </div>
