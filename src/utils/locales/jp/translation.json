@@ -7,5 +7,9 @@
   "add_date": "日付を追加",
   "check_out": "チェックアウト",
   "traveler": "旅行者",
-  "add_guest": "ゲストを追加"
+  "add_guest": "ゲストを追加",
+  "login": "ログイン",
+  "sign_up": "会員登録",
+  "turn_your_space_into_a_guesthouse": "あなたのスペースをゲストハウスに。",
+  "help_center": "ヘルプセンター"
 }

@@ -10,6 +10,7 @@ import i18n from "../utils/i18n";
 
 export default function HeaderSearch() {
     const [isLanguageModal, setIsLanguageModal] = React.useState<boolean>(false);
+    const [isUserModal, setIsUserModal] = React.useState<boolean>(false)
     const onChangeLanguage = (lag: string) => {
         i18n.changeLanguage(lag);
         setIsLanguageModal(false);
@@ -25,7 +26,7 @@ export default function HeaderSearch() {
                 <div className={"header-right"}>
                     <p>{i18n.t("guestHouse_registration")}</p>
                     <LanguageIcon onClick={() => setIsLanguageModal(!isLanguageModal)}/>
-                    <div className={"header-userList"}>
+                    <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
                         <ListIcon/>
                         <AccountCircleIcon/>
                     </div>
@@ -68,6 +69,15 @@ export default function HeaderSearch() {
                         </div>
                     </div>) :
                 null}
+            {isUserModal ? (
+                <div className={"guestUser"}>
+                    <p>{i18n.t("login")}</p>
+                    <p>{i18n.t("sign_up")}</p>
+                    <div />
+                    <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
+                    <p>{i18n.t("help_center")}</p>
+                </div>
+            ) : null}
         </div>
     );
 }

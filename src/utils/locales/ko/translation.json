@@ -7,5 +7,9 @@
   "add_date": "날짜 추가",
   "check_out": "체크아웃",
   "traveler": "여행자",
-  "add_guest": "게스트 추가"
+  "add_guest": "게스트 추가",
+  "login": "로그인",
+  "sign_up": "회원가입",
+  "turn_your_space_into_a_guesthouse": "당신의 공간을 게스트하우스로.",
+  "help_center": "도움말 센터"
 }
