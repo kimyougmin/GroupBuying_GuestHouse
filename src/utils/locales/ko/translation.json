@@ -1,4 +1,11 @@
 {
   "guestHouse_registration": "게스트하우스를 등록해보세요!",
-  "select_language": "언어를 선택하주세요."
+  "select_language": "언어를 선택하주세요.",
+  "travel_destination": "여행지",
+  "travel_destination_search": "여행지 검색",
+  "check_in": "체크인",
+  "add_date": "날짜 추가",
+  "check_out": "체크아웃",
+  "traveler": "여행자",
+  "add_guest": "게스트 추가"
 }

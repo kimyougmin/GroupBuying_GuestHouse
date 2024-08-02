@@ -1,4 +1,11 @@
 {
   "guestHouse_registration": "Register your guest house!",
-  "select_language": "Please select a language."
+  "select_language": "Please select a language.",
+  "travel_destination": "travel destination",
+  "travel_destination_search": "travel destination search",
+  "check_in": "Check-In",
+  "add_date": "Add date",
+  "check_out": "Check-Out",
+  "traveler": "Traveler",
+  "add_guest": "Add guest"
 }

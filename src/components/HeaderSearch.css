@@ -1,5 +1,88 @@
-.languageSelector-modal{
-    position: absolute;
+.header {
+    display: block;
+    border-bottom: 1px solid rgb(235,235,235);
+}
+.header-1layer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2vh 1vh 0 1vh;
+}
+.header-searchBox {
+    display: flex;
+    width: 80vh;
+    height: 4vh;
+    margin: 20px auto 20px auto;
+    padding: 1vh 1vh 1vh 2vh;
+    line-height: 20px;
+    border-radius: 50px;
+    border: 1px solid gray;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+    0 2px 4px rgba(0,0,0,0.07),
+    0 4px 8px rgba(0,0,0,0.07),
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07),
+    0 32px 64px rgba(0,0,0,0.07);
+}
+.header-searchBox > div > p:nth-child(1) {
+    font-size: 13px;
+}
+.header-searchBox > div > p:nth-child(2) {
+    color: gray;
+    font-size: 15px;
+}
+.header-searchBox > div:nth-child(1) {
+    width: 25%;
+}
+.header-searchBox > div:nth-child(n+2) {
+    padding-left: 10px;
+    height: 4vh;
+    border-left: 1px solid gray;
+}
+.searchIcon-background{
+    border: 0 !important;
+    padding-left: 0 !important;
+    width: 2.5em !important;
+    height: 2.5em !important;
+    border-radius: 50px;
+    background-color: rgb(235, 76, 96);
+    text-align: center;
+    align-content: center;
+}
+.header-searchIcon {
+    margin-top: 5px;
+    width: 1.1em !important;
+    height: 1.1em !important;
+    color: white;
+}
+.header-right {
+    width: 35vh;
+    line-height: 45px;
+    justify-content: space-between;
+    display: flex;
+    margin-right: 2vh;
+}
+.header-right > :nth-child(2) {
+    margin-top: 9px;
+}
+.header-userList {
+    width: 8vh;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 40px;
+    align-content: center;
+}
+.header-userList > svg:nth-child(1){
+    margin: 7px 0 6px 7px;
+}
+.header-userList > svg:nth-child(2){
+    margin: 2px 0 0 12px;
+    width: 1.5em !important;
+    height: 1.5em !important;
+}
+.languageSelector-modal {
+    position: relative;
     top: 0;
     left: 0;
     display: flex;
@@ -10,9 +93,10 @@
     border: 1px solid gainsboro;
     justify-items: center;
 }
-.languageSelector-modal > div{
+.languageSelector-modal > div {
     width: 50%;
     height: 25vh;
+    z-index: 2;
     background-color: white;
     border-radius: 10px;
     margin-top: 10vh;
@@ -20,12 +104,12 @@
     display: inline-block;
     justify-content: space-between;
 }
-.languageSelector-modal > div > div{
+.languageSelector-modal > div > div {
     display: flex;
     justify-content: space-between;
     line-height: 30px;
 }
-.languageSelector-modal > div > button{
+.languageSelector-modal > div > button {
     margin-top: 1vh;
     width: 100%;
     height: 6vh;
