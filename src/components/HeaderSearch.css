@@ -1,5 +1,8 @@
 .header {
+    z-index: -1;
     display: block;
+    width: 100%;
+    height: 17vh;
     border-bottom: 1px solid rgb(235,235,235);
 }
 .header-1layer {
@@ -57,7 +60,7 @@
     color: white;
 }
 .header-right {
-    width: 35vh;
+    width: 38vh;
     line-height: 45px;
     justify-content: space-between;
     display: flex;
@@ -82,19 +85,22 @@
     height: 1.5em !important;
 }
 .languageSelector-modal {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     display: flex;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0, 0.5);
-    z-index: -1;
+    background-color: rgba(0,0,0, 0.3);
+    z-index: 0;
     border: 1px solid gainsboro;
     justify-items: center;
 }
 .languageSelector-modal > div {
-    width: 50%;
+    position: absolute;
+    top: -34px;
+    right: 20px;
+    width: 50vh;
     height: 25vh;
     z-index: 2;
     background-color: white;
