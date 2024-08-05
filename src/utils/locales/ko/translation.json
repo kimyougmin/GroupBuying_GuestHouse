@@ -11,5 +11,11 @@
   "login": "로그인",
   "sign_up": "회원가입",
   "turn_your_space_into_a_guesthouse": "당신의 공간을 게스트하우스로.",
-  "help_center": "도움말 센터"
+  "help_center": "도움말 센터",
+  "login_or_sign_up": "로그인 또는 회원 가입",
+  "welcome_guest_house": "게스트 하우스에 오신 것을 환영합니다!",
+  "id": "아이디",
+  "pw": "비밀번호",
+  "or": "또는",
+  "continue": "계속"
 }

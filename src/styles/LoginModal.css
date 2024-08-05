@@ -1,0 +1,66 @@
+.loginModal-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.5);
+    z-index: 0;
+    border: 1px solid gainsboro;
+    justify-items: center;
+}
+.loginModal {
+    margin: 10vh auto 0 auto;
+    border-radius: 15px;
+    width: 40%;
+    height: 70vh;
+    background-color: white;
+    z-index: 1;
+}
+.loginModal-header {
+    padding: 0 3vh 0 3vh;
+    display: flex;
+    align-items: center;
+    height: 7vh;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(235,235,235);
+}
+.loginModal-header > p {
+    font-size: 1em;
+    font-weight: initial;
+}
+.loginModal-body {
+    padding: 4vh 2vh 0 2vh;
+}
+.loginModal-body > p:nth-child(1){
+    font-size: 24px;
+    font-weight: bolder;
+}
+.loginModal-body > div:nth-child(2) {
+    margin-top: 3vh;
+    display: block;
+    height: 15vh;
+}
+.loginModal-body > div:nth-child(2) > div {
+    margin-top: 5px;
+    width: 100%;
+}
+.loginModal-body > button:nth-child(3) {
+    background-color: rgb(235, 76, 96) !important;
+    width: 100% !important;
+    height: 5vh;
+    font-size: 16px;
+}
+.loginModal-body > div:nth-child(4) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh 0 2vh 0;
+}
+.loginModal-body > div:nth-child(4) > .div-line {
+    width: 40% !important;
+    margin-top: 6px;
+    height: 0;
+    border: 1px solid rgb(235, 235, 235) !important;
+}

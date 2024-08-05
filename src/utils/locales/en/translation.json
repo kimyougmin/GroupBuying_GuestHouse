@@ -11,5 +11,11 @@
   "login": "Login",
   "sign_up": "Sign Up",
   "turn_your_space_into_a_guesthouse": "Turn your space into a guesthouse.",
-  "help_center": "Help Center"
+  "help_center": "Help Center",
+  "login_or_sign_up": "Login or SignUp",
+  "welcome_guest_house": "Welcome to the guest house",
+  "id": "your ID",
+  "pw": "your Password",
+  "or": "or",
+  "continue": "continue"
 }

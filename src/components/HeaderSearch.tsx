@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ListIcon from '@mui/icons-material/List';
-import './HeaderSearch.css'
+import '../styles/HeaderSearch.css'
 import i18n from "../utils/i18n";
 
 
@@ -21,6 +21,15 @@ export default function HeaderSearch() {
             setIsUserModal(false)
         }
     }
+    React.useEffect(() => {
+        if(isLanguageModal) {
+            document.body.style.overflow = 'hidden'
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isLanguageModal]);
+
     React.useEffect(() => {
         window.addEventListener('mousedown', outSideClick as unknown as EventListener);
         return () => {
