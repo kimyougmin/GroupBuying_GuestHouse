@@ -33,10 +33,19 @@ export default function HeaderSearch() {
     }, [isLanguageModal]);
 
     React.useEffect(() => {
+        window.addEventListener("keydown", modalEscape);
         window.addEventListener('mousedown', outSideClick as unknown as EventListener);
         return () => {
+            window.removeEventListener("keydown", modalEscape);
             window.removeEventListener('mousedown', outSideClick as unknown as EventListener);}
     }, [isUserModal])
+
+    const modalEscape = (key: KeyboardEvent) => {
+        if (key.key === "Escape") {
+            setIsLanguageModal(false);
+            setIsUserModal(false);
+        }
+    }
 
     const onChangeLanguage = (lag: string) => {
         i18n.changeLanguage(lag);
