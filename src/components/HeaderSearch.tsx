@@ -7,14 +7,16 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ListIcon from '@mui/icons-material/List';
 import '../styles/HeaderSearch.css'
 import i18n from "../utils/i18n";
+import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
 
 
 
 export default function HeaderSearch() {
     const [isLanguageModal, setIsLanguageModal] = React.useState<boolean>(false);
     const [isUserModal, setIsUserModal] = React.useState<boolean>(false);
-    const [isLoginModal, setIsLoginModal] = React.useState<boolean>(false);
     const userModalRef = React.useRef<HTMLDivElement>(null);
+    const languageModalRef = React.useRef<HTMLDivElement>(null)
+    const {setIsLoginModal} = React.useContext(LoginModalBaseDate);
 
     const outSideClick = (e: React.MouseEvent) => {
         if (userModalRef.current && !userModalRef.current.contains(e.target as Node)) {
@@ -39,6 +41,16 @@ export default function HeaderSearch() {
     const onChangeLanguage = (lag: string) => {
         i18n.changeLanguage(lag);
         setIsLanguageModal(false);
+    }
+    const onLoginModalHandler = () => {
+        setIsUserModal(false)
+        setIsLoginModal(true);
+    }
+    const onLanguageModalClickHandler = (e: React.MouseEvent) => {
+        const target = e.target as HTMLDivElement
+        if (target.className === "languageSelector-modal") {
+            setIsLanguageModal(false)
+        }
     }
 
     return (
@@ -82,7 +94,7 @@ export default function HeaderSearch() {
                 </div>
             </div>
             {isLanguageModal ? (
-                    <div className={'languageSelector-modal'} onClick={() => {setIsLanguageModal(false)}}>
+                    <div className={'languageSelector-modal'} ref={languageModalRef} onClick={(e) => {onLanguageModalClickHandler(e)}}>
                         <div>
                             <div>
                                 <div/>
@@ -97,19 +109,11 @@ export default function HeaderSearch() {
                 null}
             {isUserModal ? (
                 <div className={"guestUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
-                    <p>{i18n.t("login")}</p>
-                    <p>{i18n.t("sign_up")}</p>
+                    <p onClick={onLoginModalHandler}>{i18n.t("login")}</p>
+                    <p onClick={onLoginModalHandler}>{i18n.t("sign_up")}</p>
                     <div />
                     <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
                     <p>{i18n.t("help_center")}</p>
-                </div>
-            ) : null}
-            {isLoginModal ? (
-                <div>
-                    <div>
-                        <CloseIcon onClick={() => setIsLoginModal(false)}/>
-                        <p></p>
-                    </div>
                 </div>
             ) : null}
         </div>

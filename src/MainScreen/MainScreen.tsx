@@ -1,22 +1,26 @@
 import React from 'react';
 import HeaderSearch from "../components/HeaderSearch";
+import LoginModal from "../components/LoginModal";
+import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
 
 function MainScreen() {
     const [isSeeMore, setIsSeeMore] = React.useState<boolean>(true);
+    const {isLoginModal} = React.useContext(LoginModalBaseDate);
     return (
         <div>
             <HeaderSearch />
-            <div>
+            <div className={'body'}>
 
             </div>
             {isSeeMore ? (
-                <div>
-                    <button onClick={() => setIsSeeMore(false)}>더 보기</button>
-                </div>
-            ): null}
-            <div>
+                    <div>
+                        <button onClick={() => setIsSeeMore(false)}>더 보기</button>
+                    </div>
+                ): null}
+            <div className={"footer"}>
 
             </div>
+            {isLoginModal ? <LoginModal />: null}
         </div>
     );
 }
