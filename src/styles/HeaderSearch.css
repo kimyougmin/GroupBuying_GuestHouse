@@ -35,12 +35,18 @@
     font-size: 15px;
 }
 .header-searchBox > div:nth-child(1) {
-    width: 25%;
+    width: 30%;
 }
 .header-searchBox > div:nth-child(n+2) {
+    width: 15%;
     padding-left: 10px;
     height: 4vh;
     border-left: 1px solid gray;
+}
+.header-searchBox > div:hover {
+    background-color: rgb(215, 215, 215);
+    border-radius: 50px;
+    border-left: 0;
 }
 .searchIcon-background{
     border: 0 !important;
