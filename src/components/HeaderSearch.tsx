@@ -8,14 +8,30 @@ import ListIcon from '@mui/icons-material/List';
 import './HeaderSearch.css'
 import i18n from "../utils/i18n";
 
+
+
 export default function HeaderSearch() {
     const [isLanguageModal, setIsLanguageModal] = React.useState<boolean>(false);
     const [isUserModal, setIsUserModal] = React.useState<boolean>(false);
     const [isLoginModal, setIsLoginModal] = React.useState<boolean>(false);
+    const userModalRef = React.useRef<HTMLDivElement>(null);
+
+    const outSideClick = (e: React.MouseEvent) => {
+        if (userModalRef.current && !userModalRef.current.contains(e.target as Node)) {
+            setIsUserModal(false)
+        }
+    }
+    React.useEffect(() => {
+        window.addEventListener('mousedown', outSideClick as unknown as EventListener);
+        return () => {
+            window.removeEventListener('mousedown', outSideClick as unknown as EventListener);}
+    }, [isUserModal])
+
     const onChangeLanguage = (lag: string) => {
         i18n.changeLanguage(lag);
         setIsLanguageModal(false);
     }
+
     return (
         <div className={"header"}>
             <div className={'header-1layer'}>
@@ -71,7 +87,7 @@ export default function HeaderSearch() {
                     </div>) :
                 null}
             {isUserModal ? (
-                <div className={"guestUser"}>
+                <div className={"guestUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
                     <p>{i18n.t("login")}</p>
                     <p>{i18n.t("sign_up")}</p>
                     <div />
