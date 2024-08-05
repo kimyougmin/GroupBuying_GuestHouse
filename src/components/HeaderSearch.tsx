@@ -15,7 +15,7 @@ export default function HeaderSearch() {
     const [isLanguageModal, setIsLanguageModal] = React.useState<boolean>(false);
     const [isUserModal, setIsUserModal] = React.useState<boolean>(false);
     const userModalRef = React.useRef<HTMLDivElement>(null);
-    const languageModalRef = React.useRef<HTMLDivElement>(null)
+    const languageModalRef = React.useRef<HTMLDivElement>(null);
     const {setIsLoginModal} = React.useContext(LoginModalBaseDate);
 
     const outSideClick = (e: React.MouseEvent) => {
@@ -52,7 +52,6 @@ export default function HeaderSearch() {
             setIsLanguageModal(false)
         }
     }
-
     return (
         <div className={"header"}>
             <div className={'header-1layer'}>

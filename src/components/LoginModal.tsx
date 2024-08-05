@@ -17,12 +17,34 @@ function LoginModal() {
             setIsLoginModal(false)
         }
     }
+
     React.useEffect(() => {
+        window.addEventListener('keydown', modalStateManager);
         document.body.style.overflow = 'hidden';
         return () => {
+            window.removeEventListener('keydown', modalStateManager);
             document.body.style.overflow = 'unset';
         };
     }, []);
+
+    const modalStateManager = (key: KeyboardEvent) =>  {
+        if (key.key === "Enter") {
+            onLoginButtonHandler()
+        }
+        if (key.key === "Escape") {
+            setIsLoginModal(false)
+        }
+    }
+
+    const onLoginButtonHandler = () => {
+        // fetch(`${process.env.REACT_APP_LOGIN_URL}`, {
+        //     method: "POST",
+        //     credentials: 'include',
+        //     headers: {'content-type': 'application/json','Access-Control-Allow-Origin':'http://localhost:3000/',},
+        //     body: JSON.stringify({"id": loginId, "pw": loginPw})
+        // }).then((res) => console.log(res))
+        //     .catch((e) => {alert(e)})
+    }
     return (
         <div className={'loginModal-background'} ref={loginModalRef} onClick={(e) => {loginModalBackgroundClickHandler(e)}}>
             <div className={'loginModal'}>
@@ -50,7 +72,7 @@ function LoginModal() {
                             autoComplete="current-password"
                         />
                     </div>
-                    <Button variant="contained">{i18n.t("continue")}</Button>
+                    <Button variant="contained" onClick={onLoginButtonHandler}>{i18n.t("continue")}</Button>
                     <div >
                         <div className={"div-line"}/>
                         <p>{i18n.t("or")}</p>
