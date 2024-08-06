@@ -5,19 +5,21 @@ import {Button, TextField} from "@mui/material";
 import '../styles/LoginModal.css'
 import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
 import {XssCheatSheet} from "../utils/XssCheatSheet";
+import {useCookies} from "react-cookie";
 
 function LoginModal() {
     const loginModalRef = React.useRef<HTMLDivElement>(null);
     const [loginId, setLoginId] = React.useState<string>("");
     const [loginPw, setLoginPw] = React.useState<string>("");
     const {setIsLoginModal} = React.useContext(LoginModalBaseDate);
+    const [, setCookie, ] = useCookies(['userToken'])
+
     const loginModalBackgroundClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement
         if (target.className === "loginModal-background") {
             setIsLoginModal(false)
         }
     }
-
     React.useEffect(() => {
         window.addEventListener('keydown', modalStateManager);
         document.body.style.overflow = 'hidden';
@@ -37,13 +39,18 @@ function LoginModal() {
     }
 
     const onLoginButtonHandler = () => {
-        // fetch(`${process.env.REACT_APP_LOGIN_URL}`, {
-        //     method: "POST",
-        //     credentials: 'include',
-        //     headers: {'content-type': 'application/json','Access-Control-Allow-Origin':'http://localhost:3000/',},
-        //     body: JSON.stringify({"id": loginId, "pw": loginPw})
-        // }).then((res) => console.log(res))
-        //     .catch((e) => {alert(e)})
+        fetch(`${process.env.REACT_APP_LOGIN_URL}`, {
+            method: "POST",
+            credentials: 'include',
+            headers: {'content-type': 'application/json','Access-Control-Allow-Origin':'http://localhost:3000/',},
+            body: JSON.stringify({"id": loginId, "password": loginPw})
+        }).then((res) => res.json())
+            .then((res) => {loginSuccessLogic(res.token)})
+            .catch((e) => {alert(e)})
+    }
+    const loginSuccessLogic = (token: string) => {
+        setCookie('userToken', {"token": token}, {httpOnly: true});
+        setIsLoginModal(false);
     }
     return (
         <div className={'loginModal-background'} ref={loginModalRef} onClick={(e) => {loginModalBackgroundClickHandler(e)}}>
