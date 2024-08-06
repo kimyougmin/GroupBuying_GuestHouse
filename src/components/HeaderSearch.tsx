@@ -9,7 +9,6 @@ import '../styles/HeaderSearch.css'
 import i18n from "../utils/i18n";
 import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
 import {useCookies} from "react-cookie";
-import testImg from "../IMG_0145.jpeg"
 
 
 export default function HeaderSearch() {
@@ -37,8 +36,12 @@ export default function HeaderSearch() {
 
     React.useEffect(() => {
         if (cookies.userToken) {
-            // 더미 패치
-            setProfileImg(testImg)
+            fetch(`${process.env.REACT_APP_USER_PROFILE_IMG}`, {
+               headers: {"Authorization": cookies.userToken.token, 'content-type': 'application/json'},
+               method: "GET"
+            }).then((res) => res.json())
+                .then((res) => setProfileImg(res.profileImage))
+                .catch((e) => alert(e))
         }
     }, [cookies.userToken]);
 
