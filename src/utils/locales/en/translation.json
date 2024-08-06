@@ -10,6 +10,7 @@
   "add_guest": "Add guest",
   "login": "Login",
   "sign_up": "Sign Up",
+  "log_out": "Log Out",
   "turn_your_space_into_a_guesthouse": "Turn your space into a guesthouse.",
   "help_center": "Help Center",
   "login_or_sign_up": "Login or SignUp",
@@ -17,5 +18,7 @@
   "id": "your ID",
   "pw": "your Password",
   "or": "or",
-  "continue": "continue"
+  "continue": "continue",
+  "my_travel": "travel",
+  "my_account": "account"
 }

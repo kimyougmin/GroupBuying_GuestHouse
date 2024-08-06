@@ -10,6 +10,7 @@
   "add_guest": "게스트 추가",
   "login": "로그인",
   "sign_up": "회원가입",
+  "log_out": "로그아웃",
   "turn_your_space_into_a_guesthouse": "당신의 공간을 게스트하우스로.",
   "help_center": "도움말 센터",
   "login_or_sign_up": "로그인 또는 회원 가입",
@@ -17,5 +18,7 @@
   "id": "아이디",
   "pw": "비밀번호",
   "or": "또는",
-  "continue": "계속"
+  "continue": "계속",
+  "my_travel": "여행",
+  "my_account": "계정"
 }

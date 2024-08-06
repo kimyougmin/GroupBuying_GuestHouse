@@ -10,6 +10,7 @@
   "add_guest": "ゲストを追加",
   "login": "ログイン",
   "sign_up": "会員登録",
+  "log_out": "ログアウト",
   "turn_your_space_into_a_guesthouse": "あなたのスペースをゲストハウスに。",
   "help_center": "ヘルプセンター",
   "login_or_sign_up": "ログインまたはサインアップ",
@@ -17,5 +18,7 @@
   "id": "ID",
   "pw": "Password",
   "or": "または",
-  "continue": "続く"
+  "continue": "続く",
+  "my_travel": "旅行",
+  "my_account": "アカウント"
 }

@@ -8,7 +8,8 @@ import ListIcon from '@mui/icons-material/List';
 import '../styles/HeaderSearch.css'
 import i18n from "../utils/i18n";
 import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
-
+import {useCookies} from "react-cookie";
+import testImg from "../IMG_0145.jpeg"
 
 
 export default function HeaderSearch() {
@@ -17,6 +18,8 @@ export default function HeaderSearch() {
     const userModalRef = React.useRef<HTMLDivElement>(null);
     const languageModalRef = React.useRef<HTMLDivElement>(null);
     const {setIsLoginModal} = React.useContext(LoginModalBaseDate);
+    const [profileImg, setProfileImg] = React.useState<string>('');
+    const [cookies, , removeCookie] = useCookies(['userToken']);
 
     const outSideClick = (e: React.MouseEvent) => {
         if (userModalRef.current && !userModalRef.current.contains(e.target as Node)) {
@@ -33,12 +36,19 @@ export default function HeaderSearch() {
     }, [isLanguageModal]);
 
     React.useEffect(() => {
+        if (cookies.userToken) {
+            // 더미 패치
+            setProfileImg(testImg)
+        }
+    }, [cookies.userToken]);
+
+    React.useEffect(() => {
         window.addEventListener("keydown", modalEscape);
         window.addEventListener('mousedown', outSideClick as unknown as EventListener);
         return () => {
             window.removeEventListener("keydown", modalEscape);
             window.removeEventListener('mousedown', outSideClick as unknown as EventListener);}
-    }, [isUserModal])
+    }, [])
 
     const modalEscape = (key: KeyboardEvent) => {
         if (key.key === "Escape") {
@@ -61,6 +71,10 @@ export default function HeaderSearch() {
             setIsLanguageModal(false)
         }
     }
+    const logoutHandler = () => {
+        removeCookie("userToken");
+        setIsUserModal(false);
+    }
     return (
         <div className={"header"}>
             <div className={'header-1layer'}>
@@ -72,10 +86,15 @@ export default function HeaderSearch() {
                 <div className={"header-right"}>
                     <p>{i18n.t("guestHouse_registration")}</p>
                     <LanguageIcon onClick={() => setIsLanguageModal(!isLanguageModal)}/>
-                    <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
-                        <ListIcon/>
-                        <AccountCircleIcon/>
-                    </div>
+                    {cookies.userToken ?
+                        <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
+                            <ListIcon/>
+                            <img src={profileImg}/>
+                        </div> :
+                        <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
+                            <ListIcon/>
+                            <AccountCircleIcon/>
+                        </div>}
                 </div>
             </div>
             <div>
@@ -115,12 +134,23 @@ export default function HeaderSearch() {
                         </div>
                     </div>) :
                 null}
-            {isUserModal ? (
+            {isUserModal && !cookies.userToken? (
                 <div className={"guestUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
                     <p onClick={onLoginModalHandler}>{i18n.t("login")}</p>
                     <p onClick={onLoginModalHandler}>{i18n.t("sign_up")}</p>
                     <div />
                     <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
+                    <p>{i18n.t("help_center")}</p>
+                </div>
+            ) : null}
+            {isUserModal && cookies.userToken? (
+                <div className={"loginUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
+                    <p>{i18n.t("my_travel")}</p>
+                    <div/>
+                    <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
+                    <p>{i18n.t("my_account")}</p>
+                    <div/>
+                    <p onClick={logoutHandler}>{i18n.t("log_out")}</p>
                     <p>{i18n.t("help_center")}</p>
                 </div>
             ) : null}
