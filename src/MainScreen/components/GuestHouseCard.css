@@ -26,16 +26,18 @@
     position: relative;
     top: -22vh;
     left: 0;
+    width: 20vw;
+    height: 22vh;
     padding: 1vh 1vh 0 1vh;
 }
-.card-eventItem > div{
+.card-eventItem > div > div{
     width: 18vw;
     justify-content: space-between;
 }
-.card-eventItem > .card-likeSVG > svg:nth-child(2) {
+.card-eventItem > div > .card-likeSVG > svg:nth-child(2) {
     color: white;
 }
-.card-eventItem > .card-slideSVG > svg{
+.card-eventItem > div > .card-slideSVG > svg{
     background-color: rgba(255,255,255, 0.5);
     color: black;
     width: 1.5em !important;

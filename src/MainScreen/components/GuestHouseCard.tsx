@@ -8,10 +8,17 @@ import "./GuestHouseCard.css"
 function GuestHouseCard() {
     const [cardDate, setCardDate] = React.useState<CardType>();
     const [imageCount, setImageCount] = React.useState<number>(0);
+    const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
     const [style, setStyle] = React.useState({
         transform: `translateX(-${imageCount}00%)`,
         transition: `all 0.4s ease-in-out`,
     });
+    const cardMouseOverHandler = () => {
+        setIsCodeHover(true);
+    }
+    const cardMouseOutHandler = () => {
+        setIsCodeHover(false);
+    }
     React.useEffect(() => {
         setCardDate(TestFetchModel)
     }, []);
@@ -36,7 +43,7 @@ function GuestHouseCard() {
     return (
         <div>
             <div>
-                <div  className={"card-f"}>
+                <div className={"card-f"}>
                     <div className={'card-imageBox'} style={style}>
                         {cardDate?.images.map((item, index) => {
                             return (
@@ -46,14 +53,24 @@ function GuestHouseCard() {
                         })}
                     </div>
                 </div>
-                <div className={"card-eventItem"}>
-                    <div className={"card-likeSVG"}>
-                        <div/>
-                        <FavoriteBorderIcon/>
-                    </div>
-                    <div className={'card-slideSVG'}>
-                        {imageCount !== 0 ? <NavigateNextIcon id={'images-before'} onClick={imageEventHandler}/> : <div />}
-                        {imageCount !== 4 ? <NavigateNextIcon id={'images-next'} onClick={imageEventHandler}/> : <div/>}
+                <div style={{position: 'absolute'}}>
+                    <div className={"card-eventItem"} onMouseOver={cardMouseOverHandler}
+                         onMouseOut={cardMouseOutHandler}>
+                        {isCodeHover ?
+                            <div>
+                                <div className={"card-likeSVG"}>
+                                    <div/>
+                                    <FavoriteBorderIcon/>
+                                </div>
+                                <div className={'card-slideSVG'}>
+                                    {imageCount !== 0 ?
+                                        <NavigateNextIcon id={'images-before'} onClick={imageEventHandler}/> :
+                                        <div/>}
+                                    {imageCount !== 4 ?
+                                        <NavigateNextIcon id={'images-next'} onClick={imageEventHandler}/> :
+                                        <div/>}
+                                </div>
+                            </div> : null}
                     </div>
                 </div>
             </div>
