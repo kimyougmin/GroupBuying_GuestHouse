@@ -49,7 +49,7 @@ function LoginModal() {
             .catch((e) => {alert(e)})
     }
     const loginSuccessLogic = (token: string) => {
-        setCookie('userToken', {"token": token}, {httpOnly: true});
+        setCookie('userToken', {"token": token}, {expires: new Date(Date.now() + 60000), httpOnly: true});
         setIsLoginModal(false);
     }
     return (
