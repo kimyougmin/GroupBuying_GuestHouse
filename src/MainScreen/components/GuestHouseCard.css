@@ -19,7 +19,7 @@
 .card-slideSVG{
     display: flex;
 }
-.card-slideSVG > #images-before{
+.card-slideSVG > div > #images-before{
     transform: rotate(180deg);
 }
 .card-eventItem {
@@ -31,16 +31,46 @@
     padding: 1vh 1vh 0 1vh;
 }
 .card-eventItem > div > div{
+    margin-top: 4vh;
     width: 18vw;
     justify-content: space-between;
 }
-.card-eventItem > div > .card-likeSVG > svg:nth-child(2) {
+.card-eventItem > .card-likeSVG > svg:nth-child(2) {
     color: white;
 }
-.card-eventItem > div > .card-slideSVG > svg{
-    background-color: rgba(255,255,255, 0.5);
+.card-slideSVG > div >  svg{
     color: black;
-    width: 1.5em !important;
-    height: 1.5em !important;
+}
+.card-likeSVG {
+    width: 18vw;
+    display: flex;
+    justify-content: space-between;
+}
+.card-slideSVG > .card-svgBackground {
+    background-color: rgba(255,255,255, 0.5);
     border-radius: 50px;
+    width: 1.8em !important;
+    align-content: center;
+    height: 1.8em !important;
+    padding: 0.2em 0 0 0.2em;
+}
+.card-slideSVG > .card-svgBackground:hover {
+    background-color: rgb(255,255,255);
+    width: 1.9em !important;
+    height: 1.9em !important;
+    padding: 0.3em 0 0 0.3em;
+    transition: 0.5s ease-out;
+}
+.card-likeSVG > #card-favoriteBorderIcon:hover {
+    width: 1.1em;
+    height: 1.1em;
+    transition: 0.3s ease-out;
+}
+.card-likeSVG > #card-favoriteIcon {
+    color: rgb(235, 76, 96);
+}
+.card-likeSVG > #card-favoriteIcon:hover {
+    width: 1.1em;
+    height: 1.1em;
+    transition: 0.3s ease-out;
 }

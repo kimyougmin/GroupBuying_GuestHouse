@@ -5,4 +5,5 @@ export interface  CardType {
     checkInDays: string
     checkOutDays: string
     price: string
+    like: boolean
 }
