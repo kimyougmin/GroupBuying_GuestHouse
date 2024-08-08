@@ -7,6 +7,7 @@ export default function TestFetchModel(): CardType {
         scope: "4.75",
         checkInDays: "8월 5일",
         checkOutDays: "8월 8일",
-        price: "145,000"
+        price: "145,000",
+        like: false
     }
 }
