@@ -1,6 +1,5 @@
 import React from 'react';
 import {CardType} from "../../types/CardType";
-import TestFetchModel from "../../components/TestFetchModel";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import "./GuestHouseCard.css"
@@ -8,18 +7,16 @@ import {useCookies} from "react-cookie";
 import {LoginModalBaseDate} from "../../useContext/LoginModalBaseDate";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function GuestHouseCard() {
+function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
     const [cardDate, setCardDate] = React.useState<CardType>({
-        images: [''],
-        title: "",
-        scope: "",
-        checkInDays: "",
-        checkOutDays: "",
-        price: "",
-        like: false
+        houseImages: houseImages,
+        id: id,
+        houseName: houseName,
+        price: price,
+        like: like
     });
     const [imageCount, setImageCount] = React.useState<number>(0);
-    const [isCodeHover, setIsCodeHover] = React.useState<boolean>(true);
+    const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
     const [cookies,,] = useCookies(['userToken']);
     const {isLoginModal , setIsLoginModal} = React.useContext(LoginModalBaseDate);
     const [style, setStyle] = React.useState({
@@ -33,11 +30,6 @@ function GuestHouseCard() {
     const cardMouseOutHandler = () => {
         setIsCodeHover(false);
     }
-
-    React.useEffect(() => {
-        setCardDate(TestFetchModel)
-    }, []);
-
     const imageSlideEventHandler = (e: React.MouseEvent<SVGSVGElement>) => {
         const target = e.target as HTMLDivElement;
         if(target.id === 'images-before') {
@@ -63,11 +55,9 @@ function GuestHouseCard() {
         }
         //더미 코드 추후 패치 진할 것
         setCardDate({
-            images: cardDate.images,
-            title: cardDate.title,
-            scope: cardDate.scope,
-            checkInDays: cardDate.checkInDays,
-            checkOutDays: cardDate.checkOutDays,
+            houseImages: cardDate.houseImages,
+            houseName: cardDate.houseName,
+            id: cardDate.id,
             price: cardDate.price,
             like: true
         })
@@ -75,11 +65,9 @@ function GuestHouseCard() {
     const imageUnLikeEventHandler = () => {
         //더미 코드 추후 패치 진할 것
         setCardDate({
-            images: cardDate.images,
-            title: cardDate.title,
-            scope: cardDate.scope,
-            checkInDays: cardDate.checkInDays,
-            checkOutDays: cardDate.checkOutDays,
+            houseImages: cardDate.houseImages,
+            houseName: cardDate.houseName,
+            id: cardDate.id,
             price: cardDate.price,
             like: false
         })
@@ -89,10 +77,10 @@ function GuestHouseCard() {
             <div>
                 <div className={"card-f"}>
                     <div className={'card-imageBox'} style={style}>
-                        {cardDate.images.map((item, index) => {
+                        {cardDate.houseImages.map((item, index) => {
                             return (
                                 <div key={index}>
-                                    <img src={item}/>
+                                    <img src={item.url}/>
                                 </div>)
                         })}
                     </div>
@@ -123,10 +111,8 @@ function GuestHouseCard() {
                 </div>
             </div>
             <div>
-                <p>{cardDate.title}</p>
-                <p>{cardDate.scope}</p>
+                <p>{cardDate.houseName}</p>
             </div>
-            <p>{cardDate.checkInDays}~{cardDate.checkOutDays}</p>
             <p>₩{cardDate.price}/박</p>
         </div>
     );
