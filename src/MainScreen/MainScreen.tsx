@@ -3,15 +3,47 @@ import HeaderSearch from "../components/HeaderSearch";
 import LoginModal from "../components/LoginModal";
 import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
 import GuestHouseCard from "./components/GuestHouseCard";
+import {CardType} from "../types/CardType";
 
 function MainScreen() {
     const [isSeeMore, setIsSeeMore] = React.useState<boolean>(true);
+    const [mainCard, setMainCard] = React.useState<CardType[]>([{
+        houseImages: [{url: ''}],
+        id: '',
+        houseName: "",
+        price: "",
+        like: false
+    }]);
     const {isLoginModal} = React.useContext(LoginModalBaseDate);
+    const testHouseDateJoin = () => {
+        const date:CardType[] = [];
+        fetch(`${process.env.REACT_APP_MAIN_HOUSE}`, {
+            method: "get",
+            headers:{ "content-type": "application/json" },
+        }).then((res) => res.json())
+            .then((res) => {res.forEach((e: CardType) => {
+                const row: CardType = {
+                    houseImages: e.houseImages,
+                    id: e.id,
+                    houseName: e.houseName,
+                    price: e.price,
+                    like: false
+                }
+                date.push(row);
+            })})
+            .catch((e) => console.log('error', e));
+        setMainCard(date);
+    }
+    React.useEffect(() => {
+        testHouseDateJoin()
+    }, [])
     return (
         <div>
             <HeaderSearch />
             <div className={'body'}>
-                <GuestHouseCard />
+                {mainCard.map((e, index) => {
+                    return <GuestHouseCard key={index} houseImages={e.houseImages} houseName={e.houseName} price={e.price} id={e.id} like={false} />
+                })}
             </div>
             {isSeeMore ? (
                     <div>
