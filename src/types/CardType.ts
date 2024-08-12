@@ -1,7 +1,7 @@
 export interface  CardType {
     houseImages: {'url': string}[]
-    id: string | null
+    id: number | null
     houseName: string
-    price: string
+    price: number
     like: boolean
 }
