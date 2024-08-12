@@ -4,18 +4,19 @@ import LoginModal from "../components/LoginModal";
 import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
 import GuestHouseCard from "./components/GuestHouseCard";
 import {CardType} from "../types/CardType";
+import {useCookies} from "react-cookie";
 
 function MainScreen() {
     const [isSeeMore, setIsSeeMore] = React.useState<boolean>(true);
-    const [mainCard, setMainCard] = React.useState<CardType[]>([{
-        houseImages: [{url: ''}],
-        id: '',
-        houseName: "",
-        price: "",
-        like: false
-    }]);
+    const [cookies,,] = useCookies(['userToken']);
     const {isLoginModal} = React.useContext(LoginModalBaseDate);
-    const testHouseDateJoin = () => {
+    const [mainCard, setMainCard] = React.useState<CardType[]>([]);
+
+    React.useEffect(() => {
+        houseDateJoinInit();
+    }, [cookies.userToken]);
+
+    const houseDateJoinInit = () => {
         const date:CardType[] = [];
         fetch(`${process.env.REACT_APP_MAIN_HOUSE}`, {
             method: "get",
@@ -30,13 +31,9 @@ function MainScreen() {
                     like: false
                 }
                 date.push(row);
-            })})
+            })}).then(() => {setMainCard(date)})
             .catch((e) => console.log('error', e));
-        setMainCard(date);
     }
-    React.useEffect(() => {
-        testHouseDateJoin()
-    }, [])
     return (
         <div>
             <HeaderSearch />
