@@ -80,3 +80,62 @@
     height: 1.1em;
     transition: 0.3s ease-out;
 }
+@media (max-width: 1477px) {
+    .card-likeSVG {
+        width: 18vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-eventItem > div > div{
+        margin-top: 5vh;
+        width: 18.5vw;
+        justify-content: space-between;
+    }
+}
+@media (max-width: 1127px) {
+    .card-imageBox > div > img{
+        width: 27vw;
+        height: 25vh;
+        z-index: 0;
+    }
+    .card-likeSVG {
+        width: 25vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-eventItem > div > div{
+        margin-top: 5vh;
+        width: 25.5vw;
+        justify-content: space-between;
+    }
+}
+@media (max-width: 950px) {
+    .card-eventItem {
+        position: relative;
+        top: -39.5vh;
+        left: 0;
+        width: 20vw;
+        height: 22vh;
+        padding: 1vh 1vh 0 1vh;
+    }
+    .card-imageBox > div > img{
+        width: 41vw;
+        height: 40vh;
+        z-index: 0;
+    }
+    .card-likeSVG {
+        width: 38vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-eventItem > div > div{
+        margin-top: 9vh;
+        width: 39vw;
+        justify-content: space-between;
+    }
+    .card-grid {
+        grid-template-columns: 41vw 41vw;
+        grid-template-rows: 40vw 40vw;
+        gap: 3vh 3.5vw;
+    }
+}
