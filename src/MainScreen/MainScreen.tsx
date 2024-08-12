@@ -5,6 +5,7 @@ import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
 import GuestHouseCard from "./components/GuestHouseCard";
 import {CardType} from "../types/CardType";
 import {useCookies} from "react-cookie";
+import "../styles/MainScreen.css"
 
 function MainScreen() {
     const [isSeeMore, setIsSeeMore] = React.useState<boolean>(true);
@@ -37,16 +38,19 @@ function MainScreen() {
     return (
         <div>
             <HeaderSearch />
-            <div className={'body'}>
-                {mainCard.map((e, index) => {
-                    return <GuestHouseCard key={index} houseImages={e.houseImages} houseName={e.houseName} price={e.price} id={e.id} like={false} />
-                })}
+            <div className={'main-body'}>
+                <div className={'card-grid'}>
+                    {mainCard.map((e, index) => {
+                        return <GuestHouseCard key={index} houseImages={e.houseImages} houseName={e.houseName}
+                                               price={e.price} id={e.id} like={false}/>
+                    })}
+                </div>
             </div>
             {isSeeMore ? (
-                    <div>
-                        <button onClick={() => setIsSeeMore(false)}>더 보기</button>
-                    </div>
-                ): null}
+                <div>
+                    <button onClick={() => setIsSeeMore(false)}>더 보기</button>
+                </div>
+            ) : null}
             <div className={"footer"}>
 
             </div>

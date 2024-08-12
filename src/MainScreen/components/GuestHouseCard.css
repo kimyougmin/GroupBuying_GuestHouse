@@ -1,6 +1,8 @@
+.guestHouseCard {
+    width: 100%;
+    height: 100%;
+}
 .card-f {
-    width: 20%;
-    height:24%;
     overflow: hidden;
     border-radius: 20px;
 }
@@ -13,7 +15,7 @@
 }
 .card-imageBox > div > img{
     width: 20vw;
-    height: 22vh;
+    height: 25vh;
     z-index: 0;
 }
 .card-slideSVG{
@@ -24,25 +26,28 @@
 }
 .card-eventItem {
     position: relative;
-    top: -22vh;
+    top: -25vh;
     left: 0;
     width: 20vw;
     height: 22vh;
     padding: 1vh 1vh 0 1vh;
 }
 .card-eventItem > div > div{
-    margin-top: 4vh;
-    width: 18vw;
+    margin-top: 5vh;
+    width: 16vw;
     justify-content: space-between;
 }
 .card-eventItem > .card-likeSVG > svg:nth-child(2) {
     color: white;
+    width: 0.9em;
+    height: 0.9em;
+    transition: 0.5s ease-out;
 }
 .card-slideSVG > div >  svg{
     color: black;
 }
 .card-likeSVG {
-    width: 18vw;
+    width: 16vw;
     display: flex;
     justify-content: space-between;
 }
@@ -53,6 +58,7 @@
     align-content: center;
     height: 1.8em !important;
     padding: 0.2em 0 0 0.2em;
+    transition: 0.5s ease-out;
 }
 .card-slideSVG > .card-svgBackground:hover {
     background-color: rgb(255,255,255);

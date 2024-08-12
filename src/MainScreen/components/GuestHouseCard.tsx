@@ -73,8 +73,8 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
         })
     }
     return (
-        <div>
-            <div>
+        <div className={'guestHouseCard'}>
+            <div className={'card-header'}>
                 <div className={"card-f"}>
                     <div className={'card-imageBox'} style={style}>
                         {cardDate.houseImages.map((item, index) => {
