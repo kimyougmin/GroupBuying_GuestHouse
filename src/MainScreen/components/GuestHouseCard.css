@@ -26,14 +26,14 @@
 }
 .card-eventItem {
     position: relative;
-    top: -34vw;
+    top: -15vw;
     left: 0;
     width: 20vw;
     height: 22vh;
     padding: 1vh 1vh 0 1vh;
 }
 .card-eventItem > div > div{
-    margin-top: 6vh;
+    margin-top: 3vw;
     width: 16vw;
     justify-content: space-between;
 }
