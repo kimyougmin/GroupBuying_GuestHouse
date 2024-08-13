@@ -36,3 +36,13 @@
         gap: 10vh 3.5vw;
     }
 }
+@media (max-width: 550px) {
+    .main-body {
+        padding: 5vh 5vw 2vh 5vw;
+    }
+    .card-grid {
+        grid-template-columns: 90vw;
+        grid-template-rows: 95vw;
+        gap: 4vh;
+    }
+}

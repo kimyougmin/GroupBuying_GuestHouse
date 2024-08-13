@@ -16,7 +16,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
         like: like
     });
     const [imageCount, setImageCount] = React.useState<number>(0);
-    const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
+    const [isCodeHover, setIsCodeHover] = React.useState<boolean>(true);
     const [cookies,,] = useCookies(['userToken']);
     const {isLoginModal , setIsLoginModal} = React.useContext(LoginModalBaseDate);
     const [style, setStyle] = React.useState({
