@@ -103,20 +103,28 @@ export default function HeaderSearch() {
             <div>
                 <div className={"header-searchBox"}>
                     <div>
-                        <p>{i18n.t("travel_destination")}</p>
-                        <p>{i18n.t("travel_destination_search")}</p>
+                        <div>
+                            <p>{i18n.t("travel_destination")}</p>
+                            <p>{i18n.t("travel_destination_search")}</p>
+                        </div>
                     </div>
                     <div>
-                        <p>{i18n.t("check_in")}</p>
-                        <p>{i18n.t("add_date")}</p>
+                        <div className={'left-block'}>
+                            <p>{i18n.t("check_in")}</p>
+                            <p>{i18n.t("add_date")}</p>
+                        </div>
                     </div>
                     <div>
-                        <p>{i18n.t("check_out")}</p>
-                        <p>{i18n.t("add_date")}</p>
+                        <div className={'left-block'}>
+                            <p>{i18n.t("check_out")}</p>
+                            <p>{i18n.t("add_date")}</p>
+                        </div>
                     </div>
                     <div>
-                        <p>{i18n.t("traveler")}</p>
-                        <p>{i18n.t("add_guest")}</p>
+                        <div className={'left-block'}>
+                            <p>{i18n.t("traveler")}</p>
+                            <p>{i18n.t("add_guest")}</p>
+                        </div>
                     </div>
                     <div className={"searchIcon-background"}>
                         <SearchIcon className={"header-searchIcon"}/>

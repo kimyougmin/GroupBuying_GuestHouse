@@ -2,7 +2,7 @@
     z-index: -1;
     display: block;
     width: 100%;
-    height: 17vh;
+    height: 19vh;
     border-bottom: 1px solid rgb(235,235,235);
 }
 .header-1layer {
@@ -13,10 +13,9 @@
 }
 .header-searchBox {
     display: flex;
-    width: 80vh;
-    height: 4vh;
+    width: 800px;
+    height: 7vh;
     margin: 20px auto 20px auto;
-    padding: 1vh 1vh 1vh 2vh;
     line-height: 20px;
     border-radius: 50px;
     border: 1px solid gray;
@@ -27,11 +26,16 @@
     0 8px 16px rgba(0,0,0,0.07),
     0 16px 32px rgba(0,0,0,0.07);
 }
-.header-searchBox > div > p:nth-child(1) {
+.header-searchBox > div {
+    padding: 1vh 0 0 7px;
+}
+.header-searchBox > div > div > p:nth-child(1) {
+    margin-left: 10px;
     font-size: 13px;
 }
-.header-searchBox > div > p:nth-child(2) {
+.header-searchBox > div > div > p:nth-child(2) {
     color: gray;
+    margin-left: 10px;
     font-size: 15px;
 }
 .header-searchBox > div:nth-child(1) {
@@ -39,19 +43,24 @@
 }
 .header-searchBox > div:nth-child(n+2) {
     width: 15%;
-    padding-left: 10px;
+}
+.header-searchBox > div > .left-block {
     height: 4vh;
-    border-left: 1px solid gray;
+    margin-top: 3px;
+    border-left: 1px solid rgba(195,195,195, 0.5);
 }
 .header-searchBox > div:hover {
-    background-color: rgb(215, 215, 215);
+    background-color: rgba(195,195,195, 0.5);
     border-radius: 50px;
+    border-left: 0;
+}
+.header-searchBox > div > .left-block:hover {
     border-left: 0;
 }
 .searchIcon-background{
     border: 0 !important;
-    padding-left: 0 !important;
     width: 2.5em !important;
+    margin: 7px 7px 0 0;
     height: 2.5em !important;
     border-radius: 50px;
     background-color: rgb(235, 76, 96);
@@ -59,9 +68,8 @@
     align-content: center;
 }
 .header-searchIcon {
-    margin-top: 5px;
-    width: 1.1em !important;
-    height: 1.1em !important;
+    width: 1.3em !important;
+    height: 1.3em !important;
     color: white;
 }
 .header-right {
@@ -75,7 +83,7 @@
     margin-top: 9px;
 }
 .header-userList {
-    width: 8vh;
+    width: 80px;
     height: 40px;
     border: 1px solid gray;
     border-radius: 40px;
