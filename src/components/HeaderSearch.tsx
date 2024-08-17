@@ -19,6 +19,19 @@ export default function HeaderSearch() {
     const {setIsLoginModal} = React.useContext(LoginModalBaseDate);
     const [profileImg, setProfileImg] = React.useState<string>('');
     const [cookies, , removeCookie] = useCookies(['userToken']);
+    const [width, setWidth] = React.useState(window.innerWidth);
+
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+    };
+
+    React.useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            // cleanup
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     const outSideClick = (e: React.MouseEvent) => {
         if (userModalRef.current && !userModalRef.current.contains(e.target as Node)) {
@@ -80,71 +93,79 @@ export default function HeaderSearch() {
     }
     return (
         <div className={"header"}>
-            <div className={'header-1layer'}>
-                <div className={"header-left"}>
-                    <p>guestHouse</p>
-                </div>
-                <div>
-                </div>
-                <div className={"header-right"}>
-                    <p>{i18n.t("guestHouse_registration")}</p>
-                    <LanguageIcon onClick={() => setIsLanguageModal(!isLanguageModal)}/>
-                    {cookies.userToken ?
-                        <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
-                            <ListIcon/>
-                            <img src={profileImg}/>
-                        </div> :
-                        <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
-                            <ListIcon/>
-                            <AccountCircleIcon/>
-                        </div>}
-                </div>
-            </div>
-            <div>
-                <div className={"header-searchBox"}>
-                    <div>
+            {width < 830 ?
+                <div className={'mini-searchBox'}>
+                    <SearchIcon/>
+                    <p>{i18n.t('Where_going_trip')}</p>
+                </div>:
+                <>
+                    <div className={'header-1layer'}>
+                        <div className={"header-left"}>
+                            <p>guestHouse</p>
+                        </div>
                         <div>
-                            <p>{i18n.t("travel_destination")}</p>
-                            <p>{i18n.t("travel_destination_search")}</p>
+                        </div>
+                        <div className={"header-right"}>
+                            <p>{i18n.t("guestHouse_registration")}</p>
+                            <LanguageIcon onClick={() => setIsLanguageModal(!isLanguageModal)}/>
+                            {cookies.userToken ?
+                                <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
+                                    <ListIcon/>
+                                    <img src={profileImg}/>
+                                </div> :
+                                <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
+                                    <ListIcon/>
+                                    <AccountCircleIcon/>
+                                </div>}
                         </div>
                     </div>
                     <div>
-                        <div className={'left-block'}>
-                            <p>{i18n.t("check_in")}</p>
-                            <p>{i18n.t("add_date")}</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div className={'left-block'}>
-                            <p>{i18n.t("check_out")}</p>
-                            <p>{i18n.t("add_date")}</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div className={'left-block'}>
-                            <p>{i18n.t("traveler")}</p>
-                            <p>{i18n.t("add_guest")}</p>
-                        </div>
-                    </div>
-                    <div className={"searchIcon-background"}>
-                        <SearchIcon className={"header-searchIcon"}/>
-                    </div>
-                </div>
-            </div>
-            {isLanguageModal ? (
-                    <div className={'languageSelector-modal'} ref={languageModalRef} onClick={(e) => {onLanguageModalClickHandler(e)}}>
-                        <div>
+                        <div className={"header-searchBox"}>
                             <div>
-                                <div/>
-                                <p>{i18n.t("select_language")}</p>
-                                <CloseIcon onClick={() => setIsLanguageModal(false)}/>
+                                <div>
+                                    <p>{i18n.t("travel_destination")}</p>
+                                    <p>{i18n.t("travel_destination_search")}</p>
+                                </div>
                             </div>
-                            <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('ko')}>한국어<br/>대한민국</Button>
-                            <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('en')}>english<br/>U.S.A</Button>
-                            <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('jp')}>日本語<br/>日本</Button>
+                            <div>
+                                <div className={'left-block'}>
+                                    <p>{i18n.t("check_in")}</p>
+                                    <p>{i18n.t("add_date")}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div className={'left-block'}>
+                                    <p>{i18n.t("check_out")}</p>
+                                    <p>{i18n.t("add_date")}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div className={'left-block'}>
+                                    <p>{i18n.t("traveler")}</p>
+                                    <p>{i18n.t("add_guest")}</p>
+                                </div>
+                            </div>
+                            <div className={"searchIcon-background"}>
+                                <SearchIcon className={"header-searchIcon"}/>
+                            </div>
                         </div>
-                    </div>) :
-                null}
+                    </div>
+                    {isLanguageModal ? (
+                            <div className={'languageSelector-modal'} ref={languageModalRef} onClick={(e) => {onLanguageModalClickHandler(e)}}>
+                                <div>
+                                    <div>
+                                        <div/>
+                                        <p>{i18n.t("select_language")}</p>
+                                        <CloseIcon onClick={() => setIsLanguageModal(false)}/>
+                                    </div>
+                                    <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('ko')}>한국어<br/>대한민국</Button>
+                                    <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('en')}>english<br/>U.S.A</Button>
+                                    <Button variant="outlined" color={'inherit'} onClick={() => onChangeLanguage('jp')}>日本語<br/>日本</Button>
+                                </div>
+                            </div>) :
+                        null}
+            </>}
+
             {isUserModal && !cookies.userToken? (
                 <div className={"guestUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
                     <p onClick={onLoginModalHandler}>{i18n.t("login")}</p>

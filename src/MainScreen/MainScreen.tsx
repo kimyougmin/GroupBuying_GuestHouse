@@ -6,6 +6,7 @@ import GuestHouseCard from "./components/GuestHouseCard";
 import {CardType} from "../types/CardType";
 import {useCookies} from "react-cookie";
 import "../styles/MainScreen.css"
+import i18n from "../utils/i18n";
 
 function MainScreen() {
     const [isSeeMore, setIsSeeMore] = React.useState<boolean>(true);
@@ -33,7 +34,7 @@ function MainScreen() {
                 }
                 date.push(row);
             })}).then(() => {setMainCard(date)})
-            .catch((e) => console.log('error', e));
+            .catch((e) => alert(`${i18n.t('error_reload')} ${e}`))
     }
     return (
         <div>

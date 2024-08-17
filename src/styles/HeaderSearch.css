@@ -14,11 +14,10 @@
 .header-searchBox {
     display: flex;
     width: 800px;
-    height: 7vh;
+    height: 6.5vh;
     margin: 20px auto 20px auto;
     line-height: 20px;
     border-radius: 50px;
-    border: 1px solid gray;
     justify-content: space-between;
     box-shadow: 0 1px 2px rgba(0,0,0,0.07),
     0 2px 4px rgba(0,0,0,0.07),
@@ -205,4 +204,32 @@
     background-color: rgb(225,225,225);
     transition: 1s ease-out;
     opacity : 0.3;
+}
+@media (max-width: 830px) {
+    .header {
+        height: 7vh;
+        padding-top: 2vh;
+    }
+    .mini-searchBox {
+        margin: auto;
+        width: 90vw;
+        display: flex;
+        border-radius: 30px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+        0 2px 4px rgba(0,0,0,0.07),
+        0 4px 8px rgba(0,0,0,0.07),
+        0 8px 16px rgba(0,0,0,0.07),
+        0 16px 32px rgba(0,0,0,0.07);
+        height: 4vh;
+        padding: 0.7vh 0 0 1vh;
+    }
+    .mini-searchBox > svg:nth-child(1){
+        width: 1.5em;
+        height: 1.5em;
+    }
+    .mini-searchBox > p:nth-child(2){
+        font-size: 18px;
+        margin-left: 15px;
+        line-height: 35px;
+    }
 }

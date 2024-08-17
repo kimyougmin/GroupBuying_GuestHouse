@@ -20,5 +20,7 @@
   "or": "または",
   "continue": "続く",
   "my_travel": "旅行",
-  "my_account": "アカウント"
+  "my_account": "アカウント",
+  "error_reload": "エラーを更新してください",
+  "where_going_trip": "どこへ行きますか？"
 }
