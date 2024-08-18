@@ -40,10 +40,21 @@ function MainScreen() {
     }
 
     const fetchBoxList = React.useCallback(async () => {
-        // setIsLoading(true);
-
-
-        // setIsLoading(false);
+        const date:CardType[] = mainCard;
+        fetch(`${process.env.REACT_APP_MAIN_HOUSE_ADD}`,{
+            method: "get",
+            headers:{ "content-type": "application/json" },
+        }).then((res) => res.json())
+            .then((res) =>  {res.forEach((e: CardType) => {
+                const row: CardType = {
+                    houseImages: e.houseImages,
+                    id: e.id,
+                    houseName: e.houseName,
+                    price: e.price,
+                    like: false
+                }
+                date.push(row);
+            })}).then(() => {setMainCard(date)})
     }, []);
 
     useInfiniteScrolling({
@@ -76,7 +87,7 @@ function MainScreen() {
             {isLoginModal ? <LoginModal/> : null}
             {!isObserver ?
                 <div
-                style={{height: '5px', marginBottom: '20px', backgroundColor: 'red'}}
+                style={{height: '5px', marginBottom: '20px'}}
                 ref={setScrollHookRef}
             />: null}
         </div>
