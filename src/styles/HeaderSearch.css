@@ -231,5 +231,12 @@
         font-size: 18px;
         margin-left: 15px;
         line-height: 35px;
+        transition: 0.5s ease-out;
+    }
+}
+@media (max-width: 230px) {
+    .mini-searchBox > p:nth-child(2){
+        font-size: 15px;
+        transition: 0.5s ease-out;
     }
 }
