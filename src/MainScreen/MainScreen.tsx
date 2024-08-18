@@ -7,12 +7,14 @@ import {CardType} from "../types/CardType";
 import {useCookies} from "react-cookie";
 import "../styles/MainScreen.css"
 import i18n from "../utils/i18n";
+import useInfiniteScrolling from "../hooks/useInfiniteScrolling";
 
 function MainScreen() {
-    const [isSeeMore, setIsSeeMore] = React.useState<boolean>(true);
+    const [isObserver, setIsObserver] = React.useState<boolean>(true);
     const [cookies,,] = useCookies(['userToken']);
     const {isLoginModal} = React.useContext(LoginModalBaseDate);
     const [mainCard, setMainCard] = React.useState<CardType[]>([]);
+    const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);
 
     React.useEffect(() => {
         houseDateJoinInit();
@@ -36,9 +38,23 @@ function MainScreen() {
             })}).then(() => {setMainCard(date)})
             .catch((e) => alert(`${i18n.t('error_reload')} ${e}`))
     }
+
+    const fetchBoxList = React.useCallback(async () => {
+        // setIsLoading(true);
+
+
+        // setIsLoading(false);
+    }, []);
+
+    useInfiniteScrolling({
+        scrollHookRef,
+        fetchMore: fetchBoxList,
+        hasMore: false,
+    });
+
     return (
         <div>
-            <HeaderSearch />
+            <HeaderSearch/>
             <div className={'main-body'}>
                 <div className={'card-grid'}>
                     {mainCard.map((e, index) => {
@@ -47,15 +63,22 @@ function MainScreen() {
                     })}
                 </div>
             </div>
-            {isSeeMore ? (
-                <div>
-                    <button onClick={() => setIsSeeMore(false)}>더 보기</button>
+            {isObserver ? (
+                <div className={'main-seeMore'}>
+                    <div/>
+                    <button onClick={() => setIsObserver(false)}>더 보기</button>
+                    <div/>
                 </div>
             ) : null}
             <div className={"footer"}>
 
             </div>
-            {isLoginModal ? <LoginModal />: null}
+            {isLoginModal ? <LoginModal/> : null}
+            {!isObserver ?
+                <div
+                style={{height: '5px', marginBottom: '20px', backgroundColor: 'red'}}
+                ref={setScrollHookRef}
+            />: null}
         </div>
     );
 }
