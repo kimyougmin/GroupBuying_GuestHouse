@@ -1,10 +1,10 @@
 import React from 'react';
-import {CardType} from "../../types/CardType";
+import {CardType} from "../../../types/CardType";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import "./GuestHouseCard.css"
 import {useCookies} from "react-cookie";
-import {LoginModalBaseDate} from "../../useContext/LoginModalBaseDate";
+import {LoginModalBaseDate} from "../../../useContext/LoginModalBaseDate";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
@@ -72,6 +72,13 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
             like: false
         })
     }
+    const cardClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+        const target = e.target as HTMLDivElement
+        if(target.id === 'images-next' || target.id === 'images-before' || target.id === 'card-favoriteBorderIcon' || target.id === 'card-favoriteIcon') {
+            return
+        }
+        console.log('card click',id, target.id)
+    }
     return (
         <div className={'guestHouseCard'}>
             <div className={'card-header'}>
@@ -87,7 +94,8 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
                 </div>
                 <div style={{position: 'absolute'}}>
                     <div className={"card-eventItem"} onMouseOver={cardMouseOverHandler}
-                         onMouseOut={cardMouseOutHandler}>
+                         onMouseOut={cardMouseOutHandler}
+                         onClick={(e) => cardClickHandler(e)}>
                         <div className={"card-likeSVG"}>
                             <div/>
                             {cardDate.like && isLoginModal? <FavoriteIcon onClick={imageUnLikeEventHandler} id={'card-favoriteIcon'}/>:<FavoriteBorderIcon id={'card-favoriteBorderIcon'} onClick={imageLikeEventHandler}/>}

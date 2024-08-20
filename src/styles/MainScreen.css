@@ -6,6 +6,11 @@
     grid-template-columns: 17vw 17vw 17vw 17vw 17vw;
     gap: 2vh 2vw;
 }
+.main-seeMore {
+    width: 100%;
+    text-align: center;
+}
+
 @media (max-width: 1477px) {
     .main-body {
         padding: 5vh 5vw 2vh 5vw;
@@ -22,7 +27,7 @@
     }
     .card-grid {
         grid-template-columns: 27vw 27vw 27vw;
-        grid-template-rows: 27vw 27vw 27vw;
+        grid-template-rows: 32vw 32vw 32vw;
         gap: 3vh 3.5vw;
     }
 }
@@ -32,8 +37,8 @@
     }
     .card-grid {
         grid-template-columns: 41vw 41vw;
-        grid-template-rows: 40vw 40vw;
-        gap: 10vh 3.5vw;
+        grid-template-rows: 52vw 52vw;
+        gap: 3vh 3.5vw;
     }
 }
 @media (max-width: 550px) {
@@ -42,7 +47,7 @@
     }
     .card-grid {
         grid-template-columns: 90vw;
-        grid-template-rows: 95vw;
-        gap: 4vh;
+        grid-template-rows: 98vw;
+        gap: 7vh 3.5vw;
     }
 }
