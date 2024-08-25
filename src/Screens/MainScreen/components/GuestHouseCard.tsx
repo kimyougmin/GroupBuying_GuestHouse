@@ -2,9 +2,9 @@ import React from 'react';
 import {CardType} from "../../../types/CardType";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import "./GuestHouseCard.css"
+import "../../../styles/GuestHouseCard.css"
 import {useCookies} from "react-cookie";
-import {LoginModalBaseDate} from "../../../useContext/LoginModalBaseDate";
+import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {Link} from "react-router-dom";
 
@@ -19,7 +19,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
     const [imageCount, setImageCount] = React.useState<number>(0);
     const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
     const [cookies,,] = useCookies(['userToken']);
-    const {isLoginModal , setIsLoginModal} = React.useContext(LoginModalBaseDate);
+    const {isLoginModal , setIsLoginModal} = React.useContext(HeaderModalManagerBaseDate);
     const [style, setStyle] = React.useState({
         transform: `translateX(-${imageCount}00%)`,
         transition: `all 0.4s ease-in-out`,

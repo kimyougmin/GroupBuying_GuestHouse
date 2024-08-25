@@ -1,18 +1,19 @@
 import React from 'react';
 import HeaderSearch from "../../components/HeaderSearch";
 import LoginModal from "../../components/LoginModal";
-import {LoginModalBaseDate} from "../../useContext/LoginModalBaseDate";
+import {HeaderModalManagerBaseDate} from "../../useContext/HeaderModalManagerBaseDate";
 import GuestHouseCard from "./components/GuestHouseCard";
 import {CardType} from "../../types/CardType";
 import {useCookies} from "react-cookie";
 import "../../styles/MainScreen.css"
 import i18n from "../../utils/i18n";
 import useInfiniteScrolling from "../../hooks/useInfiniteScrolling";
+import LanguageModal from "../../components/LanguageModal";
 
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
     const [cookies,,] = useCookies(['userToken']);
-    const {isLoginModal} = React.useContext(LoginModalBaseDate);
+    const {isLoginModal, isLanguageModal} = React.useContext(HeaderModalManagerBaseDate);
     const [mainCard, setMainCard] = React.useState<CardType[]>([]);
     const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);
 
@@ -86,6 +87,7 @@ function MainScreen() {
 
             </div>
             {isLoginModal ? <LoginModal/> : null}
+            {isLanguageModal ? <LanguageModal/> : null}
             {!isObserver ?
                 <div
                 style={{height: '5px', marginBottom: '20px'}}

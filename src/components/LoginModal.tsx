@@ -3,7 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import i18n from "../utils/i18n";
 import {Button, TextField} from "@mui/material";
 import '../styles/LoginModal.css'
-import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
+import {HeaderModalManagerBaseDate} from "../useContext/HeaderModalManagerBaseDate";
 import {XssCheatSheet} from "../utils/XssCheatSheet";
 import {useCookies} from "react-cookie";
 
@@ -11,7 +11,7 @@ function LoginModal() {
     const loginModalRef = React.useRef<HTMLDivElement>(null);
     const [loginId, setLoginId] = React.useState<string>("");
     const [loginPw, setLoginPw] = React.useState<string>("");
-    const {setIsLoginModal} = React.useContext(LoginModalBaseDate);
+    const {setIsLoginModal} = React.useContext(HeaderModalManagerBaseDate);
     const [, setCookie, ] = useCookies(['userToken'])
 
     const loginModalBackgroundClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
