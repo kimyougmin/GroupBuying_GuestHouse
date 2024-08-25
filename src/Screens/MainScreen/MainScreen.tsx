@@ -1,13 +1,13 @@
 import React from 'react';
-import HeaderSearch from "../components/HeaderSearch";
-import LoginModal from "../components/LoginModal";
-import {LoginModalBaseDate} from "../useContext/LoginModalBaseDate";
+import HeaderSearch from "../../components/HeaderSearch";
+import LoginModal from "../../components/LoginModal";
+import {LoginModalBaseDate} from "../../useContext/LoginModalBaseDate";
 import GuestHouseCard from "./components/GuestHouseCard";
-import {CardType} from "../types/CardType";
+import {CardType} from "../../types/CardType";
 import {useCookies} from "react-cookie";
-import "../styles/MainScreen.css"
-import i18n from "../utils/i18n";
-import useInfiniteScrolling from "../hooks/useInfiniteScrolling";
+import "../../styles/MainScreen.css"
+import i18n from "../../utils/i18n";
+import useInfiniteScrolling from "../../hooks/useInfiniteScrolling";
 
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
@@ -40,6 +40,7 @@ function MainScreen() {
     }
 
     const fetchBoxList = React.useCallback(async () => {
+        setIsObserver(true)
         const date:CardType[] = mainCard;
         fetch(`${process.env.REACT_APP_MAIN_HOUSE_ADD}`,{
             method: "get",

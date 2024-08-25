@@ -6,6 +6,7 @@ import "./GuestHouseCard.css"
 import {useCookies} from "react-cookie";
 import {LoginModalBaseDate} from "../../../useContext/LoginModalBaseDate";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import {Link} from "react-router-dom";
 
 function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
     const [cardDate, setCardDate] = React.useState<CardType>({
@@ -77,7 +78,6 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
         if(target.id === 'images-next' || target.id === 'images-before' || target.id === 'card-favoriteBorderIcon' || target.id === 'card-favoriteIcon') {
             return
         }
-        console.log('card click',id, target.id)
     }
     return (
         <div className={'guestHouseCard'}>
@@ -93,6 +93,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
                     </div>
                 </div>
                 <div style={{position: 'absolute'}}>
+                    <Link to={`/rooms/${cardDate.id}`} state={cardDate}>
                     <div className={"card-eventItem"} onMouseOver={cardMouseOverHandler}
                          onMouseOut={cardMouseOutHandler}
                          onClick={(e) => cardClickHandler(e)}>
@@ -116,6 +117,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
                                 </div>
                             </div> : null}
                     </div>
+                    </Link>
                 </div>
             </div>
             <div>

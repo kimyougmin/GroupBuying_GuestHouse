@@ -12,7 +12,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={'/'} element={<MainScreen />}/>
-                    <Route path={'/:houseNumber'} element={<HouseDetailScreen/>}/>
+                    <Route path={'/rooms/:id'} element={<HouseDetailScreen/>}/>
                 </Routes>
             </BrowserRouter>
         </LoginModalContext>
