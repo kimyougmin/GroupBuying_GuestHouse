@@ -1,0 +1,35 @@
+.houseDetailHeader {
+    width: 80%;
+    display: flex;
+    padding: 3vh 10vw 3vh 10vw;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+.houseDetailHeader > div {
+    display: flex;
+}
+.header-right {
+    width: 38vh;
+    line-height: 45px;
+    justify-content: space-between;
+    display: flex;
+    margin-right: 2vh;
+}
+.header-right > :nth-child(2) {
+    margin-top: 9px;
+}
+.header-userList {
+    width: 80px;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 40px;
+    align-content: center;
+}
+.header-userList > svg:nth-child(1){
+    margin: 7px 0 6px 7px;
+}
+.header-userList > svg:nth-child(2){
+    margin: 2px 0 0 12px;
+    width: 1.5em !important;
+    height: 1.5em !important;
+}
