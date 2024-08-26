@@ -4,13 +4,13 @@
     padding: 3vh 7vw 3vh 7vw;
     justify-content: space-between;
     border-bottom: 1px solid rgb(230, 230, 230);
+    margin-right: 0 !important;
 }
 .header-right {
-    width: 38vh;
+    width: 34vh;
     line-height: 45px;
     justify-content: space-between;
     display: flex;
-    margin-right: 2vh;
 }
 .header-right > :nth-child(2) {
     margin-top: 9px;

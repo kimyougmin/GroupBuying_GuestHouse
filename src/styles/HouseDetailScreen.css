@@ -1,0 +1,88 @@
+.detailBody{
+    width: 86%;
+    padding: 3vh 7vw 3vh 7vw;
+}
+.detailBody-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+.detailBody-title > div {
+    display: flex;
+}
+.detailBody-title > div > div:nth-child(1) {
+    margin-right: 10px;
+}
+.detailBody-title > div > div{
+    display: flex;
+    line-height: 23px;
+}
+.detailBody-title > div > div > p{
+    display: flex;
+    color: rgb(80, 80, 80);
+    line-height: 23px;
+}
+.detailBody-title > div > div > svg{
+    color: rgb(80, 80, 80);
+    width: 0.9em !important;
+    height: 0.9em !important;
+    margin-right: 4px;
+}
+.detailBody-title > p {
+    font-weight: bold;
+    font-size: 25px;
+}
+.detailBody-imagesTable {
+    width: 100%;
+    height: 52vh;
+    display: flex;
+}
+.detailBody-imagesTable > div:nth-child(3) {
+    margin-right: 0 !important;
+}
+.detailBody-imagesTable > div:nth-child(3) > div:nth-child(1) > img {
+    border-radius: 0 20px 0 0;
+}
+.detailBody-imagesTable > div:nth-child(3) > div:nth-child(2) > img {
+    border-radius: 0 0 20px 0;
+}
+.imagesTable-first {
+    margin-right: 1%;
+    width: 50%;
+    height: 100%;
+}
+.imagesTable-first > div {
+    border-radius: 20px 0 0 20px;
+    width: 100%;
+    height: 100%;
+}
+.imagesTable-first > div > img{
+    border-radius: 20px 0 0 20px;
+    width: 100%;
+    height: 100%;
+}
+.imagesTable-col {
+    margin-right: 1%;
+    width: 25%;
+    height: 100%;
+}
+.imagesTable-col > div{
+    width: 100%;
+    height: 49%;
+}
+.imagesTable-col > div > img{
+    width: 100%;
+    height: 100%;
+}
+.imagesTable-col > div:nth-child(1){
+    margin-bottom: 1vh;
+}
+.divImage-hover {
+    z-index: 2;
+}
+.divImage-hover > img{
+    z-index: 1;
+}
+.divImage-hover:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
