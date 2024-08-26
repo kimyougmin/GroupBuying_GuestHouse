@@ -101,8 +101,8 @@ export default function HeaderSearch() {
                     </div>
             </>}
 
-            {isUserModal && !cookies.userToken? (<GuestModal/>) : null}
-            {isUserModal && cookies.userToken? (<UserModal/>) : null}
+            {isUserModal && !cookies.userToken ? <GuestModal/> : null}
+            {isUserModal && cookies.userToken ? <UserModal/> : null}
         </div>
     );
 }

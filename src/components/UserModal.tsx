@@ -2,6 +2,7 @@ import React from 'react';
 import i18n from "../utils/i18n";
 import {HeaderModalManagerBaseDate} from "../useContext/HeaderModalManagerBaseDate";
 import {useCookies} from "react-cookie";
+import "../styles/UserModal.css";
 
 function UserModal() {
     const userModalRef = React.useRef<HTMLDivElement>(null);

@@ -1,0 +1,70 @@
+.guestUser {
+    position: absolute;
+    z-index: 1;
+    top: 78px;
+    right: 11vw;
+    width: 25vh;
+    height: 21vh;
+    background-color: white;
+    border: 1px solid rgb(235, 235, 235);
+    border-radius: 13px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+    0 2px 4px rgba(0,0,0,0.07),
+    0 4px 8px rgba(0,0,0,0.07),
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07);
+}
+.guestUser > p {
+    padding:0 0 0 6px;
+    line-height: 40px;
+    width: 100%;
+    height: 4vh;
+    margin-top: 8px;
+}
+.guestUser > div {
+    margin-top: 5px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+.guestUser > p:hover {
+    background-color: rgb(225,225,225);
+    transition: 1s ease-out;
+    opacity : 0.3;
+}
+.header-userList > img {
+    width: 2em;
+    height: 2em;
+    border-radius: 30px;
+    margin: 0 0 1px 10px;
+}
+.loginUser {
+    position: absolute;
+    z-index: 1;
+    top: 78px;
+    right: 11vw;
+    width: 25vh;
+    height: 26vh;
+    background-color: white;
+    border: 1px solid rgb(235, 235, 235);
+    border-radius: 13px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+    0 2px 4px rgba(0,0,0,0.07),
+    0 4px 8px rgba(0,0,0,0.07),
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07);
+}
+.loginUser > p {
+    padding:0 0 0 6px;
+    line-height: 40px;
+    width: 100%;
+    height: 4vh;
+    margin-top: 8px;
+}
+.loginUser > div {
+    margin-top: 5px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+.loginUser > p:hover {
+    background-color: rgb(225,225,225);
+    transition: 1s ease-out;
+    opacity : 0.3;
+}
