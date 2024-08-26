@@ -6,11 +6,14 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
 import {useCookies} from "react-cookie";
 import "../../../styles/HouseDetailHeader.css"
+import UserModal from "../../../components/UserModal";
+import GuestModal from "../../../components/GuestModal";
 
 function HouseDetailHeader() {
     const {setIsLanguageModal, setIsUserModal} = React.useContext(HeaderModalManagerBaseDate);
     const [cookies, , ] = useCookies(['userToken']);
     const [profileImg, setProfileImg] = React.useState<string>('');
+    const {isUserModal} = React.useContext(HeaderModalManagerBaseDate);
 
     React.useEffect(() => {
         if (cookies.userToken) {
@@ -40,6 +43,8 @@ function HouseDetailHeader() {
                         <AccountCircleIcon/>
                     </div>}
             </div>
+            {isUserModal && !cookies.userToken ? <GuestModal/>: null}
+            {isUserModal && cookies.userToken ? <UserModal/>: null}
         </div>
     );
 }
