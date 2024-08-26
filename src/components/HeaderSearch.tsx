@@ -5,16 +5,16 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ListIcon from '@mui/icons-material/List';
 import '../styles/HeaderSearch.css'
 import i18n from "../utils/i18n";
-import {HeaderModalManagerBaseDate} from "../useContext/HeaderModalManagerBaseDate";
 import {useCookies} from "react-cookie";
+import UserModal from "./UserModal";
+import GuestModal from "./GuestModal";
+import {HeaderModalManagerBaseDate} from "../useContext/HeaderModalManagerBaseDate";
 
 
 export default function HeaderSearch() {
-    const [isUserModal, setIsUserModal] = React.useState<boolean>(false);
-    const userModalRef = React.useRef<HTMLDivElement>(null);
-    const {setIsLoginModal, setIsLanguageModal} = React.useContext(HeaderModalManagerBaseDate);
+    const {isUserModal, setIsLanguageModal, setIsUserModal} = React.useContext(HeaderModalManagerBaseDate);
     const [profileImg, setProfileImg] = React.useState<string>('');
-    const [cookies, , removeCookie] = useCookies(['userToken']);
+    const [cookies, , ] = useCookies(['userToken']);
     const [width, setWidth] = React.useState(window.innerWidth);
 
     const handleResize = () => {
@@ -40,34 +40,6 @@ export default function HeaderSearch() {
         }
     }, [cookies.userToken]);
 
-    React.useEffect(() => {
-        window.addEventListener("keydown", modalEscape);
-        window.addEventListener('mousedown', outSideClick as unknown as EventListener);
-        return () => {
-            window.removeEventListener("keydown", modalEscape);
-            window.removeEventListener('mousedown', outSideClick as unknown as EventListener);}
-    }, [])
-
-    const modalEscape = (key: KeyboardEvent) => {
-        if (key.key === "Escape") {
-            setIsUserModal(false);
-        }
-    }
-
-    const outSideClick = (e: React.MouseEvent) => {
-        if (userModalRef.current && !userModalRef.current.contains(e.target as Node)) {
-            setIsUserModal(false)
-        }
-    }
-
-    const onLoginModalHandler = () => {
-        setIsUserModal(false)
-        setIsLoginModal(true);
-    }
-    const logoutHandler = () => {
-        removeCookie("userToken");
-        setIsUserModal(false);
-    }
     return (
         <div className={"header"}>
             {width < 830 ?
@@ -86,11 +58,11 @@ export default function HeaderSearch() {
                             <p>{i18n.t("guestHouse_registration")}</p>
                             <LanguageIcon onClick={() => setIsLanguageModal(true)}/>
                             {cookies.userToken ?
-                                <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
+                                <div className={"header-userList"} onClick={() => setIsUserModal(true)}>
                                     <ListIcon/>
                                     <img src={profileImg}/>
                                 </div> :
-                                <div className={"header-userList"} onClick={() => setIsUserModal(!isUserModal)}>
+                                <div className={"header-userList"} onClick={() => setIsUserModal(true)}>
                                     <ListIcon/>
                                     <AccountCircleIcon/>
                                 </div>}
@@ -129,26 +101,8 @@ export default function HeaderSearch() {
                     </div>
             </>}
 
-            {isUserModal && !cookies.userToken? (
-                <div className={"guestUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
-                    <p onClick={onLoginModalHandler}>{i18n.t("login")}</p>
-                    <p onClick={onLoginModalHandler}>{i18n.t("sign_up")}</p>
-                    <div />
-                    <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
-                    <p>{i18n.t("help_center")}</p>
-                </div>
-            ) : null}
-            {isUserModal && cookies.userToken? (
-                <div className={"loginUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
-                    <p>{i18n.t("my_travel")}</p>
-                    <div/>
-                    <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
-                    <p>{i18n.t("my_account")}</p>
-                    <div/>
-                    <p onClick={logoutHandler}>{i18n.t("log_out")}</p>
-                    <p>{i18n.t("help_center")}</p>
-                </div>
-            ) : null}
+            {isUserModal && !cookies.userToken? (<GuestModal/>) : null}
+            {isUserModal && cookies.userToken? (<UserModal/>) : null}
         </div>
     );
 }

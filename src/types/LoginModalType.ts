@@ -3,4 +3,6 @@ export default  interface LoginModalType {
     setIsLoginModal: (isLoginModal: boolean) => void
     isLanguageModal: boolean
     setIsLanguageModal: (isLanguageModal: boolean) => void
+    isUserModal: boolean
+    setIsUserModal: (isUserModal: boolean) => void
 }

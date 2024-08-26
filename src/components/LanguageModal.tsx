@@ -34,7 +34,7 @@ function LanguageModal() {
 
     const outSideClick = (e: React.MouseEvent) => {
         if (languageModalRef.current && !languageModalRef.current.contains(e.target as Node)) {
-            setIsLanguageModal(false)
+            setIsLanguageModal(false);
         }
     }
 
