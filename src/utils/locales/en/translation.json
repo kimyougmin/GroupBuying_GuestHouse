@@ -22,5 +22,9 @@
   "my_travel": "travel",
   "my_account": "account",
   "error_reload": "error please refresh",
-  "Where_going_trip":"Where are you going on a trip?"
+  "Where_going_trip":"Where are you going on a trip?",
+  "like": "like",
+  "share": "share",
+  "house_share": "Share your accommodation",
+  "link_copy": "copy link"
 }

@@ -22,5 +22,9 @@
   "my_travel": "여행",
   "my_account": "계정",
   "error_reload": "오류 새로고치해주세요",
-  "Where_going_trip":"어디로 여행 가세요?"
+  "Where_going_trip":"어디로 여행 가세요?",
+  "like": "찜",
+  "share": "공유",
+  "house_share": "숙소 공유하기",
+  "url_copy": "링크 복사"
 }
