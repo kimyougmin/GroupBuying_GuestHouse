@@ -5,28 +5,36 @@
 .detailBody-title {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
 }
 .detailBody-title > div {
     display: flex;
 }
 .detailBody-title > div > div:nth-child(1) {
-    margin-right: 10px;
+    margin-right: 5px;
 }
-.detailBody-title > div > div{
+.detailBody-title > div > div {
     display: flex;
     line-height: 23px;
+    width: 8vw;
+    height: 4vh;
+    text-align: center;
 }
-.detailBody-title > div > div > p{
+.detailBody-title > div > div > p {
     display: flex;
     color: rgb(80, 80, 80);
     line-height: 23px;
+    margin: auto auto auto 0;
 }
-.detailBody-title > div > div > svg{
+.detailBody-title > div > div > svg {
+    margin: auto 0 auto auto;
     color: rgb(80, 80, 80);
     width: 0.9em !important;
     height: 0.9em !important;
-    margin-right: 4px;
+}
+.detailBody-title > div > div:hover {
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
 }
 .detailBody-title > p {
     font-weight: bold;
@@ -40,10 +48,16 @@
 .detailBody-imagesTable > div:nth-child(3) {
     margin-right: 0 !important;
 }
-.detailBody-imagesTable > div:nth-child(3) > div:nth-child(1) > img {
+.detailBody-imagesTable > div:nth-child(3) > div:nth-child(1) {
     border-radius: 0 20px 0 0;
 }
-.detailBody-imagesTable > div:nth-child(3) > div:nth-child(2) > img {
+.detailBody-imagesTable > div:nth-child(3) > div:nth-child(3) {
+    border-radius: 0 0 20px 0;
+}
+.detailBody-imagesTable > div:nth-child(3) > img:nth-child(2) {
+    border-radius: 0 20px 0 0;
+}
+.detailBody-imagesTable > div:nth-child(3) > img:nth-child(4) {
     border-radius: 0 0 20px 0;
 }
 .imagesTable-first {
@@ -52,11 +66,12 @@
     height: 100%;
 }
 .imagesTable-first > div {
+    position: absolute;
     border-radius: 20px 0 0 20px;
-    width: 100%;
-    height: 100%;
+    width: 42.1vw;
+    height: 52vh;
 }
-.imagesTable-first > div > img{
+.imagesTable-first > img{
     border-radius: 20px 0 0 20px;
     width: 100%;
     height: 100%;
@@ -67,24 +82,28 @@
     height: 100%;
 }
 .imagesTable-col > div{
-    width: 100%;
-    height: 49%;
+    position: absolute;
+    width: 21vw;
+    height: 25.4vh;
 }
-.imagesTable-col > div > img{
-    width: 100%;
-    height: 100%;
+.imagesTable-col > img{
+    width: 21vw;
+    height: 25.4vh;
+    margin-bottom: 0.8vh;
 }
-.imagesTable-col > div:nth-child(1){
-    margin-bottom: 1vh;
+.imagesTable-col > div{
+    margin-bottom: 0.8vh;
 }
 .divImage-hover {
-    z-index: 2;
-}
-.divImage-hover > img{
+    position: sticky;
     z-index: 1;
 }
+.divImage-hover > img{
+    position: sticky;
+    z-index: 0;
+}
 .divImage-hover:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .shareModal_back {
     width: 100%;
@@ -101,7 +120,7 @@
     height: 30vh;
     background-color: white;
     border-radius: 20px;
-    padding: 1vh 1vw 0 1vw;
+    padding: 2vh 1vw 0 1vw;
 }
 .shareModal > p {
     margin-top: 12px;

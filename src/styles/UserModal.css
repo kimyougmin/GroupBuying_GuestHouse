@@ -1,8 +1,8 @@
 .guestUser {
     position: absolute;
-    z-index: 1;
+    z-index: 5;
     top: 78px;
-    right: 11vw;
+    right: 0;
     width: 25vh;
     height: 21vh;
     background-color: white;
@@ -40,7 +40,7 @@
     position: absolute;
     z-index: 1;
     top: 78px;
-    right: 11vw;
+    right: 0;
     width: 25vh;
     height: 26vh;
     background-color: white;

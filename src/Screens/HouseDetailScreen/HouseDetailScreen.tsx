@@ -67,25 +67,20 @@ function HouseDetailScreen() {
                 </div>
                 <div className={'detailBody-imagesTable'}>
                     <div className={'imagesTable-first'}>
-                        <div className={'divImage-hover'}>
-                            <img src={location.state.houseImages[0].url}/>
-                        </div>
+                        <div className={'divImage-hover'}/>
+                        <img src={location.state.houseImages[0].url}/>
                     </div>
                     <div className={'imagesTable-col'}>
-                        <div className={'divImage-hover'}>
-                            <img src={location.state.houseImages[1].url}/>
-                        </div>
-                        <div className={'divImage-hover'}>
-                            <img src={location.state.houseImages[2].url}/>
-                        </div>
+                        <div className={'divImage-hover'}/>
+                        <img src={location.state.houseImages[1].url}/>
+                        <div className={'divImage-hover'}/>
+                        <img src={location.state.houseImages[2].url}/>
                     </div>
                     <div className={'imagesTable-col'}>
-                        <div className={'divImage-hover'}>
-                            <img src={location.state.houseImages[3].url}/>
-                        </div>
-                        <div className={'divImage-hover'}>
-                            <img src={location.state.houseImages[4].url}/>
-                        </div>
+                        <div className={'divImage-hover'}/>
+                        <img src={location.state.houseImages[3].url}/>
+                        <div className={'divImage-hover'}/>
+                        <img src={location.state.houseImages[4].url}/>
                     </div>
                 </div>
             </div>
