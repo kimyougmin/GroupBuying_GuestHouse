@@ -26,5 +26,7 @@
   "like": "保存",
   "share": "共有",
   "house_share": "宿泊施設を共有する",
-  "url_copy": "リンクのコピー"
+  "url_copy": "リンクのコピー",
+  "copy_error": "コピーエラー",
+  "link_copy_completed": "リンクコピー完了"
 }
