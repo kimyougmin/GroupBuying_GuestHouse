@@ -8,6 +8,7 @@ import {useCookies} from "react-cookie";
 import "../../../styles/HouseDetailHeader.css"
 import UserModal from "../../../components/UserModal";
 import GuestModal from "../../../components/GuestModal";
+import {Link} from "react-router-dom";
 
 function HouseDetailHeader() {
     const {setIsLanguageModal, setIsUserModal} = React.useContext(HeaderModalManagerBaseDate);
@@ -28,7 +29,9 @@ function HouseDetailHeader() {
 
     return (
         <div className={'houseDetailHeader'}>
-            <p>guestHouse</p>
+            <Link to={'/'}>
+                <p>guestHouse</p>
+            </Link>
             <div></div>
             <div className={"header-right"}>
                 <p>{i18n.t("guestHouse_registration")}</p>
