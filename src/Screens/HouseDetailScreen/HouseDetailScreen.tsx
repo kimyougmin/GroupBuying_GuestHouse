@@ -1,6 +1,6 @@
 import React from 'react';
 import HouseDetailHeader from "./components/HouseDetailHeader";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import OutboxIcon from '@mui/icons-material/Outbox';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {HeaderModalManagerBaseDate} from "../../useContext/HeaderModalManagerBaseDate";
@@ -27,7 +27,6 @@ function HouseDetailScreen() {
             return;
         }
     }
-
     const onShareClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
         if (target.className !== "shareModal_back") {
@@ -67,20 +66,30 @@ function HouseDetailScreen() {
                 </div>
                 <div className={'detailBody-imagesTable'}>
                     <div className={'imagesTable-first'}>
-                        <div className={'divImage-hover'}/>
-                        <img src={location.state.houseImages[0].url}/>
+                        <Link to={`/rooms/${location.state.id}/images`}>
+                            <div className={'divImage-hover'}/>
+                            <img src={location.state.houseImages[0].url}/>
+                        </Link>
                     </div>
                     <div className={'imagesTable-col'}>
-                        <div className={'divImage-hover'}/>
-                        <img src={location.state.houseImages[1].url}/>
-                        <div className={'divImage-hover'}/>
-                        <img src={location.state.houseImages[2].url}/>
+                        <Link to={`/rooms/${location.state.id}/images`}>
+                            <div className={'divImage-hover'}/>
+                            <img src={location.state.houseImages[1].url}/>
+                        </Link>
+                        <Link to={`/rooms/${location.state.id}/images`}>
+                            <div className={'divImage-hover'}/>
+                            <img src={location.state.houseImages[2].url}/>
+                        </Link>
                     </div>
                     <div className={'imagesTable-col'}>
-                        <div className={'divImage-hover'}/>
-                        <img src={location.state.houseImages[3].url}/>
-                        <div className={'divImage-hover'}/>
-                        <img src={location.state.houseImages[4].url}/>
+                        <Link to={`/rooms/${location.state.id}/images`}>
+                            <div className={'divImage-hover'}/>
+                            <img src={location.state.houseImages[3].url}/>
+                        </Link>
+                        <Link to={`/rooms/${location.state.id}/images`}>
+                            <div className={'divImage-hover'}/>
+                            <img src={location.state.houseImages[4].url}/>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -48,16 +48,16 @@
 .detailBody-imagesTable > div:nth-child(3) {
     margin-right: 0 !important;
 }
-.detailBody-imagesTable > div:nth-child(3) > div:nth-child(1) {
+.detailBody-imagesTable > div:nth-child(3) > a >  div:nth-child(1) {
     border-radius: 0 20px 0 0;
 }
-.detailBody-imagesTable > div:nth-child(3) > div:nth-child(3) {
+.detailBody-imagesTable > div:nth-child(3) > a > div:nth-child(3) {
     border-radius: 0 0 20px 0;
 }
-.detailBody-imagesTable > div:nth-child(3) > img:nth-child(2) {
+.detailBody-imagesTable > div:nth-child(3) > a:nth-child(1) > img {
     border-radius: 0 20px 0 0;
 }
-.detailBody-imagesTable > div:nth-child(3) > img:nth-child(4) {
+.detailBody-imagesTable > div:nth-child(3) > a:nth-child(2) > img {
     border-radius: 0 0 20px 0;
 }
 .imagesTable-first {
@@ -65,13 +65,13 @@
     width: 50%;
     height: 100%;
 }
-.imagesTable-first > div {
+.imagesTable-first > a > div {
     position: absolute;
     border-radius: 20px 0 0 20px;
     width: 42.1vw;
     height: 52vh;
 }
-.imagesTable-first > img{
+.imagesTable-first > a > img{
     border-radius: 20px 0 0 20px;
     width: 100%;
     height: 100%;
@@ -81,17 +81,17 @@
     width: 25%;
     height: 100%;
 }
-.imagesTable-col > div{
+.imagesTable-col > a > div{
     position: absolute;
     width: 21vw;
     height: 25.4vh;
 }
-.imagesTable-col > img{
+.imagesTable-col > a > img{
     width: 21vw;
     height: 25.4vh;
     margin-bottom: 0.8vh;
 }
-.imagesTable-col > div{
+.imagesTable-col > a > div{
     margin-bottom: 0.8vh;
 }
 .divImage-hover {
