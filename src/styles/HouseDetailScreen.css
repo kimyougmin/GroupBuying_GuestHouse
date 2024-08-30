@@ -16,8 +16,8 @@
 .detailBody-title > div > div {
     display: flex;
     line-height: 23px;
-    width: 8vw;
-    height: 4vh;
+    width: 5vw;
+    height: 3vh;
     text-align: center;
 }
 .detailBody-title > div > div > p {
