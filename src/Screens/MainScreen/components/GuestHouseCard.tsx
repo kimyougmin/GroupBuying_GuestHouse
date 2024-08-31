@@ -6,7 +6,7 @@ import "../../../styles/GuestHouseCard.css"
 import {useCookies} from "react-cookie";
 import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
     const [cardDate, setCardDate] = React.useState<CardType>({
@@ -16,6 +16,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
         price: price,
         like: like
     });
+    const navi = useNavigate();
     const [imageCount, setImageCount] = React.useState<number>(0);
     const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
     const [cookies,,] = useCookies(['userToken']);
@@ -61,7 +62,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
             id: cardDate.id,
             price: cardDate.price,
             like: true
-        })
+        });
     }
     const imageUnLikeEventHandler = () => {
         //더미 코드 추후 패치 진할 것
@@ -71,13 +72,22 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
             id: cardDate.id,
             price: cardDate.price,
             like: false
-        })
+        });
     }
     const cardClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement
         if(target.id === 'images-next' || target.id === 'images-before' || target.id === 'card-favoriteBorderIcon' || target.id === 'card-favoriteIcon') {
-            return
+            return;
         }
+        navi(`/rooms/${id}`, {
+            state: {
+                houseImages: houseImages,
+                id: id,
+                houseName: houseName,
+                price: price,
+                like: like
+            }
+        });
     }
     return (
         <div className={'guestHouseCard'}>
@@ -93,7 +103,6 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
                     </div>
                 </div>
                 <div style={{position: 'absolute'}}>
-                    <Link to={`/rooms/${cardDate.id}`} state={cardDate}>
                     <div className={"card-eventItem"} onMouseOver={cardMouseOverHandler}
                          onMouseOut={cardMouseOutHandler}
                          onClick={(e) => cardClickHandler(e)}>
@@ -117,7 +126,6 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
                                 </div>
                             </div> : null}
                     </div>
-                    </Link>
                 </div>
             </div>
             <div>
