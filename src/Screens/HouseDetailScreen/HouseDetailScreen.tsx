@@ -12,6 +12,8 @@ import i18n from "../../utils/i18n";
 import CloseIcon from "@mui/icons-material/Close";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import PaymentUi from "./components/PaymentUi";
+import {CalenderContextProvider} from "../../useContext/CalenderContext";
 
 function HouseDetailScreen() {
     const location = useLocation();
@@ -92,6 +94,9 @@ function HouseDetailScreen() {
                         </Link>
                     </div>
                 </div>
+                <CalenderContextProvider>
+                    <PaymentUi />
+                </CalenderContextProvider>
             </div>
             {isLoginModal ? <LoginModal/> : null}
             {isLanguageModal ? <LanguageModal/> : null}

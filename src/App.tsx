@@ -10,13 +10,13 @@ function App() {
   return (
     <div className="App">
         <HeaderModalManagerContext>
-            <BrowserRouter>
-                <Routes>
-                    <Route path={'/'} element={<MainScreen />}/>
-                    <Route path={'/rooms/:id'} element={<HouseDetailScreen/>}/>
-                    <Route path={'/rooms/:id/images'} element={<HouseImagesScreen />}/>
-                </Routes>
-            </BrowserRouter>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path={'/'} element={<MainScreen />}/>
+                        <Route path={'/rooms/:id'} element={<HouseDetailScreen/>}/>
+                        <Route path={'/rooms/:id/images'} element={<HouseImagesScreen />}/>
+                    </Routes>
+                </BrowserRouter>
         </HeaderModalManagerContext>
     </div>
   );

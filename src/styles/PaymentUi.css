@@ -1,0 +1,184 @@
+.payment-none {
+    margin-top: 32px;
+    --gp-section-top-margin: 32;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    width: 316px;
+    height: 35vh;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+}
+.payment-header {
+    display: flex;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.payment-selector {
+    margin-top: 10px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+}
+.selector-day {
+    display: flex;
+    justify-content: space-between;
+}
+.selector-day > div {
+    width: 50%;
+    height: 5vh;
+    padding: 1vh 0 0 10px;
+    line-height: 15px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+.selector-day > div:nth-of-type(2) {
+    border-left: 1px solid rgb(221, 221, 221);
+}
+.selector-day > div > p:nth-of-type(1) {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.selector-day > div > p:nth-of-type(2) {
+    font-size: 16px;
+}
+.selector-person {
+    display: flex;
+    justify-content: space-between;
+}
+.selector-person > div {
+    height: 5vh;
+    line-height: 18px;
+    padding: 1vh 0 0 10px;
+}
+.selector-person > div > p:nth-of-type(1) {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.selector-person > div > p:nth-of-type(2) {
+    font-size: 16px;
+}
+.payment-footer {
+    padding: 2vh 0 2vh 0;
+}
+.payment-footer > button {
+    width: 100%;
+    height: 5vh;
+}
+.person-icon {
+    margin: auto 10px 10px 0;
+    transform: rotate(-90deg);
+}
+.payment-footer > span {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh 0 0.5vh 0;
+}
+.payment-footer > span > p {
+    font-size: 16px;
+}
+.payment-footer > span:nth-of-type(3) {
+    padding-top: 2vh;
+    border-top: 1px solid rgb(221, 221, 221);
+    font-size: 16px;
+    font-weight: bold;
+}
+.payment-footer > span:nth-of-type(3) > p {
+    font-size: 16px;
+    font-weight: bold;
+}
+.selector-checkIn {
+    border: 1px solid gray;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+.selector-checkIn > div {
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+}
+.selector-checkIn > div > div{
+    width: 50%;
+    height: 6vh;
+    display: flex;
+    z-index: 2;
+    justify-content: space-between;
+    padding: 0 0 0 10px;
+    line-height: 15px;
+}
+.selector-checkIn > div > div > div{
+    margin-top: 1vh;
+}
+.selector-checkIn > div > div:nth-of-type(1) {
+    width: 60%;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 12px;
+    z-index: 3;
+}
+.selector-checkIn > div > div > div > p:nth-of-type(1) {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.selector-checkIn > div > div > div > p:nth-of-type(2) {
+    font-size: 16px;
+}
+.closeIcon {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 5px;
+    width: 0.7em !important;
+    height: 0.7em !important;
+}
+.selector-checkOut {
+    border: 1px solid gray;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+.selector-checkOut > div  {
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+}
+.selector-checkOut > div > div {
+    width: 50%;
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 10px;
+    line-height: 15px;
+}
+.selector-checkOut > div > div > div{
+    margin-top: 1vh;
+}
+.selector-checkOut > div > div:nth-of-type(2) {
+    width: 60%;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+.selector-checkOut > div > div > div > p:nth-of-type(1) {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.selector-checkOut > div > div > div > p:nth-of-type(2) {
+    font-size: 16px;
+}
+.modal-box {
+    background: rgb(255, 255, 255) !important;
+    border-radius: 16px !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
+    display: inline-block !important;
+    padding: 24px 32px 16px !important;
+    position: absolute !important;
+    top: 50px !important;
+    right: 0 !important;
+    width: 680px !important;
+    z-index: 1 !important;
+    min-height: 420px !important;
+}
