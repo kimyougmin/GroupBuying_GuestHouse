@@ -180,3 +180,14 @@
     color: green;
     margin-right: auto;
 }
+.detailBody-main {
+    width: 100%;
+    display: flex;
+}
+.detailBody-main > div:nth-child(1) {
+    width: 55%;
+    margin-right: 10%;
+}
+.detailBody-main > div:nth-child(2) {
+    width: 35%;
+}

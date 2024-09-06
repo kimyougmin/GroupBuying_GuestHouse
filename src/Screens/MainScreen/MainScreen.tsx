@@ -16,6 +16,7 @@ function MainScreen() {
     const {isLoginModal, isLanguageModal} = React.useContext(HeaderModalManagerBaseDate);
     const [mainCard, setMainCard] = React.useState<CardType[]>([]);
     const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);
+    const [isHasMore, setIsHasMore] = React.useState(true);
 
     React.useEffect(() => {
         houseDateJoinInit();
@@ -41,7 +42,6 @@ function MainScreen() {
     }
 
     const fetchBoxList = React.useCallback(async () => {
-        setIsObserver(true)
         const date:CardType[] = mainCard;
         fetch(`${process.env.REACT_APP_MAIN_HOUSE_ADD}`,{
             method: "get",
@@ -49,20 +49,26 @@ function MainScreen() {
         }).then((res) => res.json())
             .then((res) =>  {res.forEach((e: CardType) => {
                 const row: CardType = {
-                    houseImages: e.houseImages,
+                    houseImages: e.houseImages.map((e) => {
+                        return {"url": e.url};
+                    }),
                     id: e.id,
                     houseName: e.houseName,
                     price: e.price,
                     like: false
                 }
                 date.push(row);
-            })}).then(() => {setMainCard(date)})
+            })})
+            .then(() => {setMainCard(date)})
+            .catch((e) => {
+                console.log("fetchBoxList", e);
+            })
     }, []);
 
     useInfiniteScrolling({
         scrollHookRef,
         fetchMore: fetchBoxList,
-        hasMore: false,
+        hasMore: true,
     });
 
     return (
@@ -88,11 +94,7 @@ function MainScreen() {
             </div>
             {isLoginModal ? <LoginModal/> : null}
             {isLanguageModal ? <LanguageModal/> : null}
-            {!isObserver ?
-                <div
-                style={{height: '5px', marginBottom: '20px'}}
-                ref={setScrollHookRef}
-            />: null}
+            {!isObserver ? <div style={{height: '5px', marginBottom: '20px', backgroundColor: "red"}} ref={setScrollHookRef}/>: null}
         </div>
     );
 }

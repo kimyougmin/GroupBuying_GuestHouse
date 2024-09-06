@@ -1,5 +1,4 @@
 .payment-none {
-    margin-top: 32px;
     --gp-section-top-margin: 32;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 12px;
@@ -176,8 +175,8 @@
     display: inline-block !important;
     padding: 24px 32px 16px !important;
     position: absolute !important;
-    top: 50px !important;
-    right: 0 !important;
+    top: 75vh !important;
+    right: 7vw !important;
     width: 680px !important;
     z-index: 1 !important;
     min-height: 420px !important;

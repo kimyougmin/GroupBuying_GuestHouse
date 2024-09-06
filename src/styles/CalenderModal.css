@@ -28,6 +28,7 @@
 .modalBody.header {
     justify-content: space-between;
     display: flex;
+    height: 3vh ;
 }
 .modalBody.header > p {
     font-size: 20px;

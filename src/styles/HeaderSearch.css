@@ -1,15 +1,16 @@
 .header {
     z-index: -1;
     display: block;
-    width: 100%;
+    width: 98vw;
     height: 19vh;
+    padding: 0 1vw 0 1vw;
     border-bottom: 1px solid rgb(235,235,235);
 }
 .header-1layer {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: 2vh 1vh 0 1vh;
+    padding: 2vh 0 0 0;
 }
 .header-searchBox {
     display: flex;

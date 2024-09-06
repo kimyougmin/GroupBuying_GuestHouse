@@ -102,7 +102,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
                         })}
                     </div>
                 </div>
-                <div style={{position: 'absolute'}}>
+                <div style={{position: 'absolute', height: "0"}}>
                     <div className={"card-eventItem"} onMouseOver={cardMouseOverHandler}
                          onMouseOut={cardMouseOutHandler}
                          onClick={(e) => cardClickHandler(e)}>

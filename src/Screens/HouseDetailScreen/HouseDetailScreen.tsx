@@ -94,9 +94,16 @@ function HouseDetailScreen() {
                         </Link>
                     </div>
                 </div>
-                <CalenderContextProvider>
-                    <PaymentUi />
-                </CalenderContextProvider>
+                <div className={'detailBody-main'}>
+                    <div>
+
+                    </div>
+                    <div>
+                        <CalenderContextProvider>
+                            <PaymentUi />
+                        </CalenderContextProvider>
+                    </div>
+                </div>
             </div>
             {isLoginModal ? <LoginModal/> : null}
             {isLanguageModal ? <LanguageModal/> : null}
