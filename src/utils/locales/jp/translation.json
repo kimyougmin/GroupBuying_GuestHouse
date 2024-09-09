@@ -28,5 +28,6 @@
   "house_share": "宿泊施設を共有する",
   "url_copy": "リンクのコピー",
   "copy_error": "コピーエラー",
-  "link_copy_completed": "リンクコピー完了"
+  "link_copy_completed": "リンクコピー完了",
+  "host": "ホスト"
 }

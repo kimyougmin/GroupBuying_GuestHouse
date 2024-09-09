@@ -1,6 +1,7 @@
 
 export default function DetailScreenFetchModel() {
     return {
+        detailTitle: "test Detail Screen image, 테스트 디테일 스크린 이미지",
         hostName: '아무개',
         hostImage: 'https://i.postimg.cc/zBQ5bx80/house1.jpg',
         houseExplanation: '인원 2명ㅣ침실 1개ㅣ침대1개ㅣ욕실1개\n' +

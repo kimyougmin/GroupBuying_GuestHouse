@@ -28,5 +28,6 @@
   "house_share": "숙소 공유하기",
   "url_copy": "링크 복사",
   "copy_error": "링크 복사 실패",
-  "link_copy_completed": "링크 복사 완료"
+  "link_copy_completed": "링크 복사 완료",
+  "host": "호스트"
 }

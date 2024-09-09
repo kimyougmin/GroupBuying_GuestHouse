@@ -17,10 +17,24 @@ function MainScreen() {
     const [mainCard, setMainCard] = React.useState<CardType[]>([]);
     const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);
     const [isHasMore, setIsHasMore] = React.useState(true);
+    const [page, setPage] = React.useState(0);
+    const [width, setWidth] = React.useState(window.innerWidth);
 
     React.useEffect(() => {
         houseDateJoinInit();
     }, [cookies.userToken]);
+
+    React.useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            // cleanup
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+    };
 
     const houseDateJoinInit = () => {
         const date:CardType[] = [];
@@ -37,29 +51,43 @@ function MainScreen() {
                     like: false
                 }
                 date.push(row);
-            })}).then(() => {setMainCard(date)})
+            })})
+            .then(() => {setMainCard(date);})
             .catch((e) => alert(`${i18n.t('error_reload')} ${e}`))
     }
 
     const fetchBoxList = React.useCallback(async () => {
+        let size: number = 5
+        if (width <= 1477 && width > 1127) size = 4
+        else if (width <= 1127 && width > 950) size = 3
+        else if (width <= 950) size = 2
         const date:CardType[] = mainCard;
+        console.log("size", size, "page", page);
         fetch(`${process.env.REACT_APP_MAIN_HOUSE_ADD}`,{
             method: "get",
-            headers:{ "content-type": "application/json" },
+            headers:{ "content-type": "application/json",
+                "page": `${page}`,
+                "size": `${size}` },
         }).then((res) => res.json())
-            .then((res) =>  {res.forEach((e: CardType) => {
-                const row: CardType = {
-                    houseImages: e.houseImages.map((e) => {
-                        return {"url": e.url};
-                    }),
-                    id: e.id,
-                    houseName: e.houseName,
-                    price: e.price,
-                    like: false
-                }
-                date.push(row);
-            })})
-            .then(() => {setMainCard(date)})
+            .then((res) => {
+                console.log("res", res)
+            })
+            // .then((res) =>  {res.forEach((e: CardType) => {
+            //     const row: CardType = {
+            //         houseImages: e.houseImages.map((e) => {
+            //             return {"url": e.url};
+            //         }),
+            //         id: e.id,
+            //         houseName: e.houseName,
+            //         price: e.price,
+            //         like: false
+            //     }
+            //     date.push(row);
+            // })})
+            .then(() => {
+                setMainCard(date);
+                setPage(page+1);
+            })
             .catch((e) => {
                 console.log("fetchBoxList", e);
             })

@@ -14,6 +14,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PaymentUi from "./components/PaymentUi";
 import {CalenderContextProvider} from "../../useContext/CalenderContext";
+import DetailScreenFetchModel from "../../TestModel/DetailScreenFetchModel";
 
 function HouseDetailScreen() {
     const location = useLocation();
@@ -22,6 +23,16 @@ function HouseDetailScreen() {
     const [isShareModal, setIsShareModal] = React.useState(false);
     const shareModalRef = React.useRef(null);
     const [isCopyCompleted, setIsCopyCompleted] = React.useState(false);
+    const [detailDate, setDetailDate] = React.useState({
+        detailTitle: "",
+        hostName: "",
+        hostImage: "",
+        houseExplanation: ""
+    });
+
+    React.useEffect(() => {
+        setDetailDate(DetailScreenFetchModel);
+    }, [])
 
     const imageLikeEventHandler = () => {
         if (!cookies.userToken) {
@@ -48,9 +59,14 @@ function HouseDetailScreen() {
             alert(i18n.t("copy_error"));
         }
     }
+    const hostNameHandler = () => {
+        if (i18n.language === "ko") return <p style={{display: 'flex'}}>호스트: {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}님</p>
+        if (i18n.language === "en") return <p style={{display: 'flex'}}>Hosted by {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}</p>
+        if (i18n.language === "jp") return <p style={{display: 'flex'}}>ホスト: {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}さん</p>
+    }
     return (
         <div>
-            <HouseDetailHeader />
+        <HouseDetailHeader />
             <div className={'detailBody'}>
                 <div className={'detailBody-title'}>
                     <p>{location.state.houseName}</p>
@@ -95,8 +111,13 @@ function HouseDetailScreen() {
                     </div>
                 </div>
                 <div className={'detailBody-main'}>
-                    <div>
-
+                    <div className={'detailBody-mainLeft'}>
+                        <p>{detailDate.detailTitle}</p>
+                        <div>
+                            <img src={detailDate.hostImage}/>
+                            {hostNameHandler()}
+                        </div>
+                        <p>{detailDate.houseExplanation}</p>
                     </div>
                     <div>
                         <CalenderContextProvider>
