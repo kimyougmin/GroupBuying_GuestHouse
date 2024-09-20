@@ -12,18 +12,24 @@ function LoginModal() {
     const [loginId, setLoginId] = React.useState<string>("");
     const [loginPw, setLoginPw] = React.useState<string>("");
     const {setIsLoginModal} = React.useContext(HeaderModalManagerBaseDate);
+    const [width, setWidth] = React.useState(window.innerWidth);
     const [, setCookie, ] = useCookies(['userToken'])
 
     const loginModalBackgroundClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement
-        if (target.className === "loginModal-background") {
+        if (target.className === "loginModal-background" || target.className === "mobile-loginModal-background") {
             setIsLoginModal(false)
         }
     }
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+    };
     React.useEffect(() => {
         window.addEventListener('keydown', modalStateManager);
+        window.addEventListener("resize", handleResize);
         document.body.style.overflow = 'hidden';
         return () => {
+            window.removeEventListener("resize", handleResize);
             window.removeEventListener('keydown', modalStateManager);
             document.body.style.overflow = 'unset';
         };
@@ -52,35 +58,89 @@ function LoginModal() {
         setCookie('userToken', {"token": token}, {expires: new Date(Date.now() + 60000), httpOnly: true});
         setIsLoginModal(false);
     }
-    return (
-        <div className={'loginModal-background'} ref={loginModalRef} onClick={(e) => {loginModalBackgroundClickHandler(e)}}>
-            <div className={'loginModal'}>
-                <div className={'loginModal-header'}>
-                    <CloseIcon onClick={() => {setIsLoginModal(false)}}/>
-                    <p>{i18n.t("login_or_sign_up")}</p>
-                    <div/>
-                </div>
-                <div className={'loginModal-body'}>
-                    <p>{i18n.t("welcome_guest_house")}</p>
+    const mobileLoginModalJSX = () => {
+        return (
+            <div className={'mobile-loginModal-background'} ref={loginModalRef} style={{top: `${window.pageYOffset}px`}} onClick={(e) => {
+                loginModalBackgroundClickHandler(e)
+            }}>
+                <div className={"mobile-loginModal"}>
+                    <div className={'mobile-loginModal-header'}>
+                        <CloseIcon onClick={() => {
+                            setIsLoginModal(false)
+                        }}/>
+                        <p>{i18n.t("login_or_sign_up")}</p>
+                        <div/>
+                    </div>
+                    <div className={'loginModal-body'}>
+                        <p>{i18n.t("welcome_guest_house")}</p>
+                        <div>
+                            <TextField
+                                id="outlined-password-input"
+                                label={`${i18n.t('id')}`}
+                                autoComplete="current-password"
+                                value={loginId}
+                                onChange={(e) => {
+                                    setLoginId(XssCheatSheet(e.target.value))
+                                }}
+                            />
+                            <TextField
+                                id="outlined-password-input"
+                                label={`${i18n.t('pw')}`}
+                                type="password"
+                                value={loginPw}
+                                onChange={(e) => {
+                                    setLoginPw(XssCheatSheet(e.target.value))
+                                }}
+                                autoComplete="current-password"
+                            />
+                        </div>
+                        <Button variant="contained" onClick={onLoginButtonHandler}>{i18n.t("continue")}</Button>
+                    </div>
                     <div>
-                        <TextField
-                            id="outlined-password-input"
-                            label={`${i18n.t('id')}`}
-                            autoComplete="current-password"
-                            value={loginId}
-                            onChange={(e) => {setLoginId(XssCheatSheet(e.target.value))}}
-                        />
-                        <TextField
-                            id="outlined-password-input"
-                            label={`${i18n.t('pw')}`}
-                            type="password"
-                            value={loginPw}
-                            onChange={(e) => {setLoginPw(XssCheatSheet(e.target.value))}}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    const loginModalJSX = () => {
+        return (
+            <div className={'loginModal-background'} ref={loginModalRef} style={{top: `${window.pageYOffset}px`}}
+                 onClick={(e) => {
+                     loginModalBackgroundClickHandler(e)
+                 }}>
+                <div className={'loginModal'}>
+                    <div className={'loginModal-header'}>
+                        <CloseIcon onClick={() => {
+                            setIsLoginModal(false)
+                        }}/>
+                        <p>{i18n.t("login_or_sign_up")}</p>
+                        <div/>
+                    </div>
+                    <div className={'loginModal-body'}>
+                        <p>{i18n.t("welcome_guest_house")}</p>
+                        <div>
+                            <TextField
+                                id="outlined-password-input"
+                                label={`${i18n.t('id')}`}
+                                autoComplete="current-password"
+                                value={loginId}
+                                onChange={(e) => {
+                                    setLoginId(XssCheatSheet(e.target.value))
+                                }}
+                            />
+                            <TextField
+                                id="outlined-password-input"
+                                label={`${i18n.t('pw')}`}
+                                type="password"
+                                value={loginPw}
+                                onChange={(e) => {
+                                    setLoginPw(XssCheatSheet(e.target.value))
+                            }}
                             autoComplete="current-password"
                         />
                     </div>
                     <Button variant="contained" onClick={onLoginButtonHandler}>{i18n.t("continue")}</Button>
-                    <div >
+                    <div>
                         <div className={"div-line"}/>
                         <p>{i18n.t("or")}</p>
                         <div className={"div-line"}/>
@@ -89,6 +149,11 @@ function LoginModal() {
                 <div>
                 </div>
             </div>
+        </div>)
+    }
+    return (
+        <div>
+            {width < 745 ? mobileLoginModalJSX() : loginModalJSX()}
         </div>
     );
 }
