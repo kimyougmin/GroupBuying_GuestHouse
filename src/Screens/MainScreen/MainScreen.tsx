@@ -27,8 +27,9 @@ function MainScreen() {
         setIsObserver(false);
         setTimeout(() => {
             window.scrollTo(0, cookies.renderCookie.topPoint);
-        }, 20)
-    },[])
+        }, 20);
+    },[]);
+
     const houseDateJoinInit = () => {
         const date:CardType[] = [];
         fetch(`${process.env.REACT_APP_MAIN_HOUSE}`, {

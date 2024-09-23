@@ -31,8 +31,15 @@ function HouseDetailScreen() {
     });
     React.useEffect(() => {
         setDetailDate(DetailScreenFetchModel);
+        window.scrollTo(0,0);
     }, [])
-
+    React.useEffect(() => {
+        if (isShareModal){
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isShareModal])
     const imageLikeEventHandler = () => {
         if (!cookies.userToken) {
             setIsLoginModal(true);
@@ -53,7 +60,7 @@ function HouseDetailScreen() {
             setIsCopyCompleted(true);
             setTimeout(() => {
                 setIsCopyCompleted(false);
-            }, 3000)
+            }, 3000);
         } catch {
             alert(i18n.t("copy_error"));
         }
@@ -66,6 +73,14 @@ function HouseDetailScreen() {
     return (
         <div>
         <HouseDetailHeader />
+            {isCopyCompleted ?
+                    <div className={'copyCompleted'}>
+                        <div className={'copyCompleted-body'}>
+                            <p>{i18n.t("link_copy_completed")}</p>
+                            <CheckCircleIcon/>
+                        </div>
+                    </div>
+                : null}
             <div className={'detailBody'}>
                 <div className={'detailBody-title'}>
                     <p>{location.state.houseName}</p>
@@ -141,10 +156,6 @@ function HouseDetailScreen() {
                     </div>
                 </div>
             </div>: null}
-            {isCopyCompleted ? <div className={'copyCompleted'}>
-                <p>{i18n.t("link_copy_completed")}</p>
-                <CheckCircleIcon/>
-            </div> : null}
         </div>
     );
 }

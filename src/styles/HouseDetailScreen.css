@@ -160,8 +160,11 @@
     background-color: rgb(190, 190, 190);
 }
 .copyCompleted {
-    position: absolute;
+    position: sticky;
     top: 90vh;
+}
+.copyCompleted-body {
+    position: absolute;
     left: 45vw;
     width: 10vw;
     display: flex;
@@ -170,13 +173,13 @@
     padding: 1vh 1vw 1vh 1vw;
     border-radius: 10px;
 }
-.copyCompleted > p {
+.copyCompleted-body > p {
     font-size: 14px;
     line-height: 2.5vh;
     margin-left: auto;
     margin-right: 1vw;
 }
-.copyCompleted > svg {
+.copyCompleted-body > svg {
     color: green;
     margin-right: auto;
 }
