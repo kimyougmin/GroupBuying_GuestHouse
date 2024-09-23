@@ -17,7 +17,7 @@
     }
     .card-grid {
         grid-template-columns: 20vw 20vw 20vw 20vw;
-        grid-template-rows: 25vw 25vw 25vw;
+        grid-template-rows: 25vw;
         gap: 3vh 3.5vw;
     }
 }
@@ -27,7 +27,7 @@
     }
     .card-grid {
         grid-template-columns: 27vw 27vw 27vw;
-        grid-template-rows: 32vw 32vw 32vw;
+        grid-template-rows: 32vw;
         gap: 3vh 3.5vw;
     }
 }
@@ -37,7 +37,7 @@
     }
     .card-grid {
         grid-template-columns: 41vw 41vw;
-        grid-template-rows: 52vw 52vw;
+        grid-template-rows: 47vw;
         gap: 3vh 3.5vw;
     }
 }

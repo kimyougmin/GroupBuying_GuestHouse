@@ -43,7 +43,6 @@ function MainScreen() {
     }
 
     const fetchBoxList = React.useCallback( () => {
-        console.log(page)
         let size: number = 10
         if (window.innerWidth <= 1477 && window.innerWidth > 1127) size = 8
         else if (window.innerWidth <= 1127 && window.innerWidth > 950) size = 6

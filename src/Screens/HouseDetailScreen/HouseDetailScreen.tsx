@@ -119,7 +119,7 @@ function HouseDetailScreen() {
                         </div>
                         <p>{detailDate.houseExplanation}</p>
                     </div>
-                    <div>
+                    <div className={'detailBody-mainRight'}>
                         <CalenderContextProvider>
                             <PaymentUi />
                         </CalenderContextProvider>

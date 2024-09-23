@@ -2,9 +2,9 @@
     --gp-section-top-margin: 32;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 12px;
-    width: 316px;
+    width: 88%;
     height: 35vh;
-    padding: 24px;
+    padding: 2vw;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 }
 .payment-header {
