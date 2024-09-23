@@ -8,7 +8,16 @@ import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManager
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {useNavigate} from "react-router-dom";
 
-function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
+interface cardProps {
+    houseImages: {'url': string}[]
+    id: number | null
+    houseName: string
+    price: number
+    like: boolean
+    onScreenMoveHandler: () => void
+}
+
+function GuestHouseCard({houseImages, id, houseName, price, like, onScreenMoveHandler}: cardProps) {
     const [cardDate, setCardDate] = React.useState<CardType>({
         houseImages: houseImages,
         id: id,
@@ -79,6 +88,7 @@ function GuestHouseCard({houseImages, id, houseName, price, like}: CardType) {
         if(target.id === 'images-next' || target.id === 'images-before' || target.id === 'card-favoriteBorderIcon' || target.id === 'card-favoriteIcon') {
             return;
         }
+        onScreenMoveHandler()
         navi(`/rooms/${id}`, {
             state: {
                 houseImages: houseImages,

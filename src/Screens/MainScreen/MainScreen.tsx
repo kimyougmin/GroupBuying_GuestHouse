@@ -12,16 +12,23 @@ import LanguageModal from "../../components/LanguageModal";
 
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
-    const [cookies,,] = useCookies(['userToken']);
+    const [cookies,setCookie, rmCookie] = useCookies(['userToken', 'renderCookie']);
     const {isLoginModal, isLanguageModal} = React.useContext(HeaderModalManagerBaseDate);
     const [mainCard, setMainCard] = React.useState<CardType[]>([]);
     const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);
     const [page, setPage] = React.useState(0);
 
     React.useEffect(() => {
-        houseDateJoinInit();
-    }, [cookies.userToken]);
-
+        if (cookies.renderCookie === undefined) {
+            houseDateJoinInit();
+            return;
+        }
+        setMainCard(cookies.renderCookie.mainCardArray);
+        setIsObserver(false);
+        setTimeout(() => {
+            window.scrollTo(0, cookies.renderCookie.topPoint);
+        }, 20)
+    },[])
     const houseDateJoinInit = () => {
         const date:CardType[] = [];
         fetch(`${process.env.REACT_APP_MAIN_HOUSE}`, {
@@ -79,7 +86,12 @@ function MainScreen() {
         fetchMore: fetchBoxList,
         hasMore: true,
     });
-
+    const onScreenMoveHandler = () =>{
+        setCookie("renderCookie", {
+            mainCardArray: mainCard,
+            topPoint: document.body.scrollHeight - window.innerHeight
+        })
+    }
     return (
         <div>
             <HeaderSearch/>
@@ -87,7 +99,7 @@ function MainScreen() {
                 <div className={'card-grid'}>
                     {mainCard.map((e, index) => {
                         return <GuestHouseCard key={index} houseImages={e.houseImages} houseName={e.houseName}
-                                               price={e.price} id={e.id} like={false}/>
+                                               price={e.price} id={e.id} like={false} onScreenMoveHandler={onScreenMoveHandler}/>
                     })}
                 </div>
             </div>

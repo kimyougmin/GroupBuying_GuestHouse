@@ -29,7 +29,6 @@ function HouseDetailScreen() {
         hostImage: "",
         houseExplanation: ""
     });
-
     React.useEffect(() => {
         setDetailDate(DetailScreenFetchModel);
     }, [])
