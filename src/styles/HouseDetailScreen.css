@@ -1,5 +1,6 @@
 .detailBody{
-    width: 86%;
+    width: 1120px;
+    margin: 0 auto 0 auto;
     padding: 3vh 7vw 3vh 7vw;
 }
 .detailBody-title {
@@ -16,7 +17,7 @@
 .detailBody-title > div > div {
     display: flex;
     line-height: 23px;
-    width: 5vw;
+    width: 70px;
     height: 3vh;
     text-align: center;
 }
@@ -49,9 +50,9 @@
     margin-right: 0 !important;
 }
 .detailBody-imagesTable > div:nth-child(3) > a >  div:nth-child(1) {
-    border-radius: 0 0 20px 0;
+    border-radius: 0 20px 0 0;
 }
-.detailBody-imagesTable > div:nth-child(3) > a > div:nth-child(3) {
+.detailBody-imagesTable > div:nth-child(3) > a:nth-child(2) > div:nth-child(1) {
     border-radius: 0 0 20px 0;
 }
 .detailBody-imagesTable > div:nth-child(3) > a:nth-child(1) > img {
@@ -83,11 +84,11 @@
 }
 .imagesTable-col > a > div{
     position: absolute;
-    width: 21vw;
+    width: 274.4px;
     height: 25.4vh;
 }
 .imagesTable-col > a > img{
-    width: 21vw;
+    width: 100%;
     height: 25.4vh;
     margin-bottom: 0.8vh;
 }
@@ -185,11 +186,11 @@
 }
 .detailBody-main {
     padding-top: 3vh;
-    width: 100%;
+    width: 1120px;
     display: flex;
 }
 .detailBody-main > .detailBody-mainLeft {
-    width: 55%;
+    width: 840px;
     margin-right: 10%;
 }
 .detailBody-mainLeft > p:nth-child(1){
