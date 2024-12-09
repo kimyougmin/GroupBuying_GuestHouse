@@ -12,7 +12,7 @@ import LanguageModal from "../../components/LanguageModal";
 
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
-    const [cookies,setCookie, rmCookie] = useCookies(['userToken', 'renderCookie']);
+    const [cookies,setCookie] = useCookies(['userToken', 'renderCookie']);
     const {isLoginModal, isLanguageModal} = React.useContext(HeaderModalManagerBaseDate);
     const [mainCard, setMainCard] = React.useState<CardType[]>([]);
     const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);

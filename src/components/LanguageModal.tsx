@@ -3,7 +3,7 @@ import i18n from "../utils/i18n";
 import CloseIcon from "@mui/icons-material/Close";
 import {Button} from "@mui/material";
 import {HeaderModalManagerBaseDate} from "../useContext/HeaderModalManagerBaseDate";
-import '../../../groupbuying_gusethouse/src/styles/LanguageModal.css'
+import '../styles/LanguageModal.css'
 
 function LanguageModal() {
     const languageModalRef = React.useRef<HTMLDivElement>(null);
