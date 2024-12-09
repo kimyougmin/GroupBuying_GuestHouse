@@ -15,7 +15,7 @@
 .header-searchBox {
     display: flex;
     width: 800px;
-    height: 6.5vh;
+    height: 60px;
     margin: 20px auto 20px auto;
     line-height: 20px;
     border-radius: 50px;
@@ -27,7 +27,7 @@
     0 16px 32px rgba(0,0,0,0.07);
 }
 .header-searchBox > div {
-    padding: 1vh 0 0 7px;
+    padding: 7px 0 0 7px;
 }
 .header-searchBox > div > div > p:nth-child(1) {
     margin-left: 10px;
@@ -45,8 +45,8 @@
     width: 15%;
 }
 .header-searchBox > div > .left-block {
-    height: 4vh;
-    margin-top: 3px;
+    height: 70%;
+    margin-top: 2px;
     border-left: 1px solid rgba(195,195,195, 0.5);
 }
 .header-searchBox > div:hover {
@@ -59,18 +59,18 @@
 }
 .searchIcon-background{
     border: 0 !important;
-    width: 2.5em !important;
-    margin: 7px 7px 0 0;
-    height: 2.5em !important;
+    width: 40px !important;
+    margin: 6px 7px 0 0;
+    height: 40px !important;
     border-radius: 50px;
     background-color: rgb(235, 76, 96);
     text-align: center;
-    align-content: center;
 }
 .header-searchIcon {
-    width: 1.3em !important;
-    height: 1.3em !important;
+    width: 31px !important;
+    height: 31px !important;
     color: white;
+    margin-top: 2px;
 }
 .header-right {
     line-height: 45px;
@@ -111,8 +111,8 @@
         0 4px 8px rgba(0,0,0,0.07),
         0 8px 16px rgba(0,0,0,0.07),
         0 16px 32px rgba(0,0,0,0.07);
-        height: 4vh;
-        padding: 0.7vh 0 0 1vh;
+        height: 35px;
+        padding: 3px 0 3px 1vh;
     }
     .mini-searchBox > svg:nth-child(1){
         width: 1.5em;

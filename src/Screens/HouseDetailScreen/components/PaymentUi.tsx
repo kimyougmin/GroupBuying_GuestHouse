@@ -6,7 +6,6 @@ import {Button} from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CloseIcon from '@mui/icons-material/Close';
 import {useLocation} from "react-router-dom";
-
 function PaymentUi() {
     const {isCalenderModal, setIsCalenderModal, checkIn, checkOut, count, setCount} = React.useContext(CalenderContext);
     const [isSelectDay, setIsSelectDay] = React.useState<boolean>(true);

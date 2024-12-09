@@ -71,7 +71,7 @@ function HouseDetailScreen() {
         if (i18n.language === "jp") return <p style={{display: 'flex'}}>ホスト: {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}さん</p>
     }
     return (
-        <div>
+        <div className={'detailScreen'}>
         <HouseDetailHeader />
             {isCopyCompleted ?
                     <div className={'copyCompleted'}>

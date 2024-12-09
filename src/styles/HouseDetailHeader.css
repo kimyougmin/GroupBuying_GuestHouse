@@ -1,5 +1,4 @@
 .houseDetailHeader {
-    width: 1120px;
     display: flex;
     margin: 0 auto 0 auto !important;
     padding: 3vh 7vw 3vh 7vw;
@@ -8,4 +7,14 @@
 }
 .header-right {
     margin-right: 0 !important;
+}
+@media (max-width: 1300px) {
+    .houseDetailHeader {
+        width: 86%;
+    }
+}
+@media (max-width: 1128px) {
+    .houseDetailHeader {
+        width: 90%;
+    }
 }
