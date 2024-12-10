@@ -29,25 +29,27 @@ function HouseDetailHeader() {
 
     return (
         <div className={'houseDetailHeader'}>
-            <Link to={'/'}>
-                <p>guestHouse</p>
-            </Link>
-            <div></div>
-            <div className={"header-right"}>
-                <p>{i18n.t("guestHouse_registration")}</p>
-                <LanguageIcon onClick={() => setIsLanguageModal(true)}/>
-                {cookies.userToken ?
-                    <div className={"header-userList"} onClick={() => setIsUserModal(true)}>
-                        <ListIcon/>
-                        <img src={profileImg}/>
-                    </div> :
-                    <div className={"header-userList"} onClick={() => setIsUserModal(true)}>
-                        <ListIcon/>
-                        <AccountCircleIcon/>
-                    </div>}
+            <div className={'houseDetailHeader-body'}>
+                <Link to={'/'}>
+                    <p>guestHouse</p>
+                </Link>
+                <div></div>
+                <div className={"header-right"}>
+                    <p>{i18n.t("guestHouse_registration")}</p>
+                    <LanguageIcon onClick={() => setIsLanguageModal(true)}/>
+                    {cookies.userToken ?
+                        <div className={"header-userList"} onClick={() => setIsUserModal(true)}>
+                            <ListIcon/>
+                            <img src={profileImg}/>
+                        </div> :
+                        <div className={"header-userList"} onClick={() => setIsUserModal(true)}>
+                            <ListIcon/>
+                            <AccountCircleIcon/>
+                        </div>}
+                </div>
+                {isUserModal && !cookies.userToken ? <GuestModal/> : null}
+                {isUserModal && cookies.userToken ? <UserModal/> : null}
             </div>
-            {isUserModal && !cookies.userToken ? <GuestModal/>: null}
-            {isUserModal && cookies.userToken ? <UserModal/>: null}
         </div>
     );
 }
