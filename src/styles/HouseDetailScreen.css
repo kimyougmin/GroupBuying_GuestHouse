@@ -89,11 +89,12 @@
 .imagesTable-col > a > img{
     width: 100%;
     height: 49%;
-    margin-bottom: 7px;
 }
-.imagesTable-col > a > div{
-    margin-bottom: 0.8vh;
+.imagesTable-col > a:nth-child(1) > img{
+    margin-bottom: 8px;
 }
+
+
 .divImage-hover {
     position: sticky;
     z-index: 1;
@@ -222,8 +223,23 @@
     .detailBody-main {
         width: 100%;
     }
+    .imagesTable-col > a  {
+        width: 100%;
+        height: 19%;
+    }
     .imagesTable-col > a > div {
-        width: 21%;
+        width: 23vw;
+        height: 22.6vw;
+    }
+    .imagesTable-col > a:nth-child(1) > img {
+        margin-bottom: 2% !important;
+    }
+    .detailBody-imagesTable {
+        height: 46vw;
+    }
+    .imagesTable-first > a > div {
+        width: 46vw;
+        height: 46vw;
     }
     .detailBody-main > .detailBody-mainLeft {
         width: 60%;
