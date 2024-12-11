@@ -40,7 +40,7 @@ function LanguageModal() {
 
     const onLanguageModalClickHandler = (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement
-        if (target.className === "languageSelector-modal") {
+        if (target.className === "languageModal-background") {
             setIsLanguageModal(false);
         }
     }
@@ -49,21 +49,23 @@ function LanguageModal() {
         setIsLanguageModal(false);
     }
     return (
-        <div className={'languageSelector-modal'} ref={languageModalRef} onClick={(e) => {
+        <div className={'languageModal-background'} ref={languageModalRef} onClick={(e) => {
             onLanguageModalClickHandler(e)
         }}>
-            <div>
-                <div>
-                    <div/>
-                    <p>{i18n.t("select_language")}</p>
-                    <CloseIcon onClick={() => setIsLanguageModal(false)}/>
+            <div className={"languageModal-width"}>
+                <div className={"languageModal-body"}>
+                    <div>
+                        <div/>
+                        <p>{i18n.t("select_language")}</p>
+                        <CloseIcon onClick={() => setIsLanguageModal(false)}/>
+                    </div>
+                    <Button variant="outlined" color={'inherit'}
+                            onClick={() => onChangeLanguage('ko')}>한국어<br/>대한민국</Button>
+                    <Button variant="outlined" color={'inherit'}
+                            onClick={() => onChangeLanguage('en')}>english<br/>U.S.A</Button>
+                    <Button variant="outlined" color={'inherit'}
+                            onClick={() => onChangeLanguage('jp')}>日本語<br/>日本</Button>
                 </div>
-                <Button variant="outlined" color={'inherit'}
-                        onClick={() => onChangeLanguage('ko')}>한국어<br/>대한민국</Button>
-                <Button variant="outlined" color={'inherit'}
-                        onClick={() => onChangeLanguage('en')}>english<br/>U.S.A</Button>
-                <Button variant="outlined" color={'inherit'}
-                        onClick={() => onChangeLanguage('jp')}>日本語<br/>日本</Button>
             </div>
         </div>
     );

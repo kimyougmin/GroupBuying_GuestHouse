@@ -31,12 +31,14 @@ function GuestModal() {
         setIsLoginModal(true);
     }
     return (
-        <div className={"guestUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
-            <p onClick={onLoginModalHandler}>{i18n.t("login")}</p>
-            <p onClick={onLoginModalHandler}>{i18n.t("sign_up")}</p>
-            <div/>
-            <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
-            <p>{i18n.t("help_center")}</p>
+        <div className={"guestUser-background"}>
+            <div className={"guestUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
+                <p onClick={onLoginModalHandler}>{i18n.t("login")}</p>
+                <p onClick={onLoginModalHandler}>{i18n.t("sign_up")}</p>
+                <div/>
+                <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
+                <p>{i18n.t("help_center")}</p>
+            </div>
         </div>
     );
 }

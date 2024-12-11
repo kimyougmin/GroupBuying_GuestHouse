@@ -33,14 +33,16 @@ function UserModal() {
         setIsUserModal(false);
     }
     return (
-        <div className={"loginUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
-            <p>{i18n.t("my_travel")}</p>
-            <div/>
-            <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
-            <p>{i18n.t("my_account")}</p>
-            <div/>
-            <p onClick={logoutHandler}>{i18n.t("log_out")}</p>
-            <p>{i18n.t("help_center")}</p>
+        <div className={"loginUser-background"}>
+            <div className={"loginUser"} ref={userModalRef} onClick={(e) => outSideClick(e)}>
+                <p>{i18n.t("my_travel")}</p>
+                <div/>
+                <p>{i18n.t("turn_your_space_into_a_guesthouse")}</p>
+                <p>{i18n.t("my_account")}</p>
+                <div/>
+                <p onClick={logoutHandler}>{i18n.t("log_out")}</p>
+                <p>{i18n.t("help_center")}</p>
+            </div>
         </div>
     );
 }

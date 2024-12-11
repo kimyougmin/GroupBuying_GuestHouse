@@ -1,7 +1,6 @@
 .guestUser {
+    z-index: 10;
     position: absolute;
-    z-index: 5;
-    top: 78px;
     right: 0;
     width: 25vh;
     height: 21vh;
@@ -13,6 +12,11 @@
     0 4px 8px rgba(0,0,0,0.07),
     0 8px 16px rgba(0,0,0,0.07),
     0 16px 32px rgba(0,0,0,0.07);
+}
+.guestUser-background {
+    position: absolute;
+    top: 78px;
+    width: 1120px;
 }
 .guestUser > p {
     padding:0 0 0 6px;
@@ -38,8 +42,7 @@
 }
 .loginUser {
     position: absolute;
-    z-index: 1;
-    top: 78px;
+    z-index: 10;
     right: 0;
     width: 25vh;
     height: 26vh;
@@ -51,6 +54,11 @@
     0 4px 8px rgba(0,0,0,0.07),
     0 8px 16px rgba(0,0,0,0.07),
     0 16px 32px rgba(0,0,0,0.07);
+}
+.loginUser-background {
+    position: absolute;
+    top: 78px;
+    width: 1120px;
 }
 .loginUser > p {
     padding:0 0 0 6px;
