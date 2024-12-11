@@ -43,7 +43,7 @@ export default function HeaderSearch() {
 
     return (
         <div className={"header"}>
-            {width < 830 ?
+            {width < 880 ?
                 <div className={'mini-searchBox'}>
                     <SearchIcon/>
                     <p>{i18n.t('Where_going_trip')}</p>

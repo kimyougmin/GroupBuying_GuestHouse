@@ -1,9 +1,9 @@
 .header {
     z-index: -1;
     display: block;
-    width: 98vw;
+    width: 90vw;
+    padding: 0 5vw 0 5vw;
     height: 19vh;
-    padding: 0 1vw 0 1vw;
     border-bottom: 1px solid rgb(235,235,235);
 }
 .header-1layer {
@@ -100,7 +100,7 @@
     width: 1.5em !important;
     height: 1.5em !important;
 }
-@media (max-width: 830px) {
+@media (max-width: 880px) {
     .header {
         height: 7vh;
         padding-top: 2vh;
