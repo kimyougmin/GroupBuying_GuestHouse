@@ -8,16 +8,14 @@
     display: flex;
     justify-content: space-between;
 }
+.houseDetailHeader-body > a > img{
+    width: 50px;
+    height: 50px;
+}
 .header-right {
     margin-right: 0 !important;
 }
 @media (max-width: 1300px) {
-    .houseDetailHeader {
-        width: 86%;
-    }
 }
 @media (max-width: 1128px) {
-    .houseDetailHeader {
-        width: 90%;
-    }
 }

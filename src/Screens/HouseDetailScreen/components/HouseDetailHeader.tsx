@@ -9,6 +9,7 @@ import "../../../styles/HouseDetailHeader.css"
 import UserModal from "../../../components/UserModal";
 import GuestModal from "../../../components/GuestModal";
 import {Link} from "react-router-dom";
+import Logo from "../../../gg_logo.png";
 
 function HouseDetailHeader() {
     const {setIsLanguageModal, setIsUserModal} = React.useContext(HeaderModalManagerBaseDate);
@@ -31,7 +32,7 @@ function HouseDetailHeader() {
         <div className={'houseDetailHeader'}>
             <div className={'houseDetailHeader-body'}>
                 <Link to={'/'}>
-                    <p>guestHouse</p>
+                    <img src={Logo}/>
                 </Link>
                 <div></div>
                 <div className={"header-right"}>

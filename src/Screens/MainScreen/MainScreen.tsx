@@ -10,6 +10,7 @@ import i18n from "../../utils/i18n";
 import useInfiniteScrolling from "../../hooks/useInfiniteScrolling";
 import LanguageModal from "../../components/LanguageModal";
 
+
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
     const [cookies,setCookie] = useCookies(['userToken', 'renderCookie']);

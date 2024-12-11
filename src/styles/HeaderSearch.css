@@ -12,6 +12,10 @@
     justify-content: space-between;
     padding: 2vh 0 0 0;
 }
+.header-left > img{
+    width: 50px;
+    height: 50px;
+}
 .header-searchBox {
     display: flex;
     width: 800px;
@@ -63,7 +67,7 @@
     margin: 6px 7px 0 0;
     height: 40px !important;
     border-radius: 50px;
-    background-color: rgb(235, 76, 96);
+    background-color: rgb(245, 140, 18);
     text-align: center;
 }
 .header-searchIcon {

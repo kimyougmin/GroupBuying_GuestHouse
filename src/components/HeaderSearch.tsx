@@ -9,6 +9,7 @@ import {useCookies} from "react-cookie";
 import UserModal from "./UserModal";
 import GuestModal from "./GuestModal";
 import {HeaderModalManagerBaseDate} from "../useContext/HeaderModalManagerBaseDate";
+import Logo from "../gg_logo.png";
 
 
 export default function HeaderSearch() {
@@ -50,7 +51,7 @@ export default function HeaderSearch() {
                 <>
                     <div className={'header-1layer'}>
                         <div className={"header-left"}>
-                            <p>guestHouse</p>
+                            <img src={Logo}/>
                         </div>
                         <div>
                         </div>
