@@ -214,9 +214,10 @@
     font-size: 17px;
     line-height: 3vh;
 }
-@media (max-width: 1300px) {
+@media (max-width: 1130px) {
     .detailBody {
-        width: 86%;
+        width: 94%;
+        padding: 0 !important;
     }
     .detailBody-main {
         width: 100%;
@@ -225,14 +226,14 @@
         width: 21%;
     }
     .detailBody-main > .detailBody-mainLeft {
-        width: 50%;
+        width: 60%;
         margin-right: 10%;
     }
-}
-@media (max-width: 1128px) {
-    .detailBody {
-        width: 93%;
-        padding: 3vh 3.5vw 3vh 3.5vw;
+    .detailBody-mainRight{
+        width: 30%;
     }
-
+    .detailBody-mainRight > div{
+        width: 100%;
+        float: right;
+    }
 }
