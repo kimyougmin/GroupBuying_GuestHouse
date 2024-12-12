@@ -28,5 +28,7 @@
   "house_share": "Share your accommodation",
   "link_copy": "copy link",
   "copy_error": "copy error",
-  "link_copy_completed": "Link copy completed"
+  "link_copy_completed": "Link copy completed",
+  "host": "host",
+  "back": "go back"
 }
