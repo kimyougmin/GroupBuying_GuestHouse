@@ -17,7 +17,7 @@ function HouseDetailHeader({setIsShareModal, imageLikeEventHandler}: props) {
     const {setIsLanguageModal} = React.useContext(HeaderModalManagerBaseDate);
     return (
         <div className={'houseDetailHeader'}>
-            <div className={'houseDetailHeader-body'}>
+            <div className={'houseDetailHeader-body-m'}>
                 <Link to={'/'}>
                     <ArrowBackIosNewIcon/>
                     <p>{i18n.t("back")}</p>

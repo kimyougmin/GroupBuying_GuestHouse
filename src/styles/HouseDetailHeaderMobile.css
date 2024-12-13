@@ -1,19 +1,21 @@
 .houseDetailHeader{
     border-bottom: 1px solid rgb(230, 230, 230);
 }
-.houseDetailHeader-body {
-    width: 94% !important;
+.houseDetailHeader-body-m {
+    width: 94%;
+    padding: 20px 0 15px 0;
+    display: flex;
     justify-content: space-between;
 }
-.houseDetailHeader-body > a {
+.houseDetailHeader-body-m > a {
     display: flex;
     color: black;
     text-decoration-line: none;
 }
-.houseDetailHeader-body > a > p {
+.houseDetailHeader-body-m > a > p {
     margin-left: 10px;
     line-height: 30px;
 }
-.houseDetailHeader-body > div:nth-child(3) > svg {
+.houseDetailHeader-body-m > div:nth-child(3) > svg {
     margin-left: 20px;
 }
