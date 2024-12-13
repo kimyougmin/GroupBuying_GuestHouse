@@ -15,6 +15,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PaymentUi from "./components/PaymentUi";
 import {CalenderContextProvider} from "../../useContext/CalenderContext";
 import DetailScreenFetchModel from "../../TestModel/DetailScreenFetchModel";
+import HouseDetailHeaderMobile from "./components/HouseDetailHeaderMobile";
 
 function HouseDetailScreen() {
     const location = useLocation();
@@ -29,30 +30,45 @@ function HouseDetailScreen() {
         hostImage: "",
         houseExplanation: ""
     });
+    const [width, setWidth] = React.useState(window.innerWidth);
+
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+    };
+
     React.useEffect(() => {
         setDetailDate(DetailScreenFetchModel);
         window.scrollTo(0,0);
-    }, [])
+        window.addEventListener("resize", handleResize);
+        return () => {
+            // cleanup
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     React.useEffect(() => {
         if (isShareModal){
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
         }
-    }, [isShareModal])
+    }, [isShareModal]);
+
     const imageLikeEventHandler = () => {
         if (!cookies.userToken) {
             setIsLoginModal(true);
             return;
         }
-    }
+    };
+
     const onShareClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
         if (target.className !== "shareModal_back") {
             return;
         }
         setIsShareModal(false);
-    }
+    };
+
     const onUrlCopyHandler = async () => {
         try {
             await navigator.clipboard.writeText(location.pathname);
@@ -64,15 +80,17 @@ function HouseDetailScreen() {
         } catch {
             alert(i18n.t("copy_error"));
         }
-    }
+    };
+
     const hostNameHandler = () => {
         if (i18n.language === "ko") return <p style={{display: 'flex'}}>호스트: {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}님</p>
         if (i18n.language === "en") return <p style={{display: 'flex'}}>Hosted by {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}</p>
         if (i18n.language === "jp") return <p style={{display: 'flex'}}>ホスト: {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}さん</p>
-    }
+    };
+
     return (
         <div className={'detailScreen'}>
-        <HouseDetailHeader />
+            {width < 780 ? <HouseDetailHeaderMobile setIsShareModal={setIsShareModal} imageLikeEventHandler={imageLikeEventHandler}/> : <HouseDetailHeader />}
             {isCopyCompleted ?
                     <div className={'copyCompleted'}>
                         <div className={'copyCompleted-body'}>
