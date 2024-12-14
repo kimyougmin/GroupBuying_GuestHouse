@@ -9,3 +9,6 @@ Main Screen
 
 # UseCase
 ![스크린샷 2024-12-11 오후 10 22 21](https://github.com/user-attachments/assets/cf21e48e-a5d3-4c03-9b35-ab30a19d21dd)
+
+# 가장 신경 쓴 부분
+![무제](https://github.com/user-attachments/assets/b82e5110-cd2f-4ff6-8a95-1e9727ebe888)
