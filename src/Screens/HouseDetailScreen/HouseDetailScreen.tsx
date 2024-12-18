@@ -87,7 +87,6 @@ function HouseDetailScreen() {
         if (i18n.language === "en") return <p style={{display: 'flex'}}>Hosted by {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}</p>
         if (i18n.language === "jp") return <p style={{display: 'flex'}}>ホスト: {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}さん</p>
     };
-
     return (
         <div className={'detailScreen'}>
             {width < 780 ? <HouseDetailHeaderMobile setIsShareModal={setIsShareModal} imageLikeEventHandler={imageLikeEventHandler}/> : <HouseDetailHeader />}
@@ -99,65 +98,84 @@ function HouseDetailScreen() {
                         </div>
                     </div>
                 : null}
-            <div className={'detailBody'}>
-                <div className={'detailBody-title'}>
-                    <p>{location.state.houseName}</p>
+            {width < 780 ? (
+                <div className={"detailBody-m"}>
+                    <div className={'detailImage'}>
+                        <div className={"detailImage-mask"}>
+                            <div>
+
+                            </div>
+                            <div>
+                                <p>{}</p>
+                            </div>
+                        </div>
+
+                    </div>
                     <div>
-                        <div onClick={() => setIsShareModal(true)}>
-                            <OutboxIcon />
-                            <p>{i18n.t("share")}</p>
-                        </div>
-                        {/*찜하기 기능 구현시 추가 구현*/}
-                        <div onClick={imageLikeEventHandler}>
-                            <FavoriteBorderIcon />
-                            <p>{i18n.t("like")}</p>
-                        </div>
+
                     </div>
-                </div>
-                <div className={'detailBody-imagesTable'}>
-                    <div className={'imagesTable-first'}>
-                        <Link to={`/rooms/${location.state.id}/images`}>
-                            <div className={'divImage-hover'}/>
-                            <img src={location.state.houseImages[0].url}/>
-                        </Link>
-                    </div>
-                    <div className={'imagesTable-col'}>
-                        <Link to={`/rooms/${location.state.id}/images`}>
-                            <div className={'divImage-hover'}/>
-                            <img src={location.state.houseImages[1].url}/>
-                        </Link>
-                        <Link to={`/rooms/${location.state.id}/images`}>
-                            <div className={'divImage-hover'}/>
-                            <img src={location.state.houseImages[2].url}/>
-                        </Link>
-                    </div>
-                    <div className={'imagesTable-col'}>
-                        <Link to={`/rooms/${location.state.id}/images`}>
-                            <div className={'divImage-hover'}/>
-                            <img src={location.state.houseImages[3].url}/>
-                        </Link>
-                        <Link to={`/rooms/${location.state.id}/images`}>
-                            <div className={'divImage-hover'}/>
-                            <img src={location.state.houseImages[4].url}/>
-                        </Link>
-                    </div>
-                </div>
-                <div className={'detailBody-main'}>
-                    <div className={'detailBody-mainLeft'}>
-                        <p>{detailDate.detailTitle}</p>
+                </div>) :
+
+                (<div className={'detailBody'}>
+                    <div className={'detailBody-title'}>
+                        <p>{location.state.houseName}</p>
                         <div>
-                            <img src={detailDate.hostImage}/>
-                            {hostNameHandler()}
+                            <div onClick={() => setIsShareModal(true)}>
+                                <OutboxIcon />
+                                <p>{i18n.t("share")}</p>
+                            </div>
+                            {/*찜하기 기능 구현시 추가 구현*/}
+                            <div onClick={imageLikeEventHandler}>
+                                <FavoriteBorderIcon />
+                                <p>{i18n.t("like")}</p>
+                            </div>
                         </div>
-                        <p>{detailDate.houseExplanation}</p>
                     </div>
-                    <div className={'detailBody-mainRight'}>
-                        <CalenderContextProvider>
-                            <PaymentUi />
-                        </CalenderContextProvider>
+                    <div className={'detailBody-imagesTable'}>
+                        <div className={'imagesTable-first'}>
+                            <Link to={`/rooms/${location.state.id}/images`}>
+                                <div className={'divImage-hover'}/>
+                                <img src={location.state.houseImages[0].url}/>
+                            </Link>
+                        </div>
+                        <div className={'imagesTable-col'}>
+                            <Link to={`/rooms/${location.state.id}/images`}>
+                                <div className={'divImage-hover'}/>
+                                <img src={location.state.houseImages[1].url}/>
+                            </Link>
+                            <Link to={`/rooms/${location.state.id}/images`}>
+                                <div className={'divImage-hover'}/>
+                                <img src={location.state.houseImages[2].url}/>
+                            </Link>
+                        </div>
+                        <div className={'imagesTable-col'}>
+                            <Link to={`/rooms/${location.state.id}/images`}>
+                                <div className={'divImage-hover'}/>
+                                <img src={location.state.houseImages[3].url}/>
+                            </Link>
+                            <Link to={`/rooms/${location.state.id}/images`}>
+                                <div className={'divImage-hover'}/>
+                                <img src={location.state.houseImages[4].url}/>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div className={'detailBody-main'}>
+                        <div className={'detailBody-mainLeft'}>
+                            <p>{detailDate.detailTitle}</p>
+                            <div>
+                                <img src={detailDate.hostImage}/>
+                                {hostNameHandler()}
+                            </div>
+                            <p>{detailDate.houseExplanation}</p>
+                        </div>
+                        <div className={'detailBody-mainRight'}>
+                            <CalenderContextProvider>
+                                <PaymentUi />
+                            </CalenderContextProvider>
+                        </div>
+                    </div>
+                </div>)
+            }
             {isLoginModal ? <LoginModal/> : null}
             {isLanguageModal ? <LanguageModal/> : null}
             {isShareModal ? <div className={"shareModal_back"} ref={shareModalRef} onClick={onShareClickHandler}>

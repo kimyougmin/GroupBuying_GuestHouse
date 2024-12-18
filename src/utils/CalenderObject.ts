@@ -1,9 +1,9 @@
 import CurrentDay from "./CurrentDay";
 import MonthDateType from "../types/MonthDateType";
-import CalenderObjectType from "../TextModel/CalenderObjectType";
+import CalenderObjectType from "../TestModel/CalenderObjectType";
 
 export default function CalenderObject({year, month, reservation}: CalenderObjectType){
-    let array: MonthDateType[] = []
+    const array: MonthDateType[] = []
     const currentDate = CurrentDay();
     const firstDate = new Date(year, month -1, 1);
     const lastDate = new Date(year, month , 0);

@@ -4,6 +4,7 @@
 .houseDetailHeader-body-m {
     width: 94%;
     padding: 20px 0 15px 0;
+    margin: 0 auto 0 auto;
     display: flex;
     justify-content: space-between;
 }

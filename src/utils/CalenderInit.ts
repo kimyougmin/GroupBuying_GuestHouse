@@ -1,6 +1,6 @@
 import CurrentDay from "./CurrentDay";
 import NextMont from "./NextMonth";
-import TestModelReservedData from "../TextModel/TestModelReservedData";
+import TestModelReservedData from "../TestModel/TestModelReservedData";
 import CalenderObject from "./CalenderObject";
 
 const CalenderInit = () => {

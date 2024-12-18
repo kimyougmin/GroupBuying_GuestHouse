@@ -3,7 +3,7 @@ import '../../../styles/CalenderModal.css'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CalenderObject from "../../../utils/CalenderObject";
 import CurrentDay from "../../../utils/CurrentDay";
-import TestModelReservedData from "../../../TextModel/TestModelReservedData";
+import TestModelReservedData from "../../../TestModel/TestModelReservedData";
 import NextMont from "../../../utils/NextMonth";
 import {CalenderContext} from "../../../useContext/CalenderContextDateBase";
 import CalenderSelectDay from "../../../utils/CalenderSelectDay";
