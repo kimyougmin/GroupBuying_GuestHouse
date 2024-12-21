@@ -1,12 +1,12 @@
 import React from 'react';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {CardType} from "../../../types/CardType";
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import "../../../styles/GuestHouseCard.css"
+import {useNavigate} from "react-router-dom";
 import {useCookies} from "react-cookie";
 import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 interface cardProps {
     houseImages: {'url': string}[]
@@ -17,7 +17,9 @@ interface cardProps {
     onScreenMoveHandler: () => void
 }
 
-function GuestHouseCard({houseImages, id, houseName, price, like, onScreenMoveHandler}: cardProps) {
+function GuestHouseCardDispersion( {houseImages, id, houseName, price, like, onScreenMoveHandler}: cardProps ) {
+    const [isFetch, ] = React.useState(false);
+
     const [cardDate, setCardDate] = React.useState<CardType>({
         houseImages: houseImages,
         id: id,
@@ -35,6 +37,18 @@ function GuestHouseCard({houseImages, id, houseName, price, like, onScreenMoveHa
         transition: `all 0.4s ease-in-out`,
     });
 
+    React.useEffect(() => {
+        initialCardFetch()
+            .then((res) => {console.log(res)})
+            .catch((error) => {console.log("GuestHouseCardDispersion", error)})
+    }, [])
+
+    const initialCardFetch = async () => {
+        await axios.get(`${process.env.REACT_APP_MAIN_HOUSE}`, {
+            headers: {"content-type": "application/json", "cardId": "1"},
+            timeout: 4000
+        });
+    }
     const cardMouseOverHandler = () => {
         setIsCodeHover(true);
     }
@@ -99,51 +113,64 @@ function GuestHouseCard({houseImages, id, houseName, price, like, onScreenMoveHa
             }
         });
     }
-    return (
-        <div className={'guestHouseCard'}>
-            <div className={'card-header'}>
-                <div className={"card-f"}>
-                    <div className={'card-imageBox'} style={style}>
-                        {cardDate.houseImages.map((item, index) => {
-                            return (
-                                <div key={index}>
-                                    <img src={item.url}/>
-                                </div>)
-                        })}
-                    </div>
-                </div>
-                <div style={{position: 'absolute', height: "0"}}>
-                    <div className={"card-eventItem"} onMouseOver={cardMouseOverHandler}
-                         onMouseOut={cardMouseOutHandler}
-                         onClick={(e) => cardClickHandler(e)}>
-                        <div className={"card-likeSVG"}>
-                            <div/>
-                            {cardDate.like && isLoginModal? <FavoriteIcon onClick={imageUnLikeEventHandler} id={'card-favoriteIcon'}/>:<FavoriteBorderIcon id={'card-favoriteBorderIcon'} onClick={imageLikeEventHandler}/>}
+    return (<div>
+        {isFetch? <div className={'guestHouseCard'}>
+                <div className={'card-header'}>
+                    <div className={"card-f"}>
+                        <div className={'card-imageBox'} style={style}>
+                            {cardDate.houseImages.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        <img src={item.url}/>
+                                    </div>)
+                            })}
                         </div>
-                        {isCodeHover ?
-                            <div>
-                                <div className={'card-slideSVG'}>
-                                    {imageCount !== 0 ?
-                                        <div className={'card-svgBackground'}>
-                                            <NavigateNextIcon id={'images-before'} onClick={imageSlideEventHandler}/>
-                                        </div> :
-                                        <div/>}
-                                    {imageCount !== 4 ?
-                                        <div className={'card-svgBackground'}>
-                                            <NavigateNextIcon id={'images-next'} onClick={imageSlideEventHandler}/>
-                                        </div> :
-                                        <div/>}
-                                </div>
-                            </div> : null}
+                    </div>
+                    <div style={{position: 'absolute', height: "0"}}>
+                        <div className={"card-eventItem"} onMouseOver={cardMouseOverHandler}
+                             onMouseOut={cardMouseOutHandler}
+                             onClick={(e) => cardClickHandler(e)}>
+                            <div className={"card-likeSVG"}>
+                                <div/>
+                                {cardDate.like && isLoginModal ?
+                                    <FavoriteIcon onClick={imageUnLikeEventHandler} id={'card-favoriteIcon'}/> :
+                                    <FavoriteBorderIcon id={'card-favoriteBorderIcon'} onClick={imageLikeEventHandler}/>}
+                            </div>
+                            {isCodeHover ?
+                                <div>
+                                    <div className={'card-slideSVG'}>
+                                        {imageCount !== 0 ?
+                                            <div className={'card-svgBackground'}>
+                                                <NavigateNextIcon id={'images-before'} onClick={imageSlideEventHandler}/>
+                                            </div> :
+                                            <div/>}
+                                        {imageCount !== 4 ?
+                                            <div className={'card-svgBackground'}>
+                                                <NavigateNextIcon id={'images-next'} onClick={imageSlideEventHandler}/>
+                                            </div> :
+                                            <div/>}
+                                    </div>
+                                </div> : null}
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div>
+                    <p>{cardDate.houseName}</p>
+                </div>
+                <p>₩{cardDate.price}/박</p>
+            </div> :
             <div>
-                <p>{cardDate.houseName}</p>
-            </div>
-            <p>₩{cardDate.price}/박</p>
-        </div>
-    );
+                <div>
+
+                </div>
+                <div>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>}
+    </div>);
 }
 
-export default GuestHouseCard
+export default GuestHouseCardDispersion;
+
+
