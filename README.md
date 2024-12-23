@@ -10,6 +10,14 @@ Main Screen
 # UseCase
 ![스크린샷 2024-12-11 오후 10 22 21](https://github.com/user-attachments/assets/cf21e48e-a5d3-4c03-9b35-ab30a19d21dd)
 
+# 컴포넌트 구조도
+
+## 메인 스크린
+![스크린샷 2024-12-23 오후 3 26 50](https://github.com/user-attachments/assets/4918cdda-4c10-471e-be86-8df740eb5558)
+
+
+
+
 # 가장 신경 쓴 부분
 ![무제](https://github.com/user-attachments/assets/b82e5110-cd2f-4ff6-8a95-1e9727ebe888)
 메인 페이지에서 데이터 조회와 랜더링에 평균 4000ms 정도 소비됩니다.
