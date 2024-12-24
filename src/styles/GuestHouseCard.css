@@ -93,7 +93,7 @@
 }
 .loading-Card > .loading-image{
     width: 100%;
-    height: 16vw;
+    height: 13vw;
     background-color: gray;
     -webkit-animation: bg-pan-left 8s both;
     animation: bg-pan-left 8s both;
@@ -129,7 +129,7 @@
         width: 17vw;
     }
     .loading-Card > .loading-image{
-        height: 20vw;
+        height: 16vw;
     }
     .card-likeSVG {
         width: 16vw;
@@ -155,7 +155,7 @@
         width: 20vw;
     }
     .loading-Card > .loading-image{
-        height: 20vw;
+        height: 18vw;
     }
     .card-likeSVG {
         width: 18.5vw;
@@ -181,6 +181,9 @@
         height: 25vw;
         z-index: 0;
     }
+    .loading-Card > .loading-image{
+        height: 24vw;
+    }
     .card-likeSVG {
         width: 25vw;
         display: flex;
@@ -205,6 +208,9 @@
         height: 41vw;
         z-index: 0;
     }
+    .loading-Card > .loading-image{
+        height: 40vw;
+    }
     .card-likeSVG {
         width: 38vw;
         display: flex;
@@ -228,6 +234,9 @@
         width: 90vw;
         height: 90vw;
         z-index: 0;
+    }
+    .loading-Card > .loading-image{
+        height: 90vw;
     }
     .card-likeSVG {
         width: 86vw;
