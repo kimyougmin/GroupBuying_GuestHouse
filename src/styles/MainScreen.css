@@ -3,14 +3,23 @@
 }
 .card-grid {
     display: grid;
-    grid-template-columns: 17vw 17vw 17vw 17vw 17vw;
+    grid-template-columns: 14vw 14vw 14vw 14vw 14vw 14vw;
     gap: 2vh 2vw;
 }
 .main-seeMore {
     width: 100%;
     text-align: center;
 }
-
+@media (max-width: 1880px) {
+    .main-body {
+        padding: 5vh 3.5vw 2vh 3.5vw;
+    }
+    .card-grid {
+        display: grid;
+        grid-template-columns: 17vw 17vw 17vw 17vw 17vw;
+        gap: 2vh 2vw;
+    }
+}
 @media (max-width: 1477px) {
     .main-body {
         padding: 5vh 5vw 2vh 5vw;
