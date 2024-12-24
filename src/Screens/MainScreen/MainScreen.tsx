@@ -9,7 +9,6 @@ import LanguageModal from "../../components/LanguageModal";
 import GuestHouseCard from "./components/GuestHouseCard";
 import {ScreenWidthCalc} from "../../utils/ScreenWidthCalc";
 
-
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
     const { isLoginModal, isLanguageModal } = React.useContext(HeaderModalManagerBaseDate);
@@ -18,13 +17,12 @@ function MainScreen() {
 
     const calculateCards = () => {
         const screenWidth = new Array(ScreenWidthCalc(window.innerWidth)).fill(0);
-        setCardLength(screenWidth)
+        setCardLength(screenWidth);
     };
 
     React.useEffect(() => {
         // 초기 화면 크기 계산
         calculateCards();
-
     }, []);
 
     useInfiniteScrolling({
@@ -34,7 +32,6 @@ function MainScreen() {
         },
         hasMore: true,
     });
-
     return (
         <div>
             <HeaderSearch />
