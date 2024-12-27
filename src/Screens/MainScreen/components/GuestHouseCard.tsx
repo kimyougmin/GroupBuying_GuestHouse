@@ -3,34 +3,27 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {CardType} from "../../../types/CardType";
-import {useNavigate} from "react-router-dom";
-import {useCookies} from "react-cookie";
-import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
 import axios from "axios";
+import "../../../styles/GuestHouseCard.css"
+import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
 
-interface cardProps {
-    houseImages: {'url': string}[]
-    id: number | null
-    houseName: string
-    price: number
-    like: boolean
-    onScreenMoveHandler: () => void
+interface Card {
+    cardId: number
 }
-
-function GuestHouseCardDispersion( {houseImages, id, houseName, price, like, onScreenMoveHandler}: cardProps ) {
-    const [isFetch, ] = React.useState(false);
+function GuestHouseCardDispersion({cardId}: Card ) {
+    const [isFetch, setIsFetch] = React.useState(false);
 
     const [cardDate, setCardDate] = React.useState<CardType>({
-        houseImages: houseImages,
-        id: id,
-        houseName: houseName,
-        price: price,
-        like: like
+        houseImages: [],
+        id: 0,
+        houseName: "",
+        price: 0,
+        like: false
     });
-    const navi = useNavigate();
+    // const navi = useNavigate();
     const [imageCount, setImageCount] = React.useState<number>(0);
     const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
-    const [cookies,,] = useCookies(['userToken']);
+
     const {isLoginModal , setIsLoginModal} = React.useContext(HeaderModalManagerBaseDate);
     const [style, setStyle] = React.useState({
         transform: `translateX(-${imageCount}00%)`,
@@ -38,17 +31,26 @@ function GuestHouseCardDispersion( {houseImages, id, houseName, price, like, onS
     });
 
     React.useEffect(() => {
-        initialCardFetch()
-            .then((res) => {console.log(res)})
-            .catch((error) => {console.log("GuestHouseCardDispersion", error)})
+        Promise.allSettled([initialCardFetch]).then((res) => {
+            if(res[0].status !== "fulfilled") {
+                return;
+            }
+            const data: CardType = {
+                houseImages: res[0].value.data.houseImages,
+                id: res[0].value.data.id,
+                houseName: res[0].value.data.houseName,
+                price: res[0].value.data.price,
+                like: false
+            }
+            setCardDate(data)
+            setIsFetch(true)
+        })
     }, [])
+    const initialCardFetch = axios.get(`${process.env.REACT_APP_MAIN_HOUSE_TEST}?cardId=${cardId+1}`, {
+        headers: {"content-type": "application/json"}
+    })
 
-    const initialCardFetch = async () => {
-        await axios.get(`${process.env.REACT_APP_MAIN_HOUSE}`, {
-            headers: {"content-type": "application/json", "cardId": "1"},
-            timeout: 4000
-        });
-    }
+
     const cardMouseOverHandler = () => {
         setIsCodeHover(true);
     }
@@ -74,10 +76,10 @@ function GuestHouseCardDispersion( {houseImages, id, houseName, price, like, onS
     }
 
     const imageLikeEventHandler = () => {
-        if (!cookies.userToken) {
-            setIsLoginModal(true);
-            return;
-        }
+        // if (!cookies.userToken) {
+        //     setIsLoginModal(true);
+        //     return;
+        // }
         //더미 코드 추후 패치 진할 것
         setCardDate({
             houseImages: cardDate.houseImages,
@@ -102,16 +104,16 @@ function GuestHouseCardDispersion( {houseImages, id, houseName, price, like, onS
         if(target.id === 'images-next' || target.id === 'images-before' || target.id === 'card-favoriteBorderIcon' || target.id === 'card-favoriteIcon') {
             return;
         }
-        onScreenMoveHandler()
-        navi(`/rooms/${id}`, {
-            state: {
-                houseImages: houseImages,
-                id: id,
-                houseName: houseName,
-                price: price,
-                like: like
-            }
-        });
+        // onScreenMoveHandler()
+        // navi(`/rooms/${id}`, {
+        //     state: {
+        //         houseImages: houseImages,
+        //         id: id,
+        //         houseName: houseName,
+        //         price: price,
+        //         like: like
+        //     }
+        // });
     }
     return (<div>
         {isFetch? <div className={'guestHouseCard'}>
@@ -155,17 +157,17 @@ function GuestHouseCardDispersion( {houseImages, id, houseName, price, like, onS
                     </div>
                 </div>
                 <div>
-                    <p>{cardDate.houseName}</p>
+                    <p className={"card-name"}>{cardDate.houseName}</p>
                 </div>
                 <p>₩{cardDate.price}/박</p>
             </div> :
-            <div>
-                <div>
+            <div className={"loading-Card"}>
+                <div className={"loading-image"}>
 
                 </div>
-                <div>
-                    <p></p>
-                    <p></p>
+                <div className={"loading-body"}>
+                    <div></div>
+                    <div></div>
                 </div>
             </div>}
     </div>);
