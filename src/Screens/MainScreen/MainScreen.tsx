@@ -8,7 +8,6 @@ import useInfiniteScrolling from "../../hooks/useInfiniteScrolling";
 import LanguageModal from "../../components/LanguageModal";
 import GuestHouseCard from "./components/GuestHouseCard";
 import {ScreenWidthCalc} from "../../utils/ScreenWidthCalc";
-import axios from "axios";
 
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
@@ -25,23 +24,7 @@ function MainScreen() {
         // 초기 화면 크기 계산
         calculateCards();
     }, []);
-    const initialCardFetch4 = axios.get(`${process.env.REACT_APP_MAIN_HOUSE_TEST}?cardId=1`, {
-        headers: {"content-type": "application/json"}
-    })
-    const initialCardFetch5 = axios.get(`${process.env.REACT_APP_MAIN_HOUSE_TEST}?cardId=2`, {
-        headers: {"content-type": "application/json"}
-    })
-    const initialCardFetch6 = axios.get(`${process.env.REACT_APP_MAIN_HOUSE_TEST}?cardId=3`, {
-        headers: {"content-type": "application/json"}
-    })
 
-    React.useEffect(() => {
-        console.time()
-        Promise.allSettled([initialCardFetch4,initialCardFetch5,initialCardFetch6]).then((res) => {
-            console.log(res)
-            console.timeEnd()
-        })
-    },[]);
     useInfiniteScrolling({
         scrollHookRef,
         fetchMore: () => {
@@ -54,9 +37,9 @@ function MainScreen() {
             <HeaderSearch />
             <div className="main-body">
                 <div className="card-grid">
-                    {/*{cardLength.map((_, index) => (*/}
-                    {/*    <GuestHouseCard key={index} cardId={index}/>*/}
-                    {/*))}*/}
+                    {cardLength.map((_, index) => (
+                        <GuestHouseCard key={index} cardId={index}/>
+                    ))}
                 </div>
             </div>
             {isObserver ? (
