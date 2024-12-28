@@ -14,6 +14,23 @@ function MainScreen() {
     const { isLoginModal, isLanguageModal } = React.useContext(HeaderModalManagerBaseDate);
     const [cardLength, setCardLength] = React.useState<number[]>([]);
     const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);
+    const [windowWidth, setWindowWidth] = React.useState<number>(window.innerWidth);
+
+    const useDebounce = (callback: () => void, delay: number) => {
+        const timer = React.useRef<NodeJS.Timeout | null>(null);
+
+        const debouncedCallback = React.useCallback(() => {
+            if (timer.current) clearTimeout(timer.current);
+            timer.current = setTimeout(() => {
+                callback();
+            }, delay);
+        }, [callback, delay]);
+
+        return debouncedCallback;
+    };
+    const handleResize = useDebounce(() => {
+        setWindowWidth(window.innerWidth);
+    }, 300);
 
     const calculateCards = () => {
         const screenWidth = new Array(ScreenWidthCalc(window.innerWidth)).fill(0);
@@ -24,6 +41,13 @@ function MainScreen() {
         // 초기 화면 크기 계산
         calculateCards();
     }, []);
+    React.useEffect(() => {
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [handleResize]);
 
     useInfiniteScrolling({
         scrollHookRef,
