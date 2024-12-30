@@ -7,7 +7,13 @@ import i18n from "../../utils/i18n";
 import useInfiniteScrolling from "../../hooks/useInfiniteScrolling";
 import LanguageModal from "../../components/LanguageModal";
 import GuestHouseCard from "./components/GuestHouseCard";
-import {ScreenWidthCalc} from "../../utils/ScreenWidthCalc";
+import {ScreenWidthCalc, ScreenWidthWithScrollCalc} from "../../utils/ScreenWidthCalc";
+import {render} from "@testing-library/react";
+
+interface limitType {
+    limits: number
+    scroll: number
+}
 
 function MainScreen() {
     const [isObserver, setIsObserver] = React.useState<boolean>(true);
@@ -15,6 +21,10 @@ function MainScreen() {
     const [cardLength, setCardLength] = React.useState<number[]>([]);
     const [scrollHookRef, setScrollHookRef] = React.useState<null | HTMLDivElement>(null);
     const [windowWidth, setWindowWidth] = React.useState<number>(window.innerWidth);
+    const [renderLimits, setRenderLimits] = React.useState<limitType>({
+        limits: 0,
+        scroll: 1
+    });
 
     const useDebounce = (callback: () => void, delay: number) => {
         const timer = React.useRef<NodeJS.Timeout | null>(null);
@@ -28,6 +38,7 @@ function MainScreen() {
 
         return debouncedCallback;
     };
+
     const handleResize = useDebounce(() => {
         setWindowWidth(window.innerWidth);
     }, 300);
@@ -35,6 +46,7 @@ function MainScreen() {
     const calculateCards = () => {
         const screenWidth = new Array(ScreenWidthCalc(window.innerWidth)).fill(0);
         setCardLength(screenWidth);
+        setRenderLimits({limits: screenWidth.length, scroll: 1});
     };
 
     React.useEffect(() => {
@@ -52,7 +64,9 @@ function MainScreen() {
     useInfiniteScrolling({
         scrollHookRef,
         fetchMore: () => {
-            console.log("Fetching more items...");
+            const addArray = new Array(12).fill(0);
+            setCardLength([...cardLength, ...addArray]);
+            setRenderLimits({limits: ScreenWidthWithScrollCalc(windowWidth, renderLimits.scroll++), scroll: renderLimits.scroll++});
         },
         hasMore: true,
     });
@@ -62,7 +76,8 @@ function MainScreen() {
             <div className="main-body">
                 <div className="card-grid">
                     {cardLength.map((_, index) => (
-                        <GuestHouseCard key={index} cardId={index}/>
+                        renderLimits.limits > index ?
+                        <GuestHouseCard key={index} cardId={index}/>: null
                     ))}
                 </div>
             </div>
