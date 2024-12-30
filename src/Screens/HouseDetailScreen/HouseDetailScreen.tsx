@@ -16,7 +16,8 @@ import PaymentUi from "./components/PaymentUi";
 import {CalenderContextProvider} from "../../useContext/CalenderContext";
 import DetailScreenFetchModel from "../../TestModel/DetailScreenFetchModel";
 import HouseDetailHeaderMobile from "./components/HouseDetailHeaderMobile";
-
+import {Swiper, SwiperSlide} from "swiper/react";
+import "swiper/css";
 function HouseDetailScreen() {
     const location = useLocation();
     const {isLoginModal, setIsLoginModal, isLanguageModal} = React.useContext(HeaderModalManagerBaseDate);
@@ -31,6 +32,11 @@ function HouseDetailScreen() {
         houseExplanation: ""
     });
     const [width, setWidth] = React.useState(window.innerWidth);
+    const [imageCount, setImageCount] = React.useState<number>(0);
+    const [style, setStyle] = React.useState({
+        transform: `translateX(-${imageCount}00%)`,
+        transition: `all 0.4s ease-in-out`,
+    });
 
     const handleResize = () => {
         setWidth(window.innerWidth);
@@ -98,13 +104,18 @@ function HouseDetailScreen() {
                         </div>
                     </div>
                 : null}
+
             {width < 780 ? (
                 <div className={"detailBody-m"}>
                     <div className={'detailImage'}>
                         <div className={"detailImage-mask"}>
-                            <div>
-
-                            </div>
+                            <Swiper  pagination={true} className="mySwiper">
+                                {location.state.houseImages.map((e: { url: string | undefined; }, index: React.Key | null | undefined) => {
+                                    return (<SwiperSlide key={index}>
+                                        <img src={e.url}/>
+                                    </SwiperSlide>)
+                                })}
+                            </Swiper>
                             <div>
                                 <p>{}</p>
                             </div>

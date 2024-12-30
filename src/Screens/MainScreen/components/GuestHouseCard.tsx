@@ -6,7 +6,6 @@ import {CardType} from "../../../types/CardType";
 import axios from "axios";
 import "../../../styles/GuestHouseCard.css"
 import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
-import TestFetchModel from "../../../TestModel/TestFetchModel";
 import {useNavigate} from "react-router-dom";
 
 interface Card {
@@ -25,7 +24,6 @@ function GuestHouseCardDispersion({cardId}: Card ) {
     // const navi = useNavigate();
     const [imageCount, setImageCount] = React.useState<number>(0);
     const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
-
     const {isLoginModal , setIsLoginModal} = React.useContext(HeaderModalManagerBaseDate);
     const [style, setStyle] = React.useState({
         transform: `translateX(-${imageCount}00%)`,
