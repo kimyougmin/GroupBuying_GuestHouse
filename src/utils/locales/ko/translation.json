@@ -30,5 +30,6 @@
   "copy_error": "링크 복사 실패",
   "link_copy_completed": "링크 복사 완료",
   "host": "호스트",
-  "back": "뒤로가기"
+  "back": "뒤로가기",
+  "show_more": "더 보기"
 }

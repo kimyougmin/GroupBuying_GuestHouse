@@ -14,8 +14,8 @@
     height: 100%;
 }
 .card-imageBox > div > img{
-    width: 20vw;
-    height: 15vw;
+    width: 14vw;
+    height: 14vw;
     z-index: 0;
 }
 .card-slideSVG{
@@ -26,15 +26,15 @@
 }
 .card-eventItem {
     position: relative;
-    top: -15vw;
+    top: -14vw;
     left: 0;
-    width: 20vw;
+    width: 13vw;
     height: 22vh;
     padding: 1vh 1vh 0 1vh;
 }
 .card-eventItem > div > div{
     margin-top: 3vw;
-    width: 16vw;
+    width: 13vw;
     justify-content: space-between;
 }
 .card-eventItem > .card-likeSVG > svg:nth-child(2) {
@@ -47,7 +47,7 @@
     color: black;
 }
 .card-likeSVG {
-    width: 16vw;
+    width: 13vw;
     display: flex;
     justify-content: space-between;
 }
@@ -72,6 +72,13 @@
     height: 1.1em;
     transition: 0.3s ease-out;
 }
+.card-header {
+    margin-bottom: 20px;
+}
+.card-name {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
 .card-likeSVG > #card-favoriteIcon {
     color: rgb(235, 76, 96);
 }
@@ -80,13 +87,75 @@
     height: 1.1em;
     transition: 0.3s ease-out;
 }
+.loading-Card{
+    width: 100%;
+    height: 100%;
+}
+.loading-Card > .loading-image{
+    width: 100%;
+    height: 13vw;
+    background-color: gray;
+    -webkit-animation: bg-pan-left 8s both;
+    animation: bg-pan-left 8s both;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    background-image: linear-gradient(270deg, gray, gainsboro);
+}
+.loading-Card > .loading-body > div {
+    background-color: gainsboro;
+    height: 15px;
+    border-radius: 4px;
+    background-image: linear-gradient(270deg, gray, gainsboro);
+    -webkit-animation: bg-pan-left 2s both;
+    animation: bg-pan-left 2s both;
+}
+.loading-Card > .loading-body > div:nth-child(1){
+    width: 50%;
+    margin-bottom: 10px;
+}
+.loading-Card > .loading-body > div:nth-child(2){
+    width: 35%;
+}
+@media (max-width: 1880px) {
+    .card-eventItem {
+        top: -17vw;
+        left: 0;
+        width: 16vw;
+        height: 16vw;
+        padding: 1vh 1vh 0 1vh;
+    }
+    .card-imageBox > div > img{
+        height: 17vw ;
+        width: 17vw;
+    }
+    .loading-Card > .loading-image{
+        height: 16vw;
+    }
+    .card-likeSVG {
+        width: 16vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-eventItem > div > div{
+        margin-top: 4vw;
+        width: 16vw;
+        justify-content: space-between;
+    }
+}
 @media (max-width: 1477px) {
     .card-eventItem {
-        top: -15vw;
+        top: -20vw;
         left: 0;
         width: 19vw;
         height: 18vw;
         padding: 1vh 1vh 0 1vh;
+    }
+    .card-imageBox > div > img{
+        height: 20vw;
+        width: 20vw;
+    }
+    .loading-Card > .loading-image{
+        height: 18vw;
     }
     .card-likeSVG {
         width: 18.5vw;
@@ -94,7 +163,7 @@
         justify-content: space-between;
     }
     .card-eventItem > div > div{
-        margin-top: 3vw;
+        margin-top: 4vw;
         width: 18.5vw;
         justify-content: space-between;
     }
@@ -111,6 +180,9 @@
         width: 27vw;
         height: 25vw;
         z-index: 0;
+    }
+    .loading-Card > .loading-image{
+        height: 24vw;
     }
     .card-likeSVG {
         width: 25vw;
@@ -136,6 +208,9 @@
         height: 41vw;
         z-index: 0;
     }
+    .loading-Card > .loading-image{
+        height: 40vw;
+    }
     .card-likeSVG {
         width: 38vw;
         display: flex;
@@ -160,6 +235,9 @@
         height: 90vw;
         z-index: 0;
     }
+    .loading-Card > .loading-image{
+        height: 90vw;
+    }
     .card-likeSVG {
         width: 86vw;
         display: flex;
@@ -169,5 +247,21 @@
         margin-top: 20vw;
         width: 86vw;
         justify-content: space-between;
+    }
+}
+@-webkit-keyframes bg-pan-left {
+    0% {
+        background-position: 100% 30%;
+    }
+    100% {
+        background-position: 0% 30%;
+    }
+}
+@keyframes bg-pan-left {
+    0% {
+        background-position: 100% 30%;
+    }
+    100% {
+        background-position: 0% 30%;
     }
 }
