@@ -6,6 +6,7 @@ import {CardType} from "../../../types/CardType";
 import axios from "axios";
 import "../../../styles/GuestHouseCard.css"
 import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
+import TestFetchModel from "../../../TestModel/TestFetchModel";
 
 interface Card {
     cardId: number
@@ -104,7 +105,6 @@ function GuestHouseCardDispersion({cardId}: Card ) {
         if(target.id === 'images-next' || target.id === 'images-before' || target.id === 'card-favoriteBorderIcon' || target.id === 'card-favoriteIcon') {
             return;
         }
-        // onScreenMoveHandler()
         // navi(`/rooms/${id}`, {
         //     state: {
         //         houseImages: houseImages,
