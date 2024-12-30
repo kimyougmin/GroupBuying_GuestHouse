@@ -8,7 +8,6 @@ import useInfiniteScrolling from "../../hooks/useInfiniteScrolling";
 import LanguageModal from "../../components/LanguageModal";
 import GuestHouseCard from "./components/GuestHouseCard";
 import {ScreenWidthCalc, ScreenWidthWithScrollCalc} from "../../utils/ScreenWidthCalc";
-import {render} from "@testing-library/react";
 
 interface limitType {
     limits: number

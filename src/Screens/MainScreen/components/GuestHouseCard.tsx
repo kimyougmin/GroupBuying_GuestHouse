@@ -7,13 +7,14 @@ import axios from "axios";
 import "../../../styles/GuestHouseCard.css"
 import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
 import TestFetchModel from "../../../TestModel/TestFetchModel";
+import {useNavigate} from "react-router-dom";
 
 interface Card {
     cardId: number
 }
 function GuestHouseCardDispersion({cardId}: Card ) {
     const [isFetch, setIsFetch] = React.useState(false);
-
+    const navigate = useNavigate();
     const [cardDate, setCardDate] = React.useState<CardType>({
         houseImages: [],
         id: 0,
@@ -105,15 +106,15 @@ function GuestHouseCardDispersion({cardId}: Card ) {
         if(target.id === 'images-next' || target.id === 'images-before' || target.id === 'card-favoriteBorderIcon' || target.id === 'card-favoriteIcon') {
             return;
         }
-        // navi(`/rooms/${id}`, {
-        //     state: {
-        //         houseImages: houseImages,
-        //         id: id,
-        //         houseName: houseName,
-        //         price: price,
-        //         like: like
-        //     }
-        // });
+        navigate(`/rooms/${cardId+1}`, {
+            state: {
+                houseImages: cardDate.houseImages,
+                id: cardDate.id,
+                houseName: cardDate.houseName,
+                price: cardDate.price,
+                like: cardDate.like
+            }
+        });
     }
     return (<div>
         {isFetch? <div className={'guestHouseCard'}>
