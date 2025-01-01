@@ -283,8 +283,34 @@
     .swiper-slide > img {
         display: block;
         width: 100vw;
-        height: 38vh;
+        height: 55vw;
         object-fit: cover;
     }
-
+    .detailExplanation {
+        width: 92%;
+        padding: 2vh 4vw 0 4vw;
+    }
+    .detailExplanation-title {
+        font-size: 25px;
+        font-weight: bolder;
+    }
+    .detailExplanation-host {
+        margin: 2vh 0 2vh 0;
+    }
+    .detailExplanation-host > div{
+        display: flex;
+        margin: 23px 0 23px 0;
+        padding: 23px 0 23px 0;
+        border-top: 1px solid gainsboro;
+        border-bottom: 1px solid gainsboro;
+    }
+    .detailExplanation-host > div > div {
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+    }
+    .detailExplanation-host > div > p {
+        line-height: 50px;
+        font-weight: bold;
+    }
 }
