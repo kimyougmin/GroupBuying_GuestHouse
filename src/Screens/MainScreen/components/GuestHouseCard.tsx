@@ -46,7 +46,7 @@ function GuestHouseCard({cardId}: Card ) {
             setIsFetch(true)
         })
     }, [])
-    const initialCardFetch = axios.get(`${process.env.REACT_APP_MAIN_HOUSE_TEST}?cardId=${cardId+1}`, {
+    const initialCardFetch = axios.get(`${process.env.REACT_APP_MAIN_HOUSE}?cardId=${cardId+1}`, {
         headers: {"content-type": "application/json"}
     })
 
