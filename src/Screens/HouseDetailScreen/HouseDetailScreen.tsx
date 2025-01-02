@@ -34,6 +34,7 @@ function HouseDetailScreen() {
         houseExplanation: ""
     });
     const [width, setWidth] = React.useState(window.innerWidth);
+    const [imageNumber, setImageNumber] = React.useState<number>(1);
 
     const handleResize = () => {
         setWidth(window.innerWidth);
@@ -90,6 +91,9 @@ function HouseDetailScreen() {
         if (i18n.language === "en") return <p style={{display: 'flex'}}>Hosted by {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}</p>
         if (i18n.language === "jp") return <p style={{display: 'flex'}}>ホスト: {<p style={{fontWeight:'bold', marginLeft: '5px'}}>{detailDate.hostName}</p>}さん</p>
     };
+    const mobileSwiperHandler = (swiper: any) => {
+        setImageNumber(swiper.activeIndex + 1);
+    }
     return (
         <div className={'detailScreen'}>
             {width < 780 ? <HouseDetailHeaderMobile setIsShareModal={setIsShareModal} imageLikeEventHandler={imageLikeEventHandler}/> : <HouseDetailHeader />}
@@ -104,13 +108,18 @@ function HouseDetailScreen() {
             {width < 780 ? (
                 <div className={"detailBody-m"}>
                     <div className={'detailImage'}>
-                        <Swiper pagination={true} className="mySwiper">
+                        <Swiper pagination={true} onSlideChange={(swiper: any) => {mobileSwiperHandler(swiper)}} className="mySwiper">
                             {location.state.houseImages.map((e: { url: string | undefined; }, index: React.Key | null | undefined) => {
                                 return (<SwiperSlide key={index}>
                                     <img src={e.url}/>
                                 </SwiperSlide>)
                             })}
                         </Swiper>
+                        <div className={"detailImage-index"}>
+                            <div>
+                                <p>{imageNumber} / {location.state.houseImages.length}</p>
+                            </div>
+                        </div>
                     </div>
                     <div className={'detailExplanation'}>
                         <p className={'detailExplanation-title'}>{detailDate.detailTitle}</p>

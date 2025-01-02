@@ -313,4 +313,27 @@
         line-height: 50px;
         font-weight: bold;
     }
+   .detailExplanation > p:nth-child(3) {
+       line-height: 26px;
+   }
+    .detailImage-index {
+        position: absolute;
+        z-index: 10;
+        top: 60vw;
+        right: 3vw;
+    }
+    .detailImage-index > div {
+        display: flex;
+        background-color: rgba(0,0,0, 0.6);
+        width: 40px;
+        height: 20px;
+        border-radius: 8px;
+    }
+    .detailImage-index > div > p {
+        color: gainsboro;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 21px;
+        margin: auto;
+    }
 }
