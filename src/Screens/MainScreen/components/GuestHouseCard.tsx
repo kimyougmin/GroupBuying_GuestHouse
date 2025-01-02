@@ -11,11 +11,11 @@ import {useNavigate} from "react-router-dom";
 interface Card {
     cardId: number
 }
-function GuestHouseCardDispersion({cardId}: Card ) {
+function GuestHouseCard({cardId}: Card ) {
     const [isFetch, setIsFetch] = React.useState(false);
     const navigate = useNavigate();
     const [cardDate, setCardDate] = React.useState<CardType>({
-        houseImages: [],
+        houseImages: [{url:""}],
         id: 0,
         houseName: "",
         price: 0,
@@ -172,6 +172,6 @@ function GuestHouseCardDispersion({cardId}: Card ) {
     </div>);
 }
 
-export default GuestHouseCardDispersion;
+export default GuestHouseCard;
 
 
