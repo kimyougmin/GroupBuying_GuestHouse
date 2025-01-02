@@ -31,5 +31,8 @@
   "link_copy_completed": "Link copy completed",
   "host": "host",
   "back": "go back",
-  "show_more": "show more"
+  "show_more": "show more",
+  "day": "one day",
+  "max_sale": "maximum discount",
+  "reservation_application": "Reservation "
 }

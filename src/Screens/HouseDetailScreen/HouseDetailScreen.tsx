@@ -18,7 +18,7 @@ import DetailScreenFetchModel from "../../TestModel/DetailScreenFetchModel";
 import HouseDetailHeaderMobile from "./components/HouseDetailHeaderMobile";
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
-import {Avatar} from "@mui/material";
+import {Avatar, Button} from "@mui/material";
 
 function HouseDetailScreen() {
     const location = useLocation();
@@ -131,6 +131,15 @@ function HouseDetailScreen() {
                         </div>
                         <p>{detailDate.houseExplanation}</p>
                     </div>
+                    <div className={"detailReservation"}>
+                        <div>
+                            <p>₩{location.state.price} /{i18n.t("day")}</p>
+                            <div>
+                                <p>{i18n.t("max_sale")}: 10%</p>
+                            </div>
+                        </div>
+                        <Button>{i18n.t("reservation_application")}</Button>
+                    </div>
                 </div>) :
 
                 (<div className={'detailBody'}>
@@ -138,7 +147,7 @@ function HouseDetailScreen() {
                         <p>{location.state.houseName}</p>
                         <div>
                             <div onClick={() => setIsShareModal(true)}>
-                                <OutboxIcon />
+                                <OutboxIcon/>
                                 <p>{i18n.t("share")}</p>
                             </div>
                             {/*찜하기 기능 구현시 추가 구현*/}

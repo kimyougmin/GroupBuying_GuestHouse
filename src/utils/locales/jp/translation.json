@@ -31,5 +31,8 @@
   "link_copy_completed": "リンクコピー完了",
   "host": "ホスト",
   "back": "戻る",
-  "show_more": "もっと見る"
+  "show_more": "もっと見る",
+  "day": "泊",
+  "max_sale": "最大割引",
+  "reservation_application": "予約申込"
 }
