@@ -15,7 +15,7 @@ function GuestHouseCard({cardId}: Card ) {
     const [isFetch, setIsFetch] = React.useState(false);
     const navigate = useNavigate();
     const [cardDate, setCardDate] = React.useState<CardType>({
-        houseImages: [{url:""}],
+        houseImages: [{url: ""}],
         id: 0,
         houseName: "",
         price: 0,
@@ -119,7 +119,7 @@ function GuestHouseCard({cardId}: Card ) {
                 <div className={'card-header'}>
                     <div className={"card-f"}>
                         <div className={'card-imageBox'} style={style}>
-                            {cardDate.houseImages.map((item, index) => {
+                            {isFetch && cardDate.houseImages.map((item, index) => {
                                 return (
                                     <div key={index}>
                                         <img src={item.url}/>
