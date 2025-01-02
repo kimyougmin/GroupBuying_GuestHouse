@@ -21,7 +21,7 @@ function GuestHouseCard({cardId}: Card ) {
         price: 0,
         like: false
     });
-    // const navi = useNavigate();
+
     const [imageCount, setImageCount] = React.useState<number>(0);
     const [isCodeHover, setIsCodeHover] = React.useState<boolean>(false);
     const {isLoginModal , setIsLoginModal} = React.useContext(HeaderModalManagerBaseDate);
@@ -119,12 +119,17 @@ function GuestHouseCard({cardId}: Card ) {
                 <div className={'card-header'}>
                     <div className={"card-f"}>
                         <div className={'card-imageBox'} style={style}>
-                            {isFetch && cardDate.houseImages.map((item, index) => {
-                                return (
-                                    <div key={index}>
-                                        <img src={item.url}/>
-                                    </div>)
-                            })}
+                            {cardDate.houseImages && cardDate.houseImages.length > 0 ? (
+                                cardDate.houseImages.map((item, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <img src={item.url || "placeholder.jpg"} alt={`house-${index}`} />
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <p>No images available</p>
+                            )}
                         </div>
                     </div>
                     <div style={{position: 'absolute', height: "0"}}>
@@ -132,7 +137,7 @@ function GuestHouseCard({cardId}: Card ) {
                              onMouseOut={cardMouseOutHandler}
                              onClick={(e) => cardClickHandler(e)}>
                             <div className={"card-likeSVG"}>
-                                <div/>
+                            <div/>
                                 {cardDate.like && isLoginModal ?
                                     <FavoriteIcon onClick={imageUnLikeEventHandler} id={'card-favoriteIcon'}/> :
                                     <FavoriteBorderIcon id={'card-favoriteBorderIcon'} onClick={imageLikeEventHandler}/>}
