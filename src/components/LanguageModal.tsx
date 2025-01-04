@@ -39,8 +39,8 @@ function LanguageModal() {
     }
 
     const onLanguageModalClickHandler = (e: React.MouseEvent) => {
-        const target = e.target as HTMLDivElement
-        if (target.className === "languageModal-background") {
+        const target = e.target as HTMLDivElement;
+        if (target.className === "languageModal-width") {
             setIsLanguageModal(false);
         }
     }
