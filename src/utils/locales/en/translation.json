@@ -34,5 +34,11 @@
   "show_more": "show more",
   "day": "one day",
   "max_sale": "maximum discount",
-  "reservation_application": "Reservation "
+  "reservation_application": "Reservation",
+  "cleaning_fee": "cleaning fee",
+  "personnel": "personnel",
+  "guest": "guest",
+  "person": "person",
+  "grand_total": "grand total",
+  "close": "close"
 }

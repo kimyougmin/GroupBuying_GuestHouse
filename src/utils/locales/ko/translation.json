@@ -34,5 +34,11 @@
   "show_more": "더 보기",
   "day": "박",
   "max_sale": "최대 할인",
-  "reservation_application": "예약 신청"
+  "reservation_application": "예약 신청",
+  "cleaning_fee": "청소비",
+  "personnel": "인원",
+  "guest": "게스트",
+  "person": "인",
+  "grand_total": "총 합계",
+  "close": "닫기"
 }

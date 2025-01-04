@@ -34,5 +34,11 @@
   "show_more": "もっと見る",
   "day": "泊",
   "max_sale": "最大割引",
-  "reservation_application": "予約申込"
+  "reservation_application": "予約申込",
+  "cleaning_fee": "清掃費",
+  "personnel": "人員",
+  "guest": "ゲスト",
+  "person": "人",
+  "grand_total": "合計",
+  "close": "閉じる"
 }
