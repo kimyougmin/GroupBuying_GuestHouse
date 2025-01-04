@@ -106,41 +106,45 @@ function HouseDetailScreen() {
                     </div>
                 : null}
             {width < 780 ? (
-                <div className={"detailBody-m"}>
-                    <div className={'detailImage'}>
-                        <Swiper pagination={true} onSlideChange={(swiper: any) => {mobileSwiperHandler(swiper)}} className="mySwiper">
-                            {location.state.houseImages.map((e: { url: string | undefined; }, index: React.Key | null | undefined) => {
-                                return (<SwiperSlide key={index}>
-                                    <img src={e.url}/>
-                                </SwiperSlide>)
-                            })}
-                        </Swiper>
-                        <div className={"detailImage-index"}>
-                            <div>
-                                <p>{imageNumber} / {location.state.houseImages.length}</p>
+                    <div className={"detailBody-m"}>
+                        <div className={'detailImage'}>
+                            <Swiper pagination={true} onSlideChange={(swiper: any) => {
+                                mobileSwiperHandler(swiper)
+                            }} className="mySwiper">
+                                {location.state.houseImages.map((e: {
+                                    url: string | undefined;
+                                }, index: React.Key | null | undefined) => {
+                                    return (<SwiperSlide key={index}>
+                                        <img src={e.url}/>
+                                    </SwiperSlide>)
+                                })}
+                            </Swiper>
+                            <div className={"detailImage-index"}>
+                                <div>
+                                    <p>{imageNumber} / {location.state.houseImages.length}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className={'detailExplanation'}>
-                        <p className={'detailExplanation-title'}>{detailDate.detailTitle}</p>
-                        <div className={'detailExplanation-host'}>
-                            <div>
-                                <Avatar alt="Remy Sharp" src={detailDate.hostImage} />
-                                <p>{detailDate.hostName}</p>
+                        <div className={'detailExplanation'}>
+                            <p className={'detailExplanation-title'}>{detailDate.detailTitle}</p>
+                            <div className={'detailExplanation-host'}>
+                                <div>
+                                    <Avatar alt="Remy Sharp" src={detailDate.hostImage}/>
+                                    <p>{detailDate.hostName}</p>
+                                </div>
                             </div>
+                            <p>{detailDate.houseExplanation}</p>
                         </div>
-                        <p>{detailDate.houseExplanation}</p>
-                    </div>
-                    <div className={"detailReservation"}>
-                        <div>
-                            <p>₩{location.state.price} /{i18n.t("day")}</p>
+                        <div className={"detailReservation"}>
                             <div>
-                                <p>{i18n.t("max_sale")}: 10%</p>
+                                <p>₩{location.state.price} /{i18n.t("day")}</p>
+                                <div>
+                                    <p>{i18n.t("max_sale")}: 10%</p>
+                                </div>
                             </div>
+                            <Button>{i18n.t("reservation_application")}</Button>
                         </div>
-                        <Button>{i18n.t("reservation_application")}</Button>
-                    </div>
-                </div>) :
+                    </div>) :
 
                 (<div className={'detailBody'}>
                     <div className={'detailBody-title'}>
