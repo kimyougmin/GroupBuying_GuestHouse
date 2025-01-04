@@ -7,6 +7,7 @@ import axios from "axios";
 import "../../../styles/GuestHouseCard.css"
 import {HeaderModalManagerBaseDate} from "../../../useContext/HeaderModalManagerBaseDate";
 import {useNavigate} from "react-router-dom";
+import i18n from "../../../utils/i18n";
 
 interface Card {
     cardId: number
@@ -163,7 +164,7 @@ function GuestHouseCard({cardId}: Card ) {
                 <div>
                     <p className={"card-name"}>{cardDate.houseName}</p>
                 </div>
-                <p>₩{cardDate.price}/박</p>
+                <p>₩{cardDate.price}/{i18n.t("day")}</p>
             </div> :
             <div className={"loading-Card"}>
                 <div className={"loading-image"}>
