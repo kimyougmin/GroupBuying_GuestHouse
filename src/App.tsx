@@ -5,6 +5,7 @@ import HeaderModalManagerContext from "./useContext/HeaderModalManagerContext";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HouseDetailScreen from "./Screens/HouseDetailScreen/HouseDetailScreen";
 import HouseImagesScreen from "./Screens/HouseImagesScreen/HouseImagesScreen";
+import HouseRegistrationScreen from "./Screens/HouseRegistrationScreen/HouseRegistrationScreen";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
                     <Routes>
                         <Route path={'/'} element={<MainScreen />}/>
                         <Route path={'/rooms/:id'} element={<HouseDetailScreen/>}/>
-                        <Route path={'/rooms/:id/images'} element={<HouseImagesScreen />}/>
+                        <Route path={'/rooms/:id/images'} element={<HouseImagesScreen/>}/>
+                        <Route path={'/become-host/'} element={<HouseRegistrationScreen/>}/>
                     </Routes>
                 </BrowserRouter>
         </HeaderModalManagerContext>
