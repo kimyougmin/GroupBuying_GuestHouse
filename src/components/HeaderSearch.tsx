@@ -10,6 +10,7 @@ import UserModal from "./UserModal";
 import GuestModal from "./GuestModal";
 import {HeaderModalManagerBaseDate} from "../useContext/HeaderModalManagerBaseDate";
 import Logo from "../gg_logo.png";
+import {useNavigate} from "react-router-dom";
 
 
 export default function HeaderSearch() {
@@ -17,6 +18,7 @@ export default function HeaderSearch() {
     const [profileImg, setProfileImg] = React.useState<string>('');
     const [cookies, , ] = useCookies(['userToken']);
     const [width, setWidth] = React.useState(window.innerWidth);
+    const navi = useNavigate();
 
     const handleResize = () => {
         setWidth(window.innerWidth);
@@ -41,6 +43,13 @@ export default function HeaderSearch() {
         }
     }, [cookies.userToken]);
 
+    const guestHouseRegistrationHandler = () => {
+        if(!cookies.userToken) {
+            setIsUserModal(true);
+        }
+        navi("become-host");
+    }
+
     return (
         <div className={"header"}>
             {width < 880 ?
@@ -56,7 +65,7 @@ export default function HeaderSearch() {
                         <div>
                         </div>
                         <div className={"header-right"}>
-                            <p>{i18n.t("guestHouse_registration")}</p>
+                            <p onClick={guestHouseRegistrationHandler}>{i18n.t("guestHouse_registration")}</p>
                             <LanguageIcon onClick={() => setIsLanguageModal(true)}/>
                             {cookies.userToken ?
                                 <div className={"header-userList"} onClick={() => setIsUserModal(true)}>
