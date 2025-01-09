@@ -1,0 +1,47 @@
+.houseRegistration {
+    padding: 3vh 4vw 0 4vw;
+    width: 92vw;
+    height: 100vh;
+}
+.houseRegistration-header {
+    display: flex;
+    justify-content: space-between;
+}
+.houseRegistration-header > img{
+    height: 48px;
+}
+.houseRegistration-header > svg{
+    height: 48px;
+}
+.houseRegistration-body {
+    width: 670px;
+    height: 670px;
+    margin: 10vh auto 0 auto;
+}
+.houseRegistration-body > h1{
+    font-size: 36px;
+    font-weight: bolder;
+}
+.houseRegistration-body > p{
+    font-size: 18px;
+    margin-bottom: 5vh;
+}
+.photoArea {
+    height: 80%;
+    background-color: #E3E3E3;
+    border: 2px dashed #B7B7B7;
+    border-radius: 16px;
+    align-content: center;
+    justify-items: center;
+}
+.photoArea > svg{
+    width: 5em;
+    height: 5em;
+}
+.photoArea > button{
+    color: #060606;
+    margin-top: 30px;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    border: 1px solid #060606;
+}
