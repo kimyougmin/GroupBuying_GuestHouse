@@ -40,5 +40,15 @@
   "guest": "guest",
   "person": "person",
   "grand_total": "grand total",
-  "close": "close"
+  "close": "close",
+  "add_guestHouse_photo": "Please add a photo of your guesthouse.",
+  "add_guestHouse_photo_detail": "Please enter 5 photos that make your guest house shine. You can change or add later!",
+  "add_photo": "Add photos",
+  "upload_photo": "upload photo",
+  "no_files_selected": "no files selected",
+  "files_selected": "files selected",
+  "drag_and_drop_photos": "drag and drop photos",
+  "directly_select": "directly select",
+  "find": "find",
+  "upload": "upload"
 }

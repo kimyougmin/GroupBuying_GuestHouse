@@ -40,5 +40,15 @@
   "guest": "게스트",
   "person": "인",
   "grand_total": "총 합계",
-  "close": "닫기"
+  "close": "닫기",
+  "add_guestHouse_photo": "게스트하우스 사진을 추가해 주세요.",
+  "add_guestHouse_photo_detail": "당신의 게스트 하우스가 더욱 빛 날 수 있는 사진 5장을 입력해주세요. 추후 변경하거나 추가하실 수 있어요!",
+  "add_photo": "사진 추가하기",
+  "upload_photo": "사진 업로드",
+  "no_files_selected": "선택된 파일 없음",
+  "files_selected": "선택된 파일",
+  "drag_and_drop_photos": "사진 드래그해서 놓기",
+  "directly_select": "직접 선택하기",
+  "find": "찾아보기",
+  "upload": "업로드"
 }

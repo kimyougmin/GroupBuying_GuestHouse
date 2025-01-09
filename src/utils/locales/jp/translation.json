@@ -40,5 +40,15 @@
   "guest": "ゲスト",
   "person": "人",
   "grand_total": "合計",
-  "close": "閉じる"
+  "close": "閉じる",
+  "add_guestHouse_photo": "ゲストハウスの写真を追加してください。",
+  "add_guestHouse_photo_detail": "あなたのゲストハウスがさらに輝く写真を5枚入力してください。今後変更または追加できます！",
+  "add_photo": "写真を追加する",
+  "upload_photo": "写真をアップロード",
+  "no_files_selected": "選択ファイルなし",
+  "files_selected": "選択したファイル",
+  "drag_and_drop_photos": "写真をドラッグしてドロップ",
+  "directly_select": "自分で選ぶ",
+  "find": "閲覧",
+  "upload": "アップロード"
 }
