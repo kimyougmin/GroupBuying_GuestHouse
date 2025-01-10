@@ -58,6 +58,25 @@
     margin-top: 20px;
     align-content: center;
 }
+.photoModal > .photoModal-body-action {
+    width: 94%;
+    height: 70%;
+    border: 2px dashed #060606;
+    background-color: #E6E6E6;
+    border-radius: 16px;
+    margin: 20px auto 0 auto;
+    align-content: center;
+    justify-items: center;
+}
+.photoModal > .photoModal-body-action > svg{
+    width: 4em;
+    height: 4em;
+}
+.photoModal > .photoModal-body-action > button{
+    margin-top: 5px;
+    color: #E8E8E8;
+    background-color: #0D0D0D;
+}
 .photoModal > .photoModal-footer > button{
     margin: 8px 12px 0 12px;
 }
@@ -67,6 +86,14 @@
     font-size: 22px;
 }
 .photoModal > .photoModal-body > .directly {
+    margin-top: 20px;
+    font-size: 16px;
+}
+.photoModal > .photoModal-body-action > .dragAndDrop {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+.photoModal > .photoModal-body-action > .directly {
     margin-top: 20px;
     font-size: 16px;
 }

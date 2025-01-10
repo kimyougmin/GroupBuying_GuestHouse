@@ -10,6 +10,7 @@ interface props {
 }
 function PhotoModal({setIsPhotoModal}: props) {
     const photoModalRef = React.useRef(null);
+    const [isDragAction, setIsDragAction] = React.useState(false);
 
     const onPhotoModalClickHandler = (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement;
@@ -17,7 +18,13 @@ function PhotoModal({setIsPhotoModal}: props) {
             setIsPhotoModal(false);
         }
     }
-
+    const onDragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault()
+    }
+    const onPhotoDropHandler = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        setIsDragAction(false);
+    }
     return (
         <div className={"photoModal-background"} ref={photoModalRef} onClick={onPhotoModalClickHandler}>
             <div className={"photoModal"}>
@@ -29,7 +36,12 @@ function PhotoModal({setIsPhotoModal}: props) {
                     </div>
                     <Add />
                 </div>
-                <div className={"photoModal-body"}>
+                <div className={isDragAction ? "photoModal-body-action": "photoModal-body"}
+                     onDragEnter={() => setIsDragAction(true)}
+                     onDragLeave={() => setIsDragAction(false)}
+                     onDrop={onPhotoDropHandler}
+                     onDragOver={onDragOverHandler}
+                >
                     <PhotoLibrary/>
                     <h1 className={"dragAndDrop"}>{i18n.t("drag_and_drop_photos")}</h1>
                     <p>{i18n.t("or")}</p>
