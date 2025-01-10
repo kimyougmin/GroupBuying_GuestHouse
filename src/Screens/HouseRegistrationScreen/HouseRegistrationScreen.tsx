@@ -25,7 +25,7 @@ function HouseRegistrationScreen() {
                     <Button onClick={() => {setIsPhotoModal(!isPhotoModal)}}>{i18n.t("add_photo")}</Button>
                 </div>
             </div>
-            {isPhotoModal ? <PhotoModal/> : null}
+            {isPhotoModal ? <PhotoModal setIsPhotoModal={setIsPhotoModal}/> : null}
         </div>
     );
 }
