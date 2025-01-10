@@ -1,0 +1,78 @@
+.photoModal-background {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    align-content: center;
+}
+.photoModal {
+    width: 580px;
+    height: 500px;
+    background-color: #F1F1F1;
+    border-radius: 24px;
+    margin: auto;
+    border: 1px solid #0D0D0D;
+}
+.photoModal > .photoModal-header {
+    display: flex;
+    width: 94%;
+    margin: 20px auto 0 auto;
+    justify-content: space-between;
+}
+.photoModal > .photoModal-header > div{
+    justify-items: center;
+}
+.photoModal > .photoModal-header > div > h1{
+    font-size: 20px;
+}
+.photoModal > .photoModal-header > div > p{
+    font-size: 12px;
+    color: #B7B7B7;
+    margin-top: 2px;
+}
+.photoModal > .photoModal-body {
+    width: 94%;
+    height: 70%;
+    border: 2px dashed #B7B7B7;
+    border-radius: 16px;
+    margin: 20px auto 0 auto;
+    align-content: center;
+    justify-items: center;
+}
+.photoModal > .photoModal-body > svg{
+    width: 4em;
+    height: 4em;
+}
+.photoModal > .photoModal-body > button{
+    margin-top: 5px;
+    color: #E8E8E8;
+    background-color: #0D0D0D;
+}
+.photoModal > .photoModal-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #B7B7B7;
+    margin-top: 20px;
+    align-content: center;
+}
+.photoModal > .photoModal-footer > button{
+    margin: 8px 12px 0 12px;
+}
+
+.photoModal > .photoModal-body > .dragAndDrop {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+.photoModal > .photoModal-body > .directly {
+    margin-top: 20px;
+    font-size: 16px;
+}
+.photoModal > .photoModal-footer > button {
+    color: #0D0D0D;
+}
+.photoModal > .photoModal-footer > button:nth-child(2) {
+    color: #E8E8E8;
+    background-color: #0D0D0D;
+}
