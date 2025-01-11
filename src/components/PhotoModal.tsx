@@ -23,7 +23,13 @@ function PhotoModal({setIsPhotoModal}: props) {
     }
     const onPhotoDropHandler = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
+        const blobUrl: string[] = [];
+        for(const i in Object.keys(e.dataTransfer.files)){
+            blobUrl.push(URL.createObjectURL(e.dataTransfer.files[i]));
+        }
+        console.log(blobUrl)
         setIsDragAction(false);
+
     }
     return (
         <div className={"photoModal-background"} ref={photoModalRef} onClick={onPhotoModalClickHandler}>
