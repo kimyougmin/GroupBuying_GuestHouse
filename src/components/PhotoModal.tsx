@@ -10,7 +10,8 @@ interface props {
 }
 function PhotoModal({setIsPhotoModal}: props) {
     const photoModalRef = React.useRef(null);
-    const [isDragAction, setIsDragAction] = React.useState(false);
+    const [isDragAction, setIsDragAction] = React.useState<boolean>(false);
+    const [isExtensionErrorModal, setIsExtensionErrorModal] = React.useState<boolean>(false)
 
     const onPhotoModalClickHandler = (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement;
@@ -25,11 +26,17 @@ function PhotoModal({setIsPhotoModal}: props) {
         e.preventDefault();
         const blobUrl: string[] = [];
         for(const i in Object.keys(e.dataTransfer.files)){
+            const files = e.dataTransfer.files[i].name.split(".");
+            const extension = files[files.length - 1];
+            if (extension !== "png" && extension !== "jpg") {
+                setIsDragAction(false);
+                setIsExtensionErrorModal(true);
+                return;
+            }
             blobUrl.push(URL.createObjectURL(e.dataTransfer.files[i]));
         }
-        console.log(blobUrl)
-        setIsDragAction(false);
 
+        setIsDragAction(false);
     }
     return (
         <div className={"photoModal-background"} ref={photoModalRef} onClick={onPhotoModalClickHandler}>
@@ -59,6 +66,7 @@ function PhotoModal({setIsPhotoModal}: props) {
                     <Button>{i18n.t("upload")}</Button>
                 </div>
             </div>
+            {isExtensionErrorModal ? <div></div> : null}
         </div>
     );
 }
