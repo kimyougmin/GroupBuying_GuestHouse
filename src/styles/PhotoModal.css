@@ -104,3 +104,31 @@
     color: #E8E8E8;
     background-color: #0D0D0D;
 }
+.imageInputErrorModal {
+    position: absolute;
+    top: 80vh;
+    width: 100%;
+}
+.imageInputErrorModal > div{
+    background-color: #F1F1F1;
+    border-radius: 8px;
+    border: 1px solid black;
+    margin: 0 auto 0 auto;
+    display: flex;
+    padding: 8px;
+    width: 340px;
+}
+.imageInputErrorModal > div > svg{
+    width: 2em;
+    height: 2em;
+    color: #FF0000;
+    margin-right: 8px;
+}
+.imageInputErrorModal > div > div > h1{
+    color: #FF0000;
+    font-size: 18px;
+    margin: 4px 0 4px 0;
+}
+.imageInputErrorModal > div > div > p{
+    font-size: 16px;
+}
