@@ -9,6 +9,7 @@ export default async function CompressImage  (file: File){
         initialQuality: 0.8,
     };
 
+
     try {
         const compressedFile = await imageCompression(file, options);
 
@@ -16,6 +17,7 @@ export default async function CompressImage  (file: File){
         console.log("Compressed file size:", compressedFile.size / 1024 / 1024, "MB");
         return compressedFile;
     } catch (error) {
+
         console.error("Error during image compression", error)
     }
 }

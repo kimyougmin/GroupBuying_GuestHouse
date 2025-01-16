@@ -13,7 +13,7 @@ function PhotoModal({setIsPhotoModal}: props) {
     const photoModalRef = React.useRef(null);
     const [isDragAction, setIsDragAction] = React.useState<boolean>(false);
     const [isExtensionErrorModal, setIsExtensionErrorModal] = React.useState<boolean>(false);
-    const [imageUrl, setImageUrl] = React.useState<[] | null>(null);
+    const [imageUrl, setImageUrl] = React.useState<string[]>([]);
 
     const onPhotoModalClickHandler = (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement;
@@ -24,9 +24,9 @@ function PhotoModal({setIsPhotoModal}: props) {
     const onDragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
     }
-    const onPhotoDropHandler = async (e: React.DragEvent<HTMLDivElement>) => {
+    const onPhotoDropHandler = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
-        const blobUrl: File[] = [];
+        const blobUrl: string[] = [];
         for(const i in Object.keys(e.dataTransfer.files)){
             const files = e.dataTransfer.files[i].name.split(".");
             const extension = files[files.length - 1];
@@ -38,9 +38,9 @@ function PhotoModal({setIsPhotoModal}: props) {
                 },3000);
                 return;
             }
-
+            blobUrl.push(URL.createObjectURL(e.dataTransfer.files[i]))
         }
-
+        setImageUrl(blobUrl)
         setIsDragAction(false);
     }
     return (
@@ -66,7 +66,11 @@ function PhotoModal({setIsPhotoModal}: props) {
                     <p className={"directly"}>{i18n.t("directly_select")}</p>
                     <Button>{i18n.t("find")}</Button>
                 </div>
-
+                {imageUrl.map((e,index) => {
+                    return <div key={index}>
+                        <img src={e}/>
+                    </div>
+                })}
                 <div className={"photoModal-footer"}>
                     <Button onClick={() => setIsPhotoModal(false)}>{i18n.t("close")}</Button>
                     <Button>{i18n.t("upload")}</Button>
