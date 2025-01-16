@@ -54,23 +54,28 @@ function PhotoModal({setIsPhotoModal}: props) {
                     </div>
                     <Add/>
                 </div>
-                <div className={isDragAction ? "photoModal-body-action" : "photoModal-body"}
-                     onDragEnter={() => setIsDragAction(true)}
-                     onDragLeave={() => setIsDragAction(false)}
-                     onDrop={onPhotoDropHandler}
-                     onDragOver={onDragOverHandler}
-                >
-                    <PhotoLibrary/>
-                    <h1 className={"dragAndDrop"}>{i18n.t("drag_and_drop_photos")}</h1>
-                    <p>{i18n.t("or")}</p>
-                    <p className={"directly"}>{i18n.t("directly_select")}</p>
-                    <Button>{i18n.t("find")}</Button>
-                </div>
-                {imageUrl.map((e,index) => {
-                    return <div key={index}>
-                        <img src={e}/>
+                {imageUrl.length > 0 ?
+                    <div className="imageForm">
+                        {imageUrl.map((e, index) => {
+                            return <div key={index}>
+                                <img src={e}/>
+                            </div>}
+                        )}
                     </div>
-                })}
+                : <div className={isDragAction ? "photoModal-body-action" : "photoModal-body"}
+                         onDragEnter={() => setIsDragAction(true)}
+                         onDragLeave={() => setIsDragAction(false)}
+                         onDrop={onPhotoDropHandler}
+                         onDragOver={onDragOverHandler}
+                    >
+                        <PhotoLibrary/>
+                        <h1 className={"dragAndDrop"}>{i18n.t("drag_and_drop_photos")}</h1>
+                        <p>{i18n.t("or")}</p>
+                        <p className={"directly"}>{i18n.t("directly_select")}</p>
+                        <Button>{i18n.t("find")}</Button>
+                    </div>
+                }
+
                 <div className={"photoModal-footer"}>
                     <Button onClick={() => setIsPhotoModal(false)}>{i18n.t("close")}</Button>
                     <Button>{i18n.t("upload")}</Button>
